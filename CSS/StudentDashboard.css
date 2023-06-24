@@ -1,0 +1,93 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jun 25, 2023, 12:41:39 AM
+    Author     : Texus
+*/
+.colordashbord{
+    background-color: #146c94 !important;
+}
+
+.navbarcolor{
+     color: #fff !important;
+     padding: 14px 14px 14px 14px !important;
+     font-size: 17px !important;
+     font-weight: bold !important;
+}
+.navbarcolor.active {
+  background-color: #19a7cd !important;
+
+}
+.dashboardhr{
+    color:#f5f1f0 !important;
+}
+.loggedout{
+    margin-left: 10px !important;
+}
+.icondash{
+    padding: 14px 14px 14px 14px !important;
+}
+
+.Coincard {
+  
+  background-image:
+    linear-gradient(
+      to right, 
+      #64CCC5, #afd3e3
+    )!important;
+  height: 80px;
+  
+  
+  background-color: #f9b234;
+  -webkit-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+  
+}
+.coinvalue{
+    font-weight: bold;
+    
+    margin-left: 56px;
+    font-size: 50px;
+    margin-bottom: 500px;
+    margin-top: -47px;
+   color: #146c94;
+}
+
+.coinicon{
+    
+    margin-top: 20px;
+    font-size: 3rem !important;
+}
+.navbardah{
+    background-color: #19a7cd !important;
+}
+.navuser{
+    margin-left: 1100px;
+    margin-top: 13px;
+}
+
+.name{
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 1150px;
+     margin-top: -15px;
+    
+}
+
+
+.ag-courses-item_link:hover.Coincard{
+  -webkit-transform: scale(2);
+  -ms-transform: scale(2);
+  transform: scale(1.1);
+  color: white !important;
+  
+}
+
+
+
+
+
+
