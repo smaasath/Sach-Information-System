@@ -65,14 +65,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     background-color: #19a7cd !important;
 }
 .navuser{
-    margin-left: 1100px;
+    margin-left: auto;
     margin-top: 13px;
 }
 
 .name{
     font-weight: bold;
     font-size: 15px;
-    margin-left: 1150px;
+    margin-left: auto;
      margin-top: -15px;
     
 }

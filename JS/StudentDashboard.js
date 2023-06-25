@@ -20,3 +20,14 @@ for (var i = 0; i < navLinks.length; i++) {
   navLinks[i].addEventListener("click", setActiveLink);
 }
 navLinks[0].classList.add("active");
+
+
+
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
