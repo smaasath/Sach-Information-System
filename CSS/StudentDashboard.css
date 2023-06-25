@@ -7,7 +7,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Texus
 */
 .colordashbord{
-    background-color: #146c94 !important;
+    background-image:
+    linear-gradient(
+      to top, 
+      #146c94, #001C30
+    )!important;
 }
 
 .navbarcolor{
@@ -62,7 +66,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     font-size: 3rem !important;
 }
 .navbardah{
-    background-color: #19a7cd !important;
+    background-image:
+    linear-gradient(
+      to right, 
+      #001C30, #146c94
+    )!important;
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: baseline !important;
@@ -77,11 +85,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .name{
-       font-weight: bold;
+    font-weight: bold;
     font-size: 15px;
     margin-left: auto;
     margin-top: 2px;
-    
+    color: #DAFFFB;
     padding-left: 14px;
     
 }

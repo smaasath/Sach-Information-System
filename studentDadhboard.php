@@ -76,10 +76,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
         <nav class="navbar navbardah flex-column">
             <div class="container navbardah" style="height:30px;">
-                
-                   <i class="fa-solid fa-user fa-2xl navuser" style="color: #001C30;"></i>
-                   <div class="name">User Name</div>
-                
+
+                <i class="fa-solid fa-user fa-2xl navuser" style="color: #DAFFFB;"></i>
+                <div class="name">User Name</div>
+
             </div>
         </nav>
         <?php
