@@ -13,9 +13,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     </head>
     <body >
-        <div class="w3-sidebar d-flex flex-column flex-shrink-0 p-3  text-white colordashbord " id="mySidebar" style="width: 280px; height: -webkit-fill-available;">
+        <div class="w3-sidebar d-flex flex-column flex-shrink-0 p-3  text-white colordashbord " id="mySidebar" style="width: 280px; height: -webkit-fill-available; ">
             <a href="#">
-                <img src="Images/Logo.png" alt="Home" style="width:100px;height:100px; margin-left: 75px">
+                <img src="Images/Logo.png" alt="Home" style="width:100px;height:100px; margin-left: 75px; margin-top: 50px;">
             </a>
             <hr class="dashboardhr">
             <ul class="nav nav-pills flex-column mb-auto">
@@ -26,10 +26,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link navbarcolor" >
-                        <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
-                        Courses
-                    </a>
+                    
+                        <a href="#" class="nav-link navbarcolor" >
+                            <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
+                            Courses
+                        </a>
+                    
                 </li>
                 <li>
                     <a href="#" class="nav-link navbarcolor" >
@@ -47,12 +49,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <br>
                 <li>
 
-
+<hr>
                     <div class="shadow p-3 mb-5 rounded Coincard ag-courses-item_link">
 
                         <div class="ag-courses-item_bg">
                             <i class="fa-solid fa-coins fa-2xl coinicon" style="color: #146c94;"></i>
-                        </div>    
+                        </div> 
+                        
+                        <div class="headcoin">
+                            Coin Value
+                        </div>
+                        <br>
                         <div class="coinvalue">
                             10000
                         </div>
@@ -75,7 +82,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
         </div>
         <nav class="navbar navbardah flex-column">
-            <div class="container navbardah" style="height:30px;">
+            <div class="container navcon" style="height:30px;">
 
                 <i class="fa-solid fa-user fa-2xl navuser" style="color: #DAFFFB;"></i>
                 <div class="name">User Name</div>
