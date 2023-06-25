@@ -53,7 +53,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     font-size: 50px;
     margin-bottom: 500px;
     margin-top: -47px;
-   color: #146c94;
+    color: #146c94;
 }
 
 .coinicon{
@@ -63,17 +63,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 .navbardah{
     background-color: #19a7cd !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+    justify-content: space-evenly !important;
+    flex-direction: column !important;
+    align-content: flex-end !important;
+    padding-right: 50px !important;
 }
 .navuser{
-    margin-left: auto;
-    margin-top: 13px;
+    padding-left: 10px;
+    margin-top: 5px;
 }
 
 .name{
-    font-weight: bold;
+       font-weight: bold;
     font-size: 15px;
     margin-left: auto;
-     margin-top: -15px;
+    margin-top: 2px;
+    
+    padding-left: 14px;
     
 }
 

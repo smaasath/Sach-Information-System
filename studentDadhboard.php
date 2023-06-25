@@ -13,7 +13,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     </head>
     <body >
-        <div class="w3-sidebar d-flex flex-column flex-shrink-0 p-3  text-white colordashbord " id="mySidebar" style="width: 280px; height: 755px;">
+        <div class="w3-sidebar d-flex flex-column flex-shrink-0 p-3  text-white colordashbord " id="mySidebar" style="width: 280px; height: -webkit-fill-available;">
             <a href="#">
                 <img src="Images/Logo.png" alt="Home" style="width:100px;height:100px; margin-left: 75px">
             </a>
@@ -54,7 +54,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <i class="fa-solid fa-coins fa-2xl coinicon" style="color: #146c94;"></i>
                         </div>    
                         <div class="coinvalue">
-                            100
+                            10000
                         </div>
 
                     </div>
@@ -75,10 +75,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
         </div>
         <nav class="navbar navbardah flex-column">
-            <div class="container" style="height:30px;">
+            <div class="container navbardah" style="height:30px;">
                 
-                   <i class="fa-solid fa-user fa-2xl navuser flex-column" style="color: #001C30;"></i>
-                   <div class="name float">User Name</div>
+                   <i class="fa-solid fa-user fa-2xl navuser" style="color: #001C30;"></i>
+                   <div class="name">User Name</div>
                 
             </div>
         </nav>
