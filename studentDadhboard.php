@@ -22,7 +22,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <li class="nav-item">
                     <a href="#" class="nav-link navbarcolor"  aria-current="page">
                         <i class="fa-solid fa-gauge fa-xl icondash"></i>
-                        Dashboard
+                        Dashboaard
                     </a>
                 </li>
                 <li>
