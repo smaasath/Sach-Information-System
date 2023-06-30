@@ -1,2 +1,1 @@
-Aasath sm
-dd gg
+Aasath
