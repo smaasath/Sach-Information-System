@@ -252,8 +252,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .progressbar {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     background:
         radial-gradient(closest-side, white 79%, transparent 80% 100%),
@@ -261,14 +261,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 .progtext{
     color: #146c94;
-    font-size: 28px;
+    font-size: 15px;
     font-weight: 500;
     text-align: center;
-    padding-top: 28px;
+    padding-top: 26px;
 }
 
 .coursename{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
     color: #001C30;
 }
