@@ -24,7 +24,7 @@ navLinks[0].classList.add("active");
 
 
 function bigtosmal() {
-    console.log("clicked");
+    
     var div = document.getElementById("col2");
     div.style.display = "none";
 
@@ -34,10 +34,13 @@ function bigtosmal() {
     var col2element = document.getElementById("col10");
     var newClassNamecol2 = "col-11 content col11edit";
     col2element.className = newClassNamecol2;
+    
+     var div1 = document.getElementById("smalltobig");
+     div1.style.display = "block";
 }
 
 function smalltobig() {
-    console.log("clicked");
+  
     var div = document.getElementById("col2");
     div.style.display = "block";
 
@@ -45,7 +48,7 @@ function smalltobig() {
     div.style.display = "none";
 
     var col2element = document.getElementById("col10");
-    var newClassNamecol2 = "col-10 content col11edit";
+    var newClassNamecol2 = "col-10 content col10edit";
     col2element.className = newClassNamecol2;
 }
 
@@ -64,6 +67,9 @@ function handleWindowWidth() {
         var col2element = document.getElementById("col10");
         var newClassNamecol2 = "col-11 content col11edit";
         col2element.className = newClassNamecol2;
+        
+        var div1 = document.getElementById("smalltobig");
+        div1.style.display = "none";
 
     } else {
         var div = document.getElementById("col2");
@@ -73,7 +79,7 @@ function handleWindowWidth() {
         div.style.display = "none";
 
         var col2element = document.getElementById("col10");
-        var newClassNamecol2 = "col-10 content col11edit";
+        var newClassNamecol2 = "col-10 content col10edit";
         col2element.className = newClassNamecol2;
     }
 }
