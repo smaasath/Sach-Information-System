@@ -18,6 +18,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body >
         <div class="container-fluid">
             <div class="row flex-wrap flex-row-reverse">
+                <!-- large Side bar start-->
+
                 <div id="col2" class="col-2 sidebar colordashbord fixed-top">
 
                     <hr class="dashboardhr">
@@ -94,7 +96,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <hr class="dashboardhr">
                         </div>
 
+                        <!--  large Side bar end-->
 
+                        <!--  small Side bar start-->
                         <div id="col1" class="col-1 sidebar colordashbord fixed-top">
 
                             <hr class="dashboardhr">
@@ -132,14 +136,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                        <li><a class="dropdown-item" href="#">Log out</a></li>
                                     </ul>
                                 </div>
                                 <hr class="dashboardhr">
                                 </div>
 
+                                <!--  small Side bar End-->
 
+                                <!--  body-->
                                 <div id="col10"class="col-10 content col10edit">
+
+                                    <!--  nav bar start-->
+
                                     <nav class="navbar navbardah fixed-top ">
                                         <div class="container navcon" style="height:30px; padding-right: 100px; ">
 
@@ -148,7 +157,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                         </div>
                                     </nav>
-
+                                    <!--  nav bar end-->
 
                                     <div class="nameimagecontainer container-fluid float-sm" style="margin-top: 67px;">
                                         <div class="row justify-content-start">
