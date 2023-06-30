@@ -13,6 +13,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
       #146c94, #001C30
     )!important;
     
+    height: -webkit-fill-available;
+    
     
 }
 
@@ -22,6 +24,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
      font-size: 17px !important;
      font-weight: bold !important;
      cursor: pointer;
+     width: auto;
 }
 
 .navbarcolor.before {
@@ -99,11 +102,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     font-size: 3rem !important;
 }
 .navbardah{
-    background-image:
-    linear-gradient(
-      to right, 
-      #001C30, #146c94
-    )!important;
+    background-color:white !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     
     z-index: 1;
 }
@@ -124,7 +124,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     font-size: 15px;
     margin-left: auto;
     margin-top: 2px;
-    color: #DAFFFB;
+    color: #146c94;
     padding-left: 5px;
     
 }
@@ -137,9 +137,69 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   color: white !important;
   
 }
+.col10edit{
+   
+    width: 86% !important;
+    
+    margin-right: -14px !important;
+    
+    
 
+}
 
+.col11edit{
+   
+    width: 94% !important;
+    
+    margin-right: -14px !important;
+    
+    
+    
 
+}
 
+.navbarcolorafter{
+     color: #fff !important;
+     padding: 29px 25px 25px 25px !important;
+     font-size: 25px !important;
+     font-weight: bold !important;
+     cursor: pointer;
+     width: 68px !important;
+      border-radius: 12px;
+    width: fit-content;
+}
 
+.navbarcolorafter.before {
+  background-color: #64CCC5 !important;
 
+}
+.navbarcolorafter.active {
+  background-color: #19a7cd !important;
+  color: black !important;
+
+}
+.navbarcolorafter.active:hover {
+  
+  color: #f5f1f0!important;
+
+}
+
+.navbarcolorafter:hover{
+     
+     
+     color: #afd3e3 !important;
+}
+
+.logo{
+   width: 101px;
+    height: 100px;
+    margin-left: 53px;
+    margin-top: 72px;
+}
+.logoafter{
+    width: 60px;
+    height: 60px;
+    margin-left: 6px;
+    
+    margin-top: 58px;
+}
