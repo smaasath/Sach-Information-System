@@ -180,18 +180,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <br><br><br>
                                     <div style="font-size: 10px;
                                          margin-left: 60px;">Attendance and Marks</div>
-                                    <div class="container-fluid float-sm seccon">
-                                        <div class="row justify-content-start" style="
+                                    <div class="container-fluid float-sm ">
+                                        <div class="justify-content-start d-flex p-3 flex-column flex-lg-row justify-content-evenly" style="
                                              padding: 30px 30px 30px 11px;
                                              ">
-                                            <div class="col-4">
+                                            <div class="p-3">
                                                 <div class="row justify-content-start">
-                                                    <div class="col-3">
+                                                    <div class="col-3 p-3">
                                                         <div class="progressbar">
                                                             <div class="progtext">75%</div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-9">
+                                                    <div class="col-9 p-4">
                                                         <div class="coursename">Course Name</div>
                                                         <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                                                             <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
@@ -207,14 +207,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="p-3">
                                                 <div class="row justify-content-start">
-                                                    <div class="col-3">
+                                                    <div class="col-3 p-3">
                                                         <div class="progressbar">
                                                             <div class="progtext">75%</div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-9">
+                                                    <div class="col-9 p-4">
                                                         <div class="coursename">Course Name</div>
                                                         <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                                                             <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
@@ -230,14 +230,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="p-3">
                                                 <div class="row justify-content-start">
-                                                    <div class="col-3">
+                                                    <div class="col-3 p-3">
                                                         <div class="progressbar">
                                                             <div class="progtext">75%</div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-9">
+                                                    <div class="col-9 p-4">
                                                         <div class="coursename">Course Name</div>
                                                         <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                                                             <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
@@ -255,227 +255,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                             </div>
                                         </div>
 
-                                        <div class="row justify-content-start" style="
-                                             padding: 30px 30px 30px 11px;
-                                             ">
-                                            <div class="col-4">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
 
-                                        <div class="row justify-content-start" style="
-                                             padding: 30px 30px 30px 11px;
-                                             ">
-                                            <div class="col-4">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row justify-content-start" style="
-                                             padding: 30px 30px 30px 11px;
-                                             ">
-                                            <div class="col-4">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
 
 
