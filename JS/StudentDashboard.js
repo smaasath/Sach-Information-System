@@ -65,7 +65,7 @@ function handleWindowWidth() {
         div.style.display = "none";
         
          var col2element = document.getElementById("col10");
-    var newClassNamecol2 = "container-fluid";
+    var newClassNamecol2 = "container-fluid navbotcol";
     col2element.className = newClassNamecol2;
     
     var div = document.getElementById("navbott");
