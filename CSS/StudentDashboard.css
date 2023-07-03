@@ -208,8 +208,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .nameimagecontainer{
     background: rgb(25,167,205);
     background: linear-gradient(90deg, rgba(25,167,205,1) 7%, rgba(175,211,227,1) 87%);
-    width: 88% !important;
-    height: 222px;
+   width: 88% !important;
+    
     /* padding-top: 131px; */
     margin-top: 38px;
     border-radius: 30px;
@@ -275,3 +275,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .shadowcol{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
 }
+
+

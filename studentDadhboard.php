@@ -20,7 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="row flex-wrap flex-row-reverse">
                 <!-- large Side bar start-->
 
-                <div id="col2" class="col-2 sidebar colordashbord fixed-top">
+                <div id="col2" class="col-2 colordashbord fixed-top">
 
                     <hr class="dashboardhr">
                     <ul class="nav nav-pills flex-column mb-auto logoutheight" >
@@ -99,36 +99,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <!--  large Side bar end-->
 
                         <!--  small Side bar start-->
-                        <div id="col1" class="col-1 sidebar colordashbord fixed-top">
+                        <div id="col1" class="col-1 flex-column colordashbord fixed-top">
 
                             <hr class="dashboardhr">
-                            <ul class="nav nav-pills flex-column mb-auto logoutheight" >
+
+                            <div class="p-2">
                                 <button onclick="smalltobig()" id="smalltobig" style="background-color: transparent;
                                         border: none;"><i class="fa-solid fa-arrow-right-to-bracket fa-flip-vertical fa-lg" style="color: #ffffff;"></i></button>
+                            </div>
+                            <div class="p-2">
                                 <a href="#">
-                                    <img src="Images/Logo.png" alt="Home" class="logoafter">
+                                    <img src="Images/Logo.png" alt="Home" class="img-fluid">
                                 </a>
-                                <hr class="dashboardhr">
-                                <ul class="nav nav-pills flex-column mb-auto">
-                                    <li class="nav-item">
-                                        <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
-                                    </li>
+                            </div>
+                            <hr class="dashboardhr">
+                            <div class="p-2">
+                                <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
+                            <div class="p-2">
+                                <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
 
-                                    <li>
-                                        <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
-                                    </li>
+                            <div class="p-2">
+                                <i  href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
 
-                                    <li>
-                                        <i  href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
-                                    </li>
+                            <div class="p-2">
+                                <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
+                            <br><br>
 
-                                    <li>
-                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
-                                    </li>
-                                    <br><br>
-                                </ul>
 
-                                <hr class="dashboardhr">
+                            <hr class="dashboardhr">
+                            <div class="p-2">
                                 <div class="dropdown">
                                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-power-off fa-lg icondash"></i>
@@ -139,150 +142,170 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <li><a class="dropdown-item" href="#">Log out</a></li>
                                     </ul>
                                 </div>
-                                <hr class="dashboardhr">
-                                </div>
-
-                                <!--  small Side bar End-->
-
-                                <!--  body-->
-                                <div id="col10"class="col-10 content col10edit">
-
-                                    <!--  nav bar start-->
-
-                                    <nav class="navbar navbardah fixed-top ">
-                                        <div class="container navcon" style="height:30px; padding-right: 100px; ">
-
-                                            <i class="fa-solid fa-user fa-2xl navuser" style="color: #146c94"></i>
-                                            <div class="name">User Name</div>
-
-                                        </div>
-                                    </nav>
-                                    <!--  nav bar end-->
-
-                                    <div class="nameimagecontainer container-fluid float-sm" style="margin-top: 67px;">
-                                        <div class="row justify-content-start">
-                                            <div class="col-9">
-                                                <div class="float-sm" style="
-                                                     text-align-last: right;">
-                                                    <br>
-                                                    <div class="welcomefont">Welcome User Name!</div>
-                                                    <br>
-                                                    <div class="normaltext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-3 align-self-end">
-                                                <img src="Images/studentdashboradhhomeimage.png" alt="studentdashboradhhomeimage" class="img-fluid" style="width: 86%;">
-                                            </div>
-                                        </div>
-                                    </div> 
-
-
-                                    <br><br><br>
-                                    <div style="font-size: 10px;
-                                         margin-left: 60px;">Attendance and Marks</div>
-                                    <div class="container-fluid float-sm ">
-                                        <div class="justify-content-start d-flex p-3 flex-column flex-lg-row justify-content-evenly" style="
-                                             padding: 30px 30px 30px 11px;
-                                             ">
-                                            <div class="p-3">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3 p-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9 p-4">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="p-3">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3 p-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9 p-4">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="p-3">
-                                                <div class="row justify-content-start">
-                                                    <div class="col-3 p-3">
-                                                        <div class="progressbar">
-                                                            <div class="progtext">75%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-9 p-4">
-                                                        <div class="coursename">Course Name</div>
-                                                        <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                                            <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                                                        </div>
-                                                        <div style="
-                                                             padding-top: 10px;
-                                                             text-align-last: end;
-                                                             ">
-                                                            <button type="button" class="btn btn-info"  style="
-                                                                    font-size: 10px;
-                                                                    ">See More</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        
-
-
-
-
-
-
-                                    </div>
-                                    <br>
-                                </div>
-
-
-
-
-
-
+                            </div>
+                            <hr class="dashboardhr">
 
                         </div>
+
+                        <!--  small Side bar End-->
+
+                        <!--  bottom bar start-->
+
+                        <nav id="navbott" class="bg-black fixed-bottom">
+                            <div class="container text-center">
+                                <div class="row">
+                                    <div class="col">
+                                        <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>   
+                                    </div>
+                                    <div class="col">
+                                        <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i> 
+                                    </div>
+                                    <div class="col">
+                                        <i  href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i> 
+                                    </div>
+                                    <div class="col">
+                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                        <!--  bottom bar end-->
+
+                        <!--  body-->
+                        <div id="col10"class="col-10 col10edit">
+
+                            <!--  nav bar start-->
+
+                            <nav class="navbar navbardah fixed-top ">
+                                <div class="container navcon" style="height:30px; padding-right: 100px; ">
+
+                                    <i class="fa-solid fa-user fa-2xl navuser" style="color: #146c94"></i>
+                                    <div class="name">User Name</div>
+
+                                </div>
+                            </nav>
+                            <!--  nav bar end-->
+
+                            <div class="nameimagecontainer container-fluid" style="margin-top: 67px;">
+                                <div class="row justify-content-center">
+                                    <div class="col-9 col-xs-12">
+
+                                        <div class="welcomefont">Welcome User Name!</div>
+                                        <br>
+                                        <div class="normaltext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+                                    </div>
+
+                                    <div class="col-3 align-self-end d-none d-sm-block ">
+                                        <img src="Images/studentdashboradhhomeimage.png" alt="studentdashboradhhomeimage" class="img-fluid " >
+                                    </div>
+                                </div>
+                            </div> 
+
+
+                            <br><br><br>
+                            <div style="font-size: 10px;
+                                 margin-left: 60px;">Attendance and Marks</div>
+                            <div class="container-fluid bg-white">
+                                <div class="row">
+                                    <div class="col-lg-4 p-3">
+                                        <div class="row justify-content-start">
+                                            <div class="col-3 p-3">
+                                                <div class="progressbar">
+                                                    <div class="progtext">75%</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-8 p-4">
+                                                <div class="coursename">Course Name</div>
+                                                <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
+                                                </div>
+                                                <div style="
+                                                     padding-top: 10px;
+                                                     text-align-last: end;
+                                                     ">
+                                                    <button type="button" class="btn btn-info"  style="
+                                                            font-size: 10px;
+                                                            ">See More</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 p-3">
+                                        <div class="row justify-content-start">
+                                            <div class="col-3 p-3">
+                                                <div class="progressbar">
+                                                    <div class="progtext">75%</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-8 p-4">
+                                                <div class="coursename">Course Name</div>
+                                                <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
+                                                </div>
+                                                <div style="
+                                                     padding-top: 10px;
+                                                     text-align-last: end;
+                                                     ">
+                                                    <button type="button" class="btn btn-info"  style="
+                                                            font-size: 10px;
+                                                            ">See More</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 p-3">
+                                        <div class="row justify-content-start">
+                                            <div class="col-3 p-3">
+                                                <div class="progressbar">
+                                                    <div class="progtext">75%</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-8 p-4">
+                                                <div class="coursename">Course Name</div>
+                                                <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                    <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
+                                                </div>
+                                                <div style="
+                                                     padding-top: 10px;
+                                                     text-align-last: end;
+                                                     ">
+                                                    <button type="button" class="btn btn-info"  style="
+                                                            font-size: 10px;
+                                                            ">See More</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+                            </div>
+                            <br>
+                        </div>
+
+
+
+
+
+
+
                 </div>
-
             </div>
-            <?php
-            // put your code here
-            ?>
+
+        </div>
+        <?php
+        // put your code here
+        ?>
 
 
 
-            <script src="JS/StudentDashboard.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <script src="JS/StudentDashboard.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>
 </html>
