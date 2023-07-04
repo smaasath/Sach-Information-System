@@ -24,7 +24,7 @@ navLinks[0].classList.add("active");
 
 
 function bigtosmal() {
-    
+
     var div = document.getElementById("col2");
     div.style.display = "none";
 
@@ -34,13 +34,16 @@ function bigtosmal() {
     var col2element = document.getElementById("col10");
     var newClassNamecol2 = "col-11 content col11edit";
     col2element.className = newClassNamecol2;
+
+    var div1 = document.getElementById("smalltobig");
+    div1.style.display = "block";
     
-     var div1 = document.getElementById("smalltobig");
-     div1.style.display = "block";
+    var div = document.getElementById("resimage");
+        div.style.display = "none";
 }
 
 function smalltobig() {
-  
+
     var div = document.getElementById("col2");
     div.style.display = "block";
 
@@ -50,47 +53,55 @@ function smalltobig() {
     var col2element = document.getElementById("col10");
     var newClassNamecol2 = "col-10 content col10edit";
     col2element.className = newClassNamecol2;
+    
+    var div = document.getElementById("resimage");
+        div.style.display = "none";
 }
 
 function handleWindowWidth() {
     var windowWidth = window.innerWidth;
 
     // Code to execute based on the window width
-   if(windowWidth < 994){
-       
-       var div = document.getElementById("col1");
+    if (windowWidth < 731) {
+
+        var div = document.getElementById("col1");
         div.style.display = "none";
-        
+
         var div = document.getElementById("col2");
         div.style.display = "none";
-        
-         var col2element = document.getElementById("col10");
-    var newClassNamecol2 = "container-fluid navbotcol";
-    col2element.className = newClassNamecol2;
-    
-    var div = document.getElementById("navbott");
+
+        var col2element = document.getElementById("col10");
+        var newClassNamecol2 = "container-fluid navbotcol";
+        col2element.className = newClassNamecol2;
+
+        var div = document.getElementById("navbott");
         div.style.display = "block";
-       
-   } 
-else if(windowWidth < 1336){
-        
+
+        var div = document.getElementById("resimage");
+        div.style.display = "block";
+
+    } else if (windowWidth < 1336) {
+
         var div = document.getElementById("col2");
         div.style.display = "none";
 
         var div = document.getElementById("col1");
         div.style.display = "block";
-        
+
 
         var col2element = document.getElementById("col10");
         var newClassNamecol2 = "col-11 content col11edit";
         col2element.className = newClassNamecol2;
-        
+
         var div1 = document.getElementById("smalltobig");
         div1.style.display = "none";
-        
-         var div = document.getElementById("navbott");
+
+        var div = document.getElementById("navbott");
         div.style.display = "none";
-    }else {
+
+        var div = document.getElementById("resimage");
+        div.style.display = "none";
+    } else {
         var div = document.getElementById("col2");
         div.style.display = "block";
 
@@ -100,8 +111,11 @@ else if(windowWidth < 1336){
         var col2element = document.getElementById("col10");
         var newClassNamecol2 = "col-10 content col10edit";
         col2element.className = newClassNamecol2;
-        
-         var div = document.getElementById("navbott");
+
+        var div = document.getElementById("navbott");
+        div.style.display = "none";
+
+        var div = document.getElementById("resimage");
         div.style.display = "none";
     }
 }
@@ -109,7 +123,7 @@ else if(windowWidth < 1336){
 // Function to run continuously while monitoring the width changes
 function runFunctionOnResize() {
     handleWindowWidth();
-    
+
     // Add any additional code or function calls here
 }
 

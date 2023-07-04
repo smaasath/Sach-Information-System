@@ -10,6 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     background-color: #001C30!important;
 
     height: -webkit-fill-available;
+    z-index: 10000 !important;
 
 
 }
@@ -101,7 +102,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     background-color:white !important;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
-    z-index: 1000  !important;
+    
 }
 .navuser{
     padding-left: 10px;
@@ -206,14 +207,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .nameimagecontainer{
-    background: rgb(25,167,205);
-    background: linear-gradient(90deg, rgba(25,167,205,1) 7%, rgba(175,211,227,1) 87%);
-   width: 88% !important;
     
-    /* padding-top: 131px; */
-    margin-top: 38px;
-    border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background: linear-gradient(90deg, rgba(25,167,205,1) 7%, rgba(175,211,227,1) 87%);
+    max-width: -webkit-fill-available !important;
+  
 }
 
 @media screen and (max-width: 480px) {

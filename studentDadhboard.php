@@ -6,9 +6,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=10">
         <title>Student Dashboard</title>
         <link rel="stylesheet" href="CSS/StudentDashboard.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
+
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -113,25 +115,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </a>
                             </div>
                             <hr class="dashboardhr">
-                            <div class="p-2">
+                            <div style="margin-left: -9px;">
                                 <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
-                            <div class="p-2">
+                            <div style="margin-left: -9px;">
                                 <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
 
-                            <div class="p-2">
+                            <div style="margin-left: -9px;">
                                 <i  href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
 
-                            <div class="p-2">
+                            <div style="margin-left: -9px;">
                                 <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
                             <br><br>
 
 
                             <hr class="dashboardhr">
-                            <div class="p-2">
+                            <div style="margin-left: -9px;">
                                 <div class="dropdown">
                                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-solid fa-power-off fa-lg icondash"></i>
@@ -176,27 +178,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                             <!--  nav bar start-->
 
-                            <nav class="navbar navbardah fixed-top ">
-                                <div class="container navcon" style="height:30px; padding-right: 100px; ">
-
-                                    <i class="fa-solid fa-user fa-2xl navuser" style="color: #146c94"></i>
-                                    <div class="name">User Name</div>
-
+                           
+                                <div class="navbardah fixed-top d-flex flex-row-reverse">
+                                    <a class="p-3" href="#" style="margin-right: 30px;">
+                                      <i class="fa-solid fa-user fa-lg" style="color: #24457f;"></i>
+                                    </a>
+                                    
+                                    <h6 class="p-3" href="#">
+                                      User Name
+                                    </h6>
+                                    
+                                    <div id= "resimage" class="p-1">
+                                <a href="#">
+                                    <img src="Images/Logo.png" alt="Home" class="img-fluid" style="width: 20%">
+                                </a>
+                            </div>
                                 </div>
-                            </nav>
+                           
                             <!--  nav bar end-->
 
-                            <div class="nameimagecontainer container-fluid" style="margin-top: 67px;">
-                                <div class="row justify-content-center">
+                            <div class="container-lg rounded-5 p-2 nameimagecontainer h-auto" style="margin-top: 85px; margin-right: 33px; margin-left: 22px;">
+                                <div class="row">
                                     <div class="col-9 col-xs-12">
 
-                                        <div class="welcomefont">Welcome User Name!</div>
+                                        <h2>Welcome User Name!</h2>
                                         <br>
-                                        <div class="normaltext">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+                                        <h7 class="d-none d-sm-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </h7>
                                     </div>
 
                                     <div class="col-3 align-self-end d-none d-sm-block ">
-                                        <img src="Images/studentdashboradhhomeimage.png" alt="studentdashboradhhomeimage" class="img-fluid " >
+                                        <img src="Images/studentdashboradhhomeimage.png" alt="studentdashboradhhomeimage" class="img-fluid w-50" >
                                     </div>
                                 </div>
                             </div> 
@@ -277,6 +288,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         </div>
                                     </div>
                                 </div>
+
+
+
+
+
+
+
+
+
 
 
 
