@@ -62,7 +62,7 @@ function handleWindowWidth() {
     var windowWidth = window.innerWidth;
 
     // Code to execute based on the window width
-    if (windowWidth < 731) {
+    if (windowWidth < 580) {
 
         var div = document.getElementById("col1");
         div.style.display = "none";
