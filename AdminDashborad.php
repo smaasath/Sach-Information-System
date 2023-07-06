@@ -43,15 +43,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <li>
 
                                 <a href="#" class="nav-link navbarcolor" >
-                                    <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
-                                    Courses
+                                   <i class="fa-solid fa-users fa-xl icondash"></i>
+                                    Student
                                 </a>
 
                             </li>
                             <li>
                                 <a href="#" class="nav-link navbarcolor" >
+                                    <i class="fa-solid fa-user-tie fa-xl icondash"></i>
+                                     Staff
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link navbarcolor" >
+                                    <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
+                                    Course
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-video fa-xl icondash"></i>
-                                    Webinars
+                                    Webinar
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link navbarcolor" >
+                                  <i class="fa-sharp fa-solid fa-building-columns fa-xl icondash"></i>
+                                    Department
                                 </a>
                             </li>
                             <li>
@@ -62,26 +80,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </li>
                             <br>
                             <br>
-                            <li>
 
-                                <hr class="dashboardhr">
-                                <div class="shadow p-3 mb-4 rounded Coincard ag-courses-item_link">
-
-                                    <div class="ag-courses-item_bg">
-                                        <i class="fa-solid fa-coins fa-2xl coinicon" style="color: #146c94;"></i>
-                                    </div> 
-
-                                    <div class="headcoin">
-                                        Coin Value
-                                    </div>
-                                    <br>
-                                    <div class="coinvalue">
-                                        10000
-                                    </div>
-
-                                </div>
-
-                            </li>
                         </ul>
 
                         <hr class="dashboardhr">
@@ -118,18 +117,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <div style="margin-left: -9px;">
                                 <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
+                             <div style="margin-left: -9px;">
+                                <i  href="" class="fa-solid fa-users fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
+                            <div style="margin-left: -9px;">
+                                <i  href="" class="fa-solid fa-user-tie fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
+
                             <div style="margin-left: -9px;">
                                 <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
 
                             <div style="margin-left: -9px;">
-                                <i  href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
-
+                            <div style="margin-left: -9px;">
+                                <i href="" class="fa-sharp fa-solid fa-building-columns fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
                             <div style="margin-left: -9px;">
                                 <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
-                            <br><br>
+                                                       <br><br>
 
 
                             <hr class="dashboardhr">
@@ -168,6 +176,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div class="col">
                                         <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                                     </div>
+                                    <div class="col">
+                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    </div>
+                                    <div class="col">
+                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    </div>
+                                    <div class="col">
+                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    </div>
                                 </div>
                             </div>
                         </nav>
@@ -176,28 +193,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <!--  body-->
                         <div id="col10"class="col-10 col10edit">
 
-                            <?php include 'StudentFirstpageDashboard.php.';?>
+                            <div class="navbardah fixed-top d-flex flex-row-reverse">
+                                <a class="p-3" href="#" style="margin-right: 30px;">
+                                    <i class="fa-solid fa-user fa-lg" style="color: #24457f;"></i>
+                                </a>
 
+                                <h6 class="p-3" href="#">
+                                    User Name
+                                </h6>
+
+                                <div id= "resimage" class="p-1 w-50">
+                                    <a href="#">
+                                        <img src="Images/Logo.png" alt="Home" class="img-fluid" style="width: 20%">
+                                    </a>
+                                </div>
+                            </div>
 
                         </div>
 
-
-
-
-
-
-
                 </div>
+
             </div>
 
-        </div>
-        <?php
-        // put your code here
-        ?>
 
 
 
-        <script src="JS/StudentDashboard.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
+
+            <?php
+            // put your code here
+            ?>
+
+
+
+            <script src="JS/StudentDashboard.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>
 </html>

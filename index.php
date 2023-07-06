@@ -1,2 +1,0 @@
-Aasath
-hi
