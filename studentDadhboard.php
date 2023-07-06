@@ -6,7 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=10">
+        <meta name="viewport" content="width=device-width, initial-scale=5">
         <title>Student Dashboard</title>
         <link rel="stylesheet" href="CSS/StudentDashboard.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,9 +115,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </a>
                             </div>
                             <hr class="dashboardhr">
+                            <!-- dashboard icon start -->
                             <div style="margin-left: -9px;">
                                 <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
+                            <!-- dashboard icon end -->
                             <div style="margin-left: -9px;">
                                 <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
