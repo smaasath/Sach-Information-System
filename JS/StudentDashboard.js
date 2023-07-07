@@ -149,7 +149,7 @@ function Course() {
     xhttp.onload = function () {
         document.getElementById("col10").innerHTML = this.responseText;
     };
-    xhttp.open("GET", "../DashboardFiles/Webinar.php", true);
+    xhttp.open("GET", "../DashboardFiles/", true);
     xhttp.send();
 }
 
@@ -167,7 +167,7 @@ function profile() {
     xhttp.onload = function () {
         document.getElementById("col10").innerHTML = this.responseText;
     };
-    xhttp.open("GET", "index.php", true);
+    xhttp.open("GET", "../DashboardFiles/StudentProfile.html", true);
     xhttp.send();
 }
 
