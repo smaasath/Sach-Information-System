@@ -32,7 +32,7 @@ function bigtosmal() {
     div.style.display = "block";
 
     var col2element = document.getElementById("col10");
-    var newClassNamecol2 = "col-11 content col11edit";
+    var newClassNamecol2 = "col-11 content container p-4 col11edit";
     col2element.className = newClassNamecol2;
 
     var div1 = document.getElementById("smalltobig");
@@ -51,7 +51,7 @@ function smalltobig() {
     div.style.display = "none";
 
     var col2element = document.getElementById("col10");
-    var newClassNamecol2 = "col-10 content col10edit";
+    var newClassNamecol2 = "col-10 container p-4 content col10edit";
     col2element.className = newClassNamecol2;
     
     var div = document.getElementById("resimage");
@@ -90,7 +90,7 @@ function handleWindowWidth() {
 
 
         var col2element = document.getElementById("col10");
-        var newClassNamecol2 = "col-11 content col11edit";
+        var newClassNamecol2 = "col-11 container p-4 content col11edit";
         col2element.className = newClassNamecol2;
 
         var div1 = document.getElementById("smalltobig");
@@ -109,7 +109,7 @@ function handleWindowWidth() {
         div.style.display = "none";
 
         var col2element = document.getElementById("col10");
-        var newClassNamecol2 = "col-10 content col10edit";
+        var newClassNamecol2 = "col-10 container p-4 content col10edit";
         col2element.className = newClassNamecol2;
 
         var div = document.getElementById("navbott");
