@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <head>
         <meta charset="UTF-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=10">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Student Dashboard</title>
         <link rel="stylesheet" href="CSS/StudentDashboard.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 User Name
             </h6>
 
-            <div id= "resimage" class="p-1 w-50">
+            <div id= "resimage" class="p-1 w-50 d-block d-sm-none">
                 <a href="#">
                     <img src="Images/Logo.png" alt="Home" class="img-fluid" style="width: 20%">
                 </a>
@@ -57,8 +57,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <br><br><br>
-        <div style="font-size: 10px;
-             margin-left: 60px;">Attendance and Marks</div>
+        <div style="font-size: 12px;">Attendance and Marks</div>
         <div class="container-fluid bg-white">
             <div class="row">
                 <div class="col-lg-4 p-3">

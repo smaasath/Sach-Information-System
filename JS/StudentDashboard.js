@@ -37,9 +37,9 @@ function bigtosmal() {
 
     var div1 = document.getElementById("smalltobig");
     div1.style.display = "block";
-    
+
     var div = document.getElementById("resimage");
-        div.style.display = "none";
+    div.style.display = "none";
 }
 
 function smalltobig() {
@@ -53,9 +53,9 @@ function smalltobig() {
     var col2element = document.getElementById("col10");
     var newClassNamecol2 = "col-10 container p-4 content col10edit";
     col2element.className = newClassNamecol2;
-    
+
     var div = document.getElementById("resimage");
-        div.style.display = "none";
+    div.style.display = "none";
 }
 
 function handleWindowWidth() {
@@ -132,3 +132,42 @@ runFunctionOnResize();
 
 // Attach the function to the window resize event
 window.addEventListener('resize', runFunctionOnResize);
+
+
+function dashborad() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "StudentFirstpageDashboard.php", true);
+    xhttp.send();
+    
+}
+
+function Course() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "index.php", true);
+    xhttp.send();
+}
+
+function webiner() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "index.php", true);
+    xhttp.send();
+}
+
+function profile() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "index.php", true);
+    xhttp.send();
+}
+

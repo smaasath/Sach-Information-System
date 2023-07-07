@@ -35,27 +35,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <hr class="dashboardhr">
                         <ul class="nav nav-pills flex-column mb-auto">
                             <li class="nav-item">
-                                <a href="#" class="nav-link navbarcolor"  aria-current="page">
+                                <a href="#" onclick="dashborad()" class="nav-link navbarcolor"  aria-current="page">
                                     <i class="fa-solid fa-gauge fa-xl icondash"></i>
                                     Dashboard
                                 </a>
                             </li>
                             <li>
 
-                                <a href="#" class="nav-link navbarcolor" >
+                                <a href="#" onclick="Course()" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
                                     Courses
                                 </a>
 
                             </li>
                             <li>
-                                <a href="#" class="nav-link navbarcolor" >
+                                <a href="#" onclick="webiner()" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-video fa-xl icondash"></i>
                                     Webinars
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link navbarcolor" >
+                                <a href="#" onclick="profile()" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-user fa-xl icondash"></i>
                                     Profile
                                 </a>
@@ -117,19 +117,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <hr class="dashboardhr">
                             <!-- dashboard icon start -->
                             <div style="margin-left: -9px;">
-                                <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i  href="" onclick="dashborad()" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
                             <!-- dashboard icon end -->
                             <div style="margin-left: -9px;">
-                                <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i onclick="Course()" href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
 
                             <div style="margin-left: -9px;">
-                                <i  href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i  href="" onclick="webiner()" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
 
                             <div style="margin-left: -9px;">
-                                <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i href="" onclick="profile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
                             <br><br>
 
@@ -159,16 +159,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <div class="container text-center">
                                 <div class="row">
                                     <div class="col">
-                                        <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>   
+                                        <i  href="" onclick="dashborad()" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>   
                                     </div>
                                     <div class="col">
-                                        <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i> 
+                                        <i  href="" onclick="Course()" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i> 
                                     </div>
                                     <div class="col">
-                                        <i  href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i> 
+                                        <i  href="" onclick="webiner()" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i> 
                                     </div>
                                     <div class="col">
-                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                        <i href="" onclick="profile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <!--  body-->
                         <div id="col10"class="col-10 col10edit">
 
-                            <?php include 'StudentFirstpageDashboard.php.';?>
+                            <?php include 'StudentFirstpageDashboard.php'; ?>
 
 
                         </div>
