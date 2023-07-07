@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Student Dashboard</title>
-        <link rel="stylesheet" href="CSS/StudentDashboard.css">
+        <link rel="stylesheet" href="../CSS/StudentDashboard.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
 
-
+  <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex flex-row-reverse">
             <a class="p-3" href="#" style="margin-right: 30px;">
                 <i class="fa-solid fa-user fa-lg" style="color: #24457f;"></i>
@@ -137,7 +137,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         // put your code here
         ?>
 
-        <script src="JS/StudentDashboard.js"></script>
+        <script src="../JS/StudentDashboard.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     </body>
