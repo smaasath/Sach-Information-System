@@ -33,7 +33,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <div id= "resimage" class="p-1 w-50 d-block d-sm-none">
                 <a href="#">
-                    <img src="Images/Logo.png" alt="Home" class="img-fluid" style="width: 20%">
+                    <img src="../Images/Logo.png" alt="Home" class="img-fluid" style="width: 20%">
                 </a>
             </div>
         </div>
@@ -50,7 +50,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
 
                 <div class="col-3 align-self-end d-none d-sm-block ">
-                    <img src="Images/studentdashboradhhomeimage.png" alt="studentdashboradhhomeimage" class="img-fluid w-50" >
+                    <img src="../Images/studentdashboradhhomeimage.png" alt="studentdashboradhhomeimage" class="img-fluid w-50" >
                 </div>
             </div>
         </div> 

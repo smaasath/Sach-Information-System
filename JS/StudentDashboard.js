@@ -139,7 +139,7 @@ function dashborad() {
     xhttp.onload = function () {
         document.getElementById("col10").innerHTML = this.responseText;
     };
-    xhttp.open("GET", "StudentFirstpageDashboard.php", true);
+    xhttp.open("GET", "../DashboardFiles/StudentFirstpageDashboard.php", true);
     xhttp.send();
     
 }
@@ -149,7 +149,7 @@ function Course() {
     xhttp.onload = function () {
         document.getElementById("col10").innerHTML = this.responseText;
     };
-    xhttp.open("GET", "index.php", true);
+    xhttp.open("GET", "../index.php", true);
     xhttp.send();
 }
 
