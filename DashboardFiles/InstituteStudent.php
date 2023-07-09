@@ -91,7 +91,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                     <div class="col-3 "> 
-                        <button type="button" class="btn btn-primary bgcol">Add Student</button>
+                        <button type="button" class="btn btn-primary bgcol" onclick="Addstudent()">Add Student</button>
                     </div>
                 </div>
 
@@ -527,15 +527,259 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
         </div>
         <!-- Course Details Modal -->
-        <?php
-        // put your code here
-        ?>
 
 
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
+        <!-- Add Student Details Modal -->
+        <div class="modal fade" id="AddStudentDetail" tabindex="-1" aria-labelledby="AddStudentDetail" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="AddStudentDetail">Add Student Details</h1>
+                        <button type="button" class="btn-close" onclick="closeModals()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row align-items-center">
+                            <div class="col-3">
+                                <h6>Department</h6>
+                            </div>
+                            <div class="col-9">
+                                <div class="dropdown p-3">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Department
+                                    </a>
+
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Department</a></li>
+                                        <li><a class="dropdown-item" href="#">Department</a></li>
+                                        <li><a class="dropdown-item" href="#">Department</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>First Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Last Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Enrollment No</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>DOB</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="Date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Contact No</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Email</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Address</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>User Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Password</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="Password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary bgcolli" id="AddGuardian" onclick="AddGuardianDetail()" >Add Guardian</button>
+
+                        <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Student Details Modal -->
+
+
+
+
+
+        <!-- Add Guardian Details Modal -->
+        <div class="modal fade" id="AddGuardianDetail" tabindex="-1" aria-labelledby="AddGuardianDetail" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="AddGuardianDetail">Add Guardian Detail</h1>
+                        <button type="button" class="btn-close" onclick="closeModals()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row align-items-center">
+
+
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Full Name</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Relationship</h6>
+                                </div>
+                                <div class="col-9">
+                                    <div class="dropdown p-3">
+                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Relationship
+                                        </a>
+
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Father</a></li>
+                                            <li><a class="dropdown-item" href="#">Mother</a></li>
+                                            <li><a class="dropdown-item" href="#">Guardian</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Contact No</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Email</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Address</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Occupation</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-primary bgcolli" data-bs-target="#AddStudentDetail" data-bs-toggle="modal">Back</button>
+                            <button type="button" class="btn btn-primary bgcolli" id="AddStudent" onclick="savestudent()" >Save Student</button>
+
+                            <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Guardian Details Modal -->
+            <?php
+            // put your code here
+            ?>
+
+
+
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     </body>
 </html>

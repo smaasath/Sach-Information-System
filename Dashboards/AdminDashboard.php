@@ -20,7 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap" rel="stylesheet">
-       
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     </head>
@@ -238,10 +238,42 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 $('#GuardianDetail').modal('hide');
                 $('#StudentDetail').modal('hide');
                 $('#CourseDetail').modal('hide');
+                $('#AddStudentDetail').modal('hide');
+                $('#AddGuardianDetail').modal('hide');
             }
+
+
+            function  Addstudent() {
+                $('#AddStudentDetail').modal('show');
+            }
+
+            function AddGuardianDetail() {
+                $('#AddGuardianDetail').modal('show');
+                $('#AddStudentDetail').modal('hide');
+            }
+
+            function savestudent() {
+                Swal.fire({
+                    title: 'Do you want to save the changes?',
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Save',
+                    denyButtonText: `Don't save`,
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        closeModals();
+                        Swal.fire('Saved!', '', 'success')
+                    } else if (result.isDenied) {
+                        closeModals();
+                        Swal.fire('Changes are not saved', '', 'info')
+                    }
+                })
+            }
+
         </script>
         <!--  Pop-up-->
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../JS/AdminDashboard.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="../JS/StudentDashboard.js"></script>
