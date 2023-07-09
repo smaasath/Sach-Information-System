@@ -5,9 +5,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="./CSS/index.css">
-    <style>
-      
-    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous">
+    </script>
+
+    <script>
+      jQuery(function($){
+        var $navbar = $('.header');
+        $(window).scroll(function(event){
+          var $current = $(this).scrollTop();
+          if( $current > 0){
+             $navbar.addClass('navbar-color');
+          }else{
+            $navbar.removeClass('navbar-color')
+          }
+        });
+      });
+    </script>
+
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -20,7 +38,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top">
               <a class="navbar-brand" href="#">
                 <img src="./Images/Logo.png" width="70" height="70" alt="logo">
               </a>
@@ -71,14 +89,15 @@
               <div class="carousel-item">
                 <img src="./Images/img2.jpg" class="d-block w-100 darken-image" alt="img1">
                 <div class="carousel-caption d-none d-md-block">
-                  
+                  <p>Empower Your Institution with Our Student Information System</p>
+                  <h3><b>With our system, you can streamline operations, enhance communication, and foster academic success throughout your institution.</b></h3>
                 </div>
               </div>
               <div class="carousel-item">
                 <img src="./Images/img4.jpg" class="d-block w-100 darken-image" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                   <p>Unleashing Knowledge at Your Fingertips</p>
-                  <h3><b></b>Our webinar series offers an engaging platform for interactive learning and knowledge sharing on a variety of topics.</b></h3>
+                  <h3><b>Our webinar series offers an engaging platform for interactive learning and knowledge sharing on a variety of topics.</b></h3>
                 </div>
               </div>
             </div>
