@@ -64,31 +64,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                     <div class="col-3"> 
-                        <div class="dropdown p-3 ">
-                            <a class="btn btn-secondary dropdown-toggle bgcolli" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Department
-                            </a>
-
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Department</a></li>
-                                <li><a class="dropdown-item" href="#">Department</a></li>
-                                <li><a class="dropdown-item" href="#">Department</a></li>
-                            </ul>
-                        </div>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Department</option>
+                            <option value="1">Department1</option>
+                            <option value="2">Department2</option>
+                            <option value="3">Department3</option>
+                        </select>
                     </div>
 
                     <div class="col-3"> 
-                        <div class="dropdown p-3 ">
-                            <a class="btn btn-secondary dropdown-toggle bgcolli" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Course
-                            </a>
-
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"> Course</a></li>
-                                <li><a class="dropdown-item" href="#"> Course</a></li>
-                                <li><a class="dropdown-item" href="#"> Course</a></li>
-                            </ul>
-                        </div>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Course</option>
+                            <option value="1">Course 1</option>
+                            <option value="2">Course 2</option>
+                            <option value="3">Course 3</option>
+                        </select>
                     </div>
                     <div class="col-3 "> 
                         <button type="button" class="btn btn-primary bgcol" onclick="Addstudent()">Add Student</button>
@@ -127,7 +117,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2">Male</td>
                         <td class="col-3">0755701765</td>
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -136,7 +126,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2">Male</td>
                         <td class="col-3">0755701765</td>
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -145,7 +135,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2">Male</td>
                         <td class="col-3">0755701765</td>
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -154,17 +144,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2">Male</td>
                         <td class="col-3">0755701765</td>
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
-                    </tr>
-
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -173,7 +153,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2">Male</td>
                         <td class="col-3">0755701765</td>
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -182,7 +162,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2">Male</td>
                         <td class="col-3">0755701765</td>
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -191,8 +171,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-2">Male</td>
                         <td class="col-3">0755701765</td>
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
                     </tr>
+
+                    <tr>
+                        <td class="col-1">0001</td>
+                        <td class="col-3">Mohamed Aasath</td>
+                        <td class="col-2">Male</td>
+                        <td class="col-3">0755701765</td>
+                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-1">0001</td>
+                        <td class="col-3">Mohamed Aasath</td>
+                        <td class="col-2">Male</td>
+                        <td class="col-3">0755701765</td>
+                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
+                    </tr>
+
 
                     <!-- Table row -->
 
@@ -403,7 +402,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="modal-footer">
 
-
+                        <button class="btn btn-primary bgcolli" data-bs-target="#StudentDetail" data-bs-toggle="modal">Back</button>
                         <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
                     </div>
                 </div>
@@ -520,7 +519,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="modal-footer">
 
-
+                        <button class="btn btn-primary bgcolli" data-bs-target="#StudentDetail" data-bs-toggle="modal">Back</button>
                         <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
                     </div>
                 </div>
@@ -546,18 +545,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <div class="col-3">
                                 <h6>Department</h6>
                             </div>
-                            <div class="col-9">
-                                <div class="dropdown p-3">
-                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Department
-                                    </a>
-
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Department</a></li>
-                                        <li><a class="dropdown-item" href="#">Department</a></li>
-                                        <li><a class="dropdown-item" href="#">Department</a></li>
-                                    </ul>
-                                </div>
+                            <div class="col-9 p-3">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Department</option>
+                                    <option value="1">Department1</option>
+                                    <option value="2">Department2</option>
+                                    <option value="3">Department3</option>
+                                </select>
                             </div>
                         </div>
 
@@ -696,17 +690,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <h6>Relationship</h6>
                                 </div>
                                 <div class="col-9">
-                                    <div class="dropdown p-3">
-                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Relationship
-                                        </a>
-
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Father</a></li>
-                                            <li><a class="dropdown-item" href="#">Mother</a></li>
-                                            <li><a class="dropdown-item" href="#">Guardian</a></li>
-                                        </ul>
-                                    </div>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Relationship</option>
+                                        <option value="1">Father</option>
+                                        <option value="2">Mother</option>
+                                        <option value="3">Gaurdian</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -770,16 +759,224 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                 </div>
             </div>
-            <!-- Add Guardian Details Modal -->
-            <?php
-            // put your code here
-            ?>
+        </div>
+        <!-- Add Guardian Details Modal -->
+
+
+        <!-- Edit Student Details Modal -->
+        <div class="modal fade" id="EditStudentDetail" tabindex="-1" aria-labelledby="EditStudentDetail" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="EditStudentDetail">Add Student Details</h1>
+                        <button type="button" class="btn-close" onclick="closeModals()"></button>
+                    </div>
+                    <div class="modal-body">
+
+
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>First Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" value="Mohamed" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Last Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" value="Aasath" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
 
 
 
 
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Contact No</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" Value="0755701765" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Email</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="email" value="aasadh200@gmail.com" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Address</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" value="sainthamaruthu" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>User Name</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" value="sm_aasath" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center pb-3">
+                            <div class="col-3">
+                                <h6>Password</h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="Password" value="aasath" id="mypass" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                <input type="checkbox" onclick="showpassword()">Show Password
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary bgcolli" id="EditStudent" onclick="savestudent()" >Save</button>
+
+                        <button type="button" class="btn btn-primary bgcolli" id="EditGuardian" onclick="EditGuardianDetail()" >Edit Guardian</button>
+
+                        <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Student Details Modal -->
+
+
+        <!-- Edit Guardian Details Modal -->
+        <div class="modal fade" id="EditGuardianDetail" tabindex="-1" aria-labelledby="EditGuardianDetail" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="EditGuardianDetail">Edit Guardian Detail</h1>
+                        <button type="button" class="btn-close" onclick="closeModals()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row align-items-center">
+
+
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Full Name</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" Value="Amiza Umma" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Relationship</h6>
+                                </div>
+                                <div class="col-9">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Relationship</option>
+                                        <option value="1">Mother</option>
+                                        <option value="2">Father</option>
+                                        <option value="3">Gaurdian</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Contact No</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" Value="0755701347" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Email</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="email" Value="N/A" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Address</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" Value="Sainthamaruthu" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Occupation</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" Value="Taylor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-primary bgcolli" data-bs-target="#EditStudentDetail" data-bs-toggle="modal">Back</button>
+                            <button type="button" class="btn btn-primary bgcolli" id="EditStudent" onclick="savestudent()" >Save</button>
+
+                            <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Edit Guardian Details Modal -->
+
+
+
+        <?php
+        // put your code here
+        ?>
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     </body>
 </html>

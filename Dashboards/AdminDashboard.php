@@ -218,61 +218,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         // put your code here
         ?>
-        <!--  Pop-up-->
-        <script>
-            function openStudentDetails() {
-                $('#StudentDetail').modal('show');
-            }
-
-            function openGuardianDetail() {
-                $('#GuardianDetail').modal('show');
-                $('#StudentDetail').modal('hide');
-            }
-            function openCourseDetail() {
-                $('#GuardianDetail').modal('hide');
-                $('#CourseDetail').modal('show');
-                $('#StudentDetail').modal('hide');
-            }
-
-            function closeModals() {
-                $('#GuardianDetail').modal('hide');
-                $('#StudentDetail').modal('hide');
-                $('#CourseDetail').modal('hide');
-                $('#AddStudentDetail').modal('hide');
-                $('#AddGuardianDetail').modal('hide');
-            }
-
-
-            function  Addstudent() {
-                $('#AddStudentDetail').modal('show');
-            }
-
-            function AddGuardianDetail() {
-                $('#AddGuardianDetail').modal('show');
-                $('#AddStudentDetail').modal('hide');
-            }
-
-            function savestudent() {
-                Swal.fire({
-                    title: 'Do you want to save the changes?',
-                    showDenyButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: 'Save',
-                    denyButtonText: `Don't save`,
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        closeModals();
-                        Swal.fire('Saved!', '', 'success')
-                    } else if (result.isDenied) {
-                        closeModals();
-                        Swal.fire('Changes are not saved', '', 'info')
-                    }
-                })
-            }
-
-        </script>
-        <!--  Pop-up-->
+        
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../JS/AdminDashboard.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
