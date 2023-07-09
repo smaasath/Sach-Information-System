@@ -6,14 +6,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=5">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <title>Institute Admin  Dashboard</title>
         <link rel="stylesheet" href="../CSS/StudentDashboard.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+       
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     </head>
@@ -34,7 +41,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </a>
                         <hr class="dashboardhr">
                         <ul class="nav nav-pills flex-column mb-auto">
-                  <li class="nav-item">
+                            <li class="nav-item">
                                 <a href="#" class="nav-link navbarcolor"  onclick="Admindashborad()" aria-current="page">
                                     <i class="fa-solid fa-gauge fa-xl icondash"></i>
                                     Dashboard
@@ -211,29 +218,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         // put your code here
         ?>
-   <!--  Pop-up-->
-<script>
-  function openStudentDetails() {
-    $('#StudentDetail').modal('show');
-  }
+        <!--  Pop-up-->
+        <script>
+            function openStudentDetails() {
+                $('#StudentDetail').modal('show');
+            }
 
-  function openGuardianDetail() {
-    $('#GuardianDetail').modal('show');
-    $('#StudentDetail').modal('hide');
-  }
-  function openCourseDetail() {
-    $('#GuardianDetail').modal('hide');
-    $('#CourseDetail').modal('show');
-    $('#StudentDetail').modal('hide');
-  }
+            function openGuardianDetail() {
+                $('#GuardianDetail').modal('show');
+                $('#StudentDetail').modal('hide');
+            }
+            function openCourseDetail() {
+                $('#GuardianDetail').modal('hide');
+                $('#CourseDetail').modal('show');
+                $('#StudentDetail').modal('hide');
+            }
 
-  function closeModals() {
-    $('#GuardianDetail').modal('hide');
-    $('#StudentDetail').modal('hide');
-    $('#CourseDetail').modal('hide');
-  }
-</script>
-<!--  Pop-up-->
+            function closeModals() {
+                $('#GuardianDetail').modal('hide');
+                $('#StudentDetail').modal('hide');
+                $('#CourseDetail').modal('hide');
+            }
+        </script>
+        <!--  Pop-up-->
 
         <script src="../JS/AdminDashboard.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

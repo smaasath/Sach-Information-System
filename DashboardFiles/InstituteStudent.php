@@ -6,6 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <title></title>
     </head>
     <body>
@@ -29,6 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <!--  nav bar end-->
         <br>
+
         <!-- add button -->
         <div class="container w-25 mt-5" >
             <div class="backcolor m-2 admincount p-2 mb-4 rounded-4 ">
@@ -43,29 +45,70 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div> 
             </div> 
         </div>
-        <br>
-        <div class="text-center" >
-            <button type="button" class="btn btn-primary">Add Student</button>
-        </div>
-        <br> 
+
         <!-- add button -->
 
         <!-- Table -->
+
         <div class="p-5 ">
 
-            <div class="bg-black" style="padding-left: 12px;padding-right: 22px;">
+
+            <div class="rounded-top-4 p-0 border border-dark-subtle" style="padding-left: 12px;padding-right: 22px;">
+                <div class="row align-items-center">
+                    <div class="col-3">           
+                        <div class="input-group rounded p-3">
+                            <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon" >
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-3"> 
+                        <div class="dropdown p-3 ">
+                            <a class="btn btn-secondary dropdown-toggle bgcolli" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Department
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Department</a></li>
+                                <li><a class="dropdown-item" href="#">Department</a></li>
+                                <li><a class="dropdown-item" href="#">Department</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-3"> 
+                        <div class="dropdown p-3 ">
+                            <a class="btn btn-secondary dropdown-toggle bgcolli" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Course
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#"> Course</a></li>
+                                <li><a class="dropdown-item" href="#"> Course</a></li>
+                                <li><a class="dropdown-item" href="#"> Course</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-3 "> 
+                        <button type="button" class="btn btn-primary bgcol">Add Student</button>
+                    </div>
+                </div>
+
+
+
                 <!-- Table Head -->
                 <table class="table mb-0">
 
 
-                    <tr class="table-dark">
+                    <tr>
 
-                        <th class="col-1">ID</th>
-                        <th class="col-3">Name</th>
-                        <th class="col-2">Gender</th>
-                        <th class="col-3">Contact No</th>
-                        <th class="col-1">View</th>
-                        <th class="col-1">Edit</th>
+                        <th class="col-1 bgcol p-2">ID</th>
+                        <th class="col-3 bgcol p-2">Name</th>
+                        <th class="col-2 bgcol p-2">Gender</th>
+                        <th class="col-3 bgcol p-2">Contact No</th>
+                        <th class="col-1 bgcol p-2">View</th>
+                        <th class="col-1 bgcol p-2">Edit</th>
 
                     </tr>
 
@@ -86,8 +129,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
                     </tr>
-                    
-                     <tr>
+
+                    <tr>
                         <td class="col-1">0001</td>
                         <td class="col-3">Mohamed Aasath</td>
                         <td class="col-2">Male</td>
@@ -95,8 +138,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
                     </tr>
-                    
-                     <tr>
+
+                    <tr>
                         <td class="col-1">0001</td>
                         <td class="col-3">Mohamed Aasath</td>
                         <td class="col-2">Male</td>
@@ -104,8 +147,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
                     </tr>
-                    
-                     <tr>
+
+                    <tr>
                         <td class="col-1">0001</td>
                         <td class="col-3">Mohamed Aasath</td>
                         <td class="col-2">Male</td>
@@ -113,9 +156,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
                     </tr>
-                    
-                    
-                     <tr>
+
+
+                    <tr>
                         <td class="col-1">0001</td>
                         <td class="col-3">Mohamed Aasath</td>
                         <td class="col-2">Male</td>
@@ -123,8 +166,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
                     </tr>
-                    
-                     <tr>
+
+                    <tr>
                         <td class="col-1">0001</td>
                         <td class="col-3">Mohamed Aasath</td>
                         <td class="col-2">Male</td>
@@ -132,8 +175,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
                     </tr>
-                    
-                     <tr>
+
+                    <tr>
                         <td class="col-1">0001</td>
                         <td class="col-3">Mohamed Aasath</td>
                         <td class="col-2">Male</td>
@@ -141,8 +184,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
                     </tr>
-                    
-                     <tr>
+
+                    <tr>
                         <td class="col-1">0001</td>
                         <td class="col-3">Mohamed Aasath</td>
                         <td class="col-2">Male</td>
@@ -275,8 +318,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-primary" id="openModal2" onclick="openGuardianDetail()" >Guardian Details</button>
-                        <button type="button" class="btn btn-primary" onclick="openCourseDetail()">Course Details</button>
+                        <button type="button" class="btn btn-primary bgcolli" id="openModal2" onclick="openGuardianDetail()" >Guardian Details</button>
+                        <button type="button" class="btn btn-primary bgcolli" onclick="openCourseDetail()">Course Details</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
