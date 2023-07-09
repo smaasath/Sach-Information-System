@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=5">
-        <title>Student Dashboard</title>
+        <title>Institute Admin  Dashboard</title>
         <link rel="stylesheet" href="../CSS/StudentDashboard.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
