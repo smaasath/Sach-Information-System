@@ -56,7 +56,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                             </li>
                             <li>
-                                <a href="#" class="nav-link navbarcolor" >
+                                <a href="#" onclick="AdminStaff()" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-user-tie fa-xl icondash"></i>
                                     Staff
                                 </a>
@@ -128,7 +128,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <i onclick="AdminStudent()" href="" class="fa-solid fa-users fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
                             <div style="margin-left: -9px;">
-                                <i  href="" class="fa-solid fa-user-tie fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i  href="" onclick="AdminStaff()" class="fa-solid fa-user-tie fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
 
                             <div style="margin-left: -9px;">
@@ -175,10 +175,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <i onclick="Admindashborad()" href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>   
                                     </div>
                                     <div class="col">
-                                        <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i> 
+                                        <i  href="" onclick="AdminStudent()" class="fa-solid fa-users fa-xl icondash nav-link navbarcolorafter"></i> 
                                     </div>
                                     <div class="col">
-                                        <i  href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i> 
+                                        <i  href="" onclick="AdminStaff()" class="fa-solid fa-user-tie fa-xl icondash nav-link navbarcolorafter"></i> 
                                     </div>
                                     <div class="col">
                                         <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>

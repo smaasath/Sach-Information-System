@@ -768,7 +768,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="EditStudentDetail">Add Student Details</h1>
+                        <h1 class="modal-title fs-5" id="EditStudentDetail">Edit Student Details</h1>
                         <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
