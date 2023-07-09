@@ -109,7 +109,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
             <!-- Table body -->
             <div class="container bg-white mt-0" style=" max-height: 373px; overflow: scroll;">
-                <table class="table">
+                <table class="table table-hover">
 
                     <!-- Table row -->
                     <tr>
@@ -351,7 +351,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="modal-body">
                         <div class="container">
-                            <table class="table mb-0">
+                            <table class="table mb-0 table-hover">
 
 
                                 <tr>

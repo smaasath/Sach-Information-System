@@ -31,13 +31,14 @@ function AdminStaff() {
     xhttp.send();
 }
 
-function profile() {
+function Adminprofile() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         document.getElementById("col10").innerHTML = this.responseText;
     };
-    xhttp.open("GET", "../DashboardFiles/StudentProfile.html", true);
+    xhttp.open("GET", "../DashboardFiles/InstituteAdminProfile.php", true);
     xhttp.send();
+
 }
 
 

@@ -36,10 +36,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="backcolor m-2 admincount p-2 mb-4 rounded-4 ">
                 <div class="row">
                     <div class="col-1 text-center">   
-                        <i  href="" class="fa-solid fa-users fa-2xl p-5 ps-1"></i>
+                        <i  href="" class="fa-solid fa-graduation-cap fa-2xl p-5 ps-1"></i>
                     </div>
                     <div class="col-8 ps-5 d-flex justify-content-center align-items-center flex-column"> 
-                        <h7>Students</h7>
+                        <h7>Course</h7>
                         <h2>1234</h2>
                     </div>
                 </div> 
@@ -55,7 +55,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <div class="rounded-top-4 p-0 border border-dark-subtle" style="padding-left: 12px;padding-right: 22px;">
                 <div class="row align-items-center">
-                    <div class="col-3">           
+                    <div class="col-4">           
                         <div class="input-group rounded p-3">
                             <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon" >
 
@@ -63,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         </div>
                     </div>
-                    <div class="col-3"> 
+                    <div class="col-4"> 
                         <select class="form-select" aria-label="Default select example">
                             <option selected>Department</option>
                             <option value="1">Department1</option>
@@ -72,16 +72,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </select>
                     </div>
 
-                    <div class="col-3"> 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Course</option>
-                            <option value="1">Course 1</option>
-                            <option value="2">Course 2</option>
-                            <option value="3">Course 3</option>
-                        </select>
-                    </div>
-                    <div class="col-3 "> 
-                        <button type="button" class="btn btn-primary bgcol" onclick="Addstudent()">Add Student</button>
+                    
+                    <div class="col-4 "> 
+                        <button type="button" class="btn btn-primary bgcol" onclick="AddCourse()">Add Course</button>
                     </div>
                 </div>
 
@@ -93,12 +86,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <tr>
 
-                        <th class="col-1 bgcol p-2">ID</th>
-                        <th class="col-3 bgcol p-2">Name</th>
-                        <th class="col-2 bgcol p-2">Gender</th>
-                        <th class="col-3 bgcol p-2">Contact No</th>
-                        <th class="col-1 bgcol p-2">View</th>
-                        <th class="col-1 bgcol p-2">Edit</th>
+                        <th class="col-1 bgcol p-1">ID</th>
+                        <th class="col-2 bgcol p-2">Name</th>
+                       
+                        <th class="col-3 bgcol p-2">Degree</th>
+                        <th class="col-2 bgcol p-2">Lecturer</th>
+                        <th class="col-1 bgcol p-1">Credit</th>
+                        <th class="col-1 bgcol p-1">View</th>
+                        <th class="col-1 bgcol p-1">Edit</th>
 
                     </tr>
 
@@ -112,85 +107,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                     <!-- Table row -->
                     <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
+                        <td class="col-1">001</td>
+                        <td class="col-2">Web Application</td>
+                        
+                        <td class="col-3">Computer Science & Technology</td>
+                        <td class="col-2">Rusthy</td>
+                        <td class="col-1">3</td>
                         <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
                     </tr>
 
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
 
 
                     <!-- Table row -->

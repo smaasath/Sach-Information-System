@@ -62,7 +62,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link navbarcolor" >
+                                <a href="#" onclick="AdminCourse()" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
                                     Course
                                 </a>
@@ -80,7 +80,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link navbarcolor" >
+                                <a href="#" onclick="Adminprofile()" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-user fa-xl icondash"></i>
                                     Profile
                                 </a>
@@ -132,7 +132,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </div>
 
                             <div style="margin-left: -9px;">
-                                <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i  href="" onclick="AdminCourse()" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
 
                             <div style="margin-left: -9px;">
@@ -142,7 +142,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <i href="" class="fa-sharp fa-solid fa-building-columns fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
                             <div style="margin-left: -9px;">
-                                <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i href="" onclick="Adminprofile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
                             <br><br>
 
@@ -171,26 +171,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <nav id="navbott" class="bg-black fixed-bottom">
                             <div class="container text-center">
                                 <div class="row">
-                                    <div class="col">
-                                        <i onclick="Admindashborad()" href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>   
+                                    <div class="col-2">
+                                        <i onclick="Admindashborad()" href="" class="fa-solid fa-gauge fa-lg icondash nav-link navbarcolorafter"></i>   
                                     </div>
-                                    <div class="col">
-                                        <i  href="" onclick="AdminStudent()" class="fa-solid fa-users fa-xl icondash nav-link navbarcolorafter"></i> 
+                                    <div class="col-2">
+                                        <i  href="" onclick="AdminStudent()" class="fa-solid fa-users fa-lg icondash nav-link navbarcolorafter"></i> 
                                     </div>
-                                    <div class="col">
-                                        <i  href="" onclick="AdminStaff()" class="fa-solid fa-user-tie fa-xl icondash nav-link navbarcolorafter"></i> 
+                                    <div class="col-2">
+                                        <i  href="" onclick="AdminStaff()" class="fa-solid fa-user-tie fa-lg icondash nav-link navbarcolorafter"></i> 
                                     </div>
-                                    <div class="col">
-                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    <div class="col-2">
+                                        <i href="" onclick="AdminCourse()" class="fa-solid fa-graduation-cap fa-lg icondash nav-link navbarcolorafter"></i>
                                     </div>
-                                    <div class="col">
-                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    <div class="col-2">
+                                        <i href="" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
                                     </div>
-                                    <div class="col">
-                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    <div class="col-1">
+                                        <i href="" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
                                     </div>
-                                    <div class="col">
-                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    <div class="col-1">
+                                        <i href="" onclick="Adminprofile()" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
                                     </div>
                                 </div>
                             </div>

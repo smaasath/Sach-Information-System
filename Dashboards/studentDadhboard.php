@@ -158,16 +158,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <nav id="navbott" class="bg-black fixed-bottom">
                             <div class="container text-center">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-3">
                                         <i  href="" onclick="dashborad()" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>   
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <i  href="" onclick="Course()" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i> 
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <i  href="" onclick="webiner()" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i> 
                                     </div>
-                                    <div class="col">
+                                    <div class="col-3">
                                         <i href="" onclick="profile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                                     </div>
                                 </div>
