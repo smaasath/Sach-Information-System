@@ -1,3 +1,6 @@
+body {
+    padding-top: 100px; 
+}
 .custom-slider{
     height:500px;
 }
@@ -5,3 +8,17 @@
     height:505px;
     object-fit: cover;
 }
+.darken-image {
+    filter: brightness(65%);
+}
+.last-para{
+    color:white;
+   }
+.icon{
+    color:white;
+}
+a.last-para:hover {
+    color:#19a7cd;
+    text-decoration: none;
+  }
+
