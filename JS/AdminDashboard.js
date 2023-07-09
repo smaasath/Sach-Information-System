@@ -40,11 +40,4 @@ function profile() {
     xhttp.send();
 }
 
-document.getElementById("openModal2").addEventListener("click", function() {
-    $('#StudentDetail').modal('hide'); // Hide Modal 1
-    $('#GuardianDetail').modal('show'); // Show Modal 2
-  });
-  
-   $('#StudentDetail').on('hidden.bs.modal', function () {
-    $('#GuardianDetail').modal('hide'); // Hide Modal 1
-  });
+

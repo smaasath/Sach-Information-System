@@ -80,7 +80,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <td class="col-3">Mohamed Aasath</td>
                         <td class="col-2">Male</td>
                         <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#StudentDetail">View</button></td>
+                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
                         <td class="col-1"><button type="button" class="btn btn-secondary">Edit</button></td>
                     </tr>
 
@@ -104,7 +104,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="StudentDetail">Student Details</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
                         <div class="container">
@@ -205,26 +205,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-primary" id="openModal2" >Guardian Details</button>
-                        <button type="button" class="btn btn-primary">Course Details</button>
+                        <button type="button" class="btn btn-primary" id="openModal2" onclick="openGuardianDetail()" >Guardian Details</button>
+                        <button type="button" class="btn btn-primary" onclick="openCourseDetail()">Course Details</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Student Details Modal -->
-        
-        
-        
-        
-        
+
+
+
+
+
         <!-- Guardian Details Modal -->
-        <div class="modal fade" id="GuardianDetail" tabindex="-1" aria-labelledby="GuardianDetail" aria-hidden="true">
+        <div class="modal fade" id="GuardianDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="GuardianDetail">Guardian Detail</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
                         <div class="container">
@@ -280,7 +280,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </div>
                             </div> 
 
-                            
+
 
 
 
@@ -290,15 +290,139 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="modal-footer">
 
-                        
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+
+                        <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
                     </div>
                 </div>
             </div>
         </div>
-       <!-- Guardian Details Modal -->
+        <!-- Guardian Details Modal -->
+
+        <!-- Course Details Modal -->
+        <div class="modal fade" id="CourseDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="CourseDetail">Course Detail</h1>
+                        <button type="button" class="btn-close" onclick="closeModals()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <table class="table mb-0">
+
+
+                                <tr>
+
+                                    <th class="col-3">ID</th>
+                                    <th class="col-6">Course Name</th>
+                                    <th class="col-3">Score</th>
+
+
+                                </tr>
+
+                                <tr>
+
+                                    <td class="col-3">001</td>
+                                    <td class="col-6">Web Application</td>
+                                    <td class="col-3">88%</td>
+
+
+                                </tr>
+
+                                <tr>
+
+                                    <td class="col-3">001</td>
+                                    <td class="col-6">Web Application</td>
+                                    <td class="col-3">88%</td>
+
+
+                                </tr>
+
+                                <tr>
+
+                                    <td class="col-3">001</td>
+                                    <td class="col-6">Web Application</td>
+                                    <td class="col-3">88%</td>
+
+
+                                </tr>
+
+                                <tr>
+
+                                    <td class="col-3">001</td>
+                                    <td class="col-6">Web Application</td>
+                                    <td class="col-3">88%</td>
+
+
+                                </tr>
+
+                                <tr>
+
+                                    <td class="col-3">001</td>
+                                    <td class="col-6">Web Application</td>
+                                    <td class="col-3">88%</td>
+
+
+                                </tr>
+
+                                <tr>
+
+                                    <td class="col-3">001</td>
+                                    <td class="col-6">Web Application</td>
+                                    <td class="col-3">88%</td>
+
+
+                                </tr>
+
+                                <tr>
+
+                                    <td class="col-3">001</td>
+                                    <td class="col-6">Web Application</td>
+                                    <td class="col-3">88%</td>
+
+
+                                </tr>
+
+                                <tr>
+
+                                    <td class="col-3">001</td>
+                                    <td class="col-6">Web Application</td>
+                                    <td class="col-3">88%</td>
+
+
+                                </tr>
+
+
+
+                            </table>
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+
+                        <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Course Details Modal -->
         <?php
         // put your code here
         ?>
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
     </body>
 </html>
