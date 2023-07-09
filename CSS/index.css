@@ -1,0 +1,7 @@
+.custom-slider{
+    height:500px;
+}
+.custom-slider img{
+    height:505px;
+    object-fit: cover;
+}
