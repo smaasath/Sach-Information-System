@@ -278,7 +278,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 
 .backcolor{
-    background-color: #afd3e3;
+    background-color: #afd3e3 !important;
 }
 .admincount{
     -webkit-transition: all .5s ease;
@@ -302,4 +302,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     background-color: #146c94 !important; 
    color:white !important; 
     
+}
+
+.bgweb{
+    background-color: #64CCC5 !important;
+}
+
+.web{
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.web:hover{
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.1);
+    background-color: #64CCC5 !important;
+
 }

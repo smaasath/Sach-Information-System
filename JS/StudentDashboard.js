@@ -171,3 +171,13 @@ function profile() {
     xhttp.send();
 }
 
+
+function openwebinardetails() {
+    $('#webinardetail').modal('show');
+}
+
+
+function closeModals() {
+   $('#webinardetail').modal('hide');
+}
+
