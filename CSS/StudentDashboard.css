@@ -7,45 +7,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Texus
 */
 .colordashbord{
-    background-image:
-    linear-gradient(
-      to top, 
-      #146c94, #001C30
-    )!important;
-    
+
+    background-color: #001C30!important;
+
     height: -webkit-fill-available;
-    
-    
+    z-index: 10000 !important;
+
+
 }
 
 .navbarcolor{
-     color: #fff !important;
-     padding: 14px 14px 14px 14px !important;
-     font-size: 17px !important;
-     font-weight: bold !important;
-     cursor: pointer;
-     width: auto;
-}
+    color: #fff !important;
+    padding: 14px 14px 14px 14px !important;
+    font-size: 17px !important;
+    font-weight: bold !important;
+    cursor: pointer;
+    width: auto;
+
 
 .navbarcolor.before {
-  background-color: #64CCC5 !important;
+    background-color: #64CCC5 !important;
 
 }
 .navbarcolor.active {
-  background-color: #19a7cd !important;
-  color: black !important;
+    background-color: #19a7cd !important;
+    color: black !important;
 
 }
 .navbarcolor.active:hover {
-  
-  color: #f5f1f0!important;
+
+    color: #f5f1f0!important;
 
 }
 
 .navbarcolor:hover{
-     
-     
-     color: #afd3e3 !important;
+
+
+    color: #afd3e3 !important;
 }
 
 
@@ -60,27 +58,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .Coincard {
-  
-  background-image:
-    linear-gradient(
-      to right, 
-      #64CCC5, #afd3e3
-    )!important;
-  height: 80px;
-  width:180px;
-  margin-left: 34px;
-  
-  
-  background-color: #f9b234;
-  -webkit-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-      margin-top: 75px;
-  
+
+    background-image:
+        linear-gradient(
+        to right,
+        #64CCC5, #afd3e3
+        )!important;
+    height: 80px;
+    width:180px;
+    margin-left: 34px;
+
+
+    background-color: #f9b234;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    margin-top: 75px;
+
 }
 .coinvalue{
     font-weight: bold;
-    
+
     margin-left: 56px;
     font-size: 30px;
     margin-bottom: 500px;
@@ -88,24 +86,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     color: #146c94;
 }
 .headcoin{
-     margin-top: -42px !important;
+    margin-top: -42px !important;
     /* margin-right: -60px; */
     margin-left: 70px;
     font-size: 10px !important;
     color: #000000 !important;
     font-weight: 700;
-    
+
 }
 .coinicon{
-    
+
     margin-top: 20px;
     font-size: 3rem !important;
 }
 .navbardah{
     background-color:white !important;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
     
-    z-index: 1;
 }
 .navuser{
     padding-left: 10px;
@@ -118,6 +116,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     flex-direction: row-reverse !important;
     align-content: center !important;
     justify-content: space-evenly !important;
+
 }
 .name{
     font-weight: bold;
@@ -126,15 +125,92 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     margin-top: 2px;
     color: #146c94;
     padding-left: 5px;
-    
+
 }
 
 
 .ag-courses-item_link:hover.Coincard{
-  -webkit-transform: scale(2);
-  -ms-transform: scale(2);
-  transform: scale(1.35);
-  color: white !important;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(1.35);
+    color: white !important;
+
+}
+.col10edit{
+
+    width: 85.1% !important;
+
+    margin-right: -13px !important;
+    padding-right: 0px !important ;
+    background-color: #e9ecef;
+
+
+
+}
+
+.col11edit{
+
+    width: 94% !important;
+
+    margin-right: -14px !important;
+    padding-right: 0px !important;
+    background-color: #e2e5eb;
+
+
+
+
+}
+
+.navbarcolorafter{
+    color: #fff !important;
+    padding: 29px 25px 25px 25px !important;
+    font-size: 25px !important;
+    font-weight: bold !important;
+    cursor: pointer;
+    width: 68px !important;
+    border-radius: 12px;
+    width: fit-content;
+}
+
+.navbarcolorafter.before {
+    background-color: #64CCC5 !important;
+
+}
+.navbarcolorafter.active {
+    background-color: #19a7cd !important;
+    color: black !important;
+
+}
+.navbarcolorafter.active:hover {
+
+    color: #f5f1f0!important;
+
+}
+
+.navbarcolorafter:hover{
+
+
+    color: #afd3e3 !important;
+}
+
+.logo{
+    width: 101px;
+    height: 100px;
+    margin-left: 53px;
+    margin-top: 40px;
+}
+.logoafter{
+    width: 60px;
+    height: 60px;
+    margin-left: 6px;
+
+    margin-top: 58px;
+}
+
+.nameimagecontainer{
+    
+    background: linear-gradient(90deg, rgba(25,167,205,1) 7%, rgba(175,211,227,1) 87%);
+    max-width: -webkit-fill-available !important;
   
 }
 .col10edit{
@@ -169,37 +245,117 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     width: fit-content;
 }
 
-.navbarcolorafter.before {
-  background-color: #64CCC5 !important;
+@media screen and (max-width: 480px) {
+    .nameimagecontainer{
+        background-color: black;
+        width: 800px !important;
+        height: 300px;
+        /* padding-top: 131px; */
+
+    }
+}
+.welcomefont{
+    font-family: 'Arvo', serif;
+    font-size: 30px;
+    font-weight: 700;
+    /* text-align: center; */
+    text-align-last: start;
+    color: #001C30;
 
 }
-.navbarcolorafter.active {
-  background-color: #19a7cd !important;
-  color: black !important;
+
+.normaltext{
+    font-family: 'Arvo', serif;
+    font-size: 15px;
+    font-weight: 200;
+    /* text-align: center; */
+    text-align-last: start;
+
+}
+
+.seccon{
+    width: 1200px !important;
+    /* padding-top: 80px; */
+    height: 680px!important;
+    background-color: white;
+}
+
+.progressbar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background:
+        radial-gradient(closest-side, white 79%, transparent 80% 100%),
+        conic-gradient(#146c94 75%, #19a7cd 0);
+}
+.progtext{
+    color: #146c94;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 26px;
+}
+
+.coursename{
+    font-size: 20px;
+    font-weight: 500;
+    color: #001C30;
+}
+.shadowcol{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+.navbotcol{
+    background-color: #e2e5eb !important;
+}
+
 
 }
 .navbarcolorafter.active:hover {
   
   color: #f5f1f0!important;
 
+
+.backcolor{
+    background-color: #afd3e3 !important;
+}
+.admincount{
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
 }
 
-.navbarcolorafter:hover{
-     
-     
-     color: #afd3e3 !important;
+.admincount:hover{
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.24);
+    background-color: #64CCC5 !important;
+
+}
+.bgcol{
+   background-color: #001C30!important; 
+   color:white !important; 
 }
 
-.logo{
-   width: 101px;
-    height: 100px;
-    margin-left: 53px;
-    margin-top: 72px;
-}
-.logoafter{
-    width: 60px;
-    height: 60px;
-    margin-left: 6px;
+.bgcolli{
+    background-color: #146c94 !important; 
+   color:white !important; 
     
-    margin-top: 58px;
+}
+
+.bgweb{
+    background-color: #64CCC5 !important;
+}
+
+.web{
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.web:hover{
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.1);
+    background-color: #64CCC5 !important;
+
 }
