@@ -151,7 +151,7 @@ function Course() {
     xhttp.onload = function () {
         document.getElementById("col10").innerHTML = this.responseText;
     };
-    xhttp.open("GET", "../DashboardFiles/", true);
+    xhttp.open("GET", "../DashboardFiles/StudentCourse.php", true);
     xhttp.send();
 }
 
@@ -179,9 +179,10 @@ function openwebinardetails() {
 }
 
 
-function closeModals() {
-   $('#webinardetail').modal('hide')
-
+function closeModalsss() {
+   $('#webinardetail').modal('hide');
+   $('#courseDetails').modal('hide');
+   }
 
 function openwebinareditdetails() {
     $('#webinareditdetail').modal('show');
@@ -189,7 +190,8 @@ function openwebinareditdetails() {
 }
 
 
-function closeModals() {
-   $('#webinareditdetail').modal('hide');
-}
 
+
+function opencoursedetails(){
+    $('#courseDetails').modal('show');
+}

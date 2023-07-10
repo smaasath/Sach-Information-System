@@ -34,16 +34,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </a>
                         <hr class="dashboardhr">
                         <ul class="nav nav-pills flex-column mb-auto">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link navbarcolor"  aria-current="page">
-                                    <i class="fa-solid fa-gauge fa-xl icondash"></i>
-                                    Dashboard
-                                </a>
-                            </li>
+                            
                             
                            
                             <li>
-                                <a href="#" class="nav-link navbarcolor" >
+                                <a href="#" onclick="StaffCourse()" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
                                     Course
                                 </a>
@@ -94,14 +89,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </a>
                             </div>
                             <hr class="dashboardhr">
-                            <div style="margin-left: -9px;">
-                                <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
-                            </div>
+                           
                            
                             
 
                             <div style="margin-left: -9px;">
-                                <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i  href="" onclick="StaffCourse()" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
 
                             
@@ -138,11 +131,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <nav id="navbott" class="bg-black fixed-bottom">
                             <div class="container text-center">
                                 <div class="row">
+                                   
                                     <div class="col">
-                                        <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>   
-                                    </div>
-                                    <div class="col">
-                                        <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i> 
+                                        <i  href="" onclick="StaffCourse()" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i> 
                                     </div>
                                     
                                     <div class="col">
@@ -158,21 +149,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <!--  body-->
                         <div id="col10"class="col-10 col10edit">
 
-                            <div class="navbardah fixed-top d-flex flex-row-reverse">
-                                <a class="p-3" href="#" style="margin-right: 30px;">
-                                    <i class="fa-solid fa-user fa-lg" style="color: #24457f;"></i>
-                                </a>
-
-                                <h6 class="p-3" href="#">
-                                    User Name
-                                </h6>
-
-                                <div id= "resimage" class="p-1 w-50">
-                                    <a href="#">
-                                        <img src="../Images/Logo.png" alt="Home" class="img-fluid" style="width: 20%">
-                                    </a>
-                                </div>
-                            </div>
+                         <?php include '../DashboardFiles/StaffCourse.php'; ?>
 
                         </div>
 
@@ -193,7 +170,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
  <script src="../JS/StaffDashboard.js"></script>
-
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script src="../JS/StudentDashboard.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>

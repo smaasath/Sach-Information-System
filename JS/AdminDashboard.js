@@ -68,6 +68,7 @@ function closeModals() {
     $('#StaffCourseDetail').modal('hide');
     $('#AddStaffDetail').modal('hide');
       $('#EditStaffDetail').modal('hide');
+      $('#courseDetails').modal('hide');
 
 }
 
