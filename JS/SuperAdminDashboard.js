@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
  */
 
+
 function SuperProfile() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
@@ -12,4 +13,5 @@ function SuperProfile() {
     xhttp.send();
 
 }
+
 

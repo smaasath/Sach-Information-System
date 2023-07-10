@@ -7,7 +7,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Texus
 */
 .colordashbord{
-
     background-color: #001C30!important;
 
     height: -webkit-fill-available;
@@ -135,6 +134,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     transform: scale(1.35);
     color: white !important;
 
+
 }
 .col10edit{
 
@@ -212,38 +212,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     background: linear-gradient(90deg, rgba(25,167,205,1) 7%, rgba(175,211,227,1) 87%);
     max-width: -webkit-fill-available !important;
   
-}
-.col10edit{
-   
-    width: 86% !important;
-    
-    margin-right: -14px !important;
-    
-    
-
-}
-
-.col11edit{
-   
-    width: 94% !important;
-    
-    margin-right: -14px !important;
-    
-    
-    
-
-}
-
-.navbarcolorafter{
-     color: #fff !important;
-     padding: 29px 25px 25px 25px !important;
-     font-size: 25px !important;
-     font-weight: bold !important;
-     cursor: pointer;
-     width: 68px !important;
-      border-radius: 12px;
-    width: fit-content;
-}
 
 @media screen and (max-width: 480px) {
     .nameimagecontainer{
@@ -308,11 +276,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     background-color: #e2e5eb !important;
 }
 
-
-}
-.navbarcolorafter.active:hover {
-  
-  color: #f5f1f0!important;
 
 
 .backcolor{

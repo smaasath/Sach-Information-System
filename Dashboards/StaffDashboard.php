@@ -51,7 +51,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                            
                                 
                             <li>
+
                                 <a href="#" onclick="StaffProfile()" class="nav-link navbarcolor" >
+
                                     <i class="fa-solid fa-user fa-xl icondash"></i>
                                     Profile
                                 </a>
@@ -105,7 +107,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             
                            
                             <div style="margin-left: -9px;">
+
                                 <i href="" onclick="StaffProfile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+
                             </div>
                                                        <br><br>
 
@@ -142,7 +146,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     </div>
                                     
                                     <div class="col">
+
                                         <i href="" onclick="StaffProfile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +191,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             ?>
 
 
+
  <script src="../JS/StaffDashboard.js"></script>
+
             <script src="../JS/StudentDashboard.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>

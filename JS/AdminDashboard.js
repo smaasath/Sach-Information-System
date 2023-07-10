@@ -68,6 +68,7 @@ function closeModals() {
     $('#StaffCourseDetail').modal('hide');
     $('#AddStaffDetail').modal('hide');
       $('#EditStaffDetail').modal('hide');
+
 }
 
 
@@ -109,6 +110,27 @@ function savestudent() {
         }
     })
 }
+
+
+function enrollstudent() {
+    Swal.fire({
+        title: 'Do you want to enroll to this webinar?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Enroll',
+        denyButtonText: `No`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            closeModals();
+            Swal.fire('Enrolled!', '', 'success')
+        } else if (result.isDenied) {
+            closeModals();
+            Swal.fire('Not enrolled', '', 'info')
+        }
+    })
+}
+
 
 
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
         <title>Institute profile</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     </head>
     <body>
         <!--  nav bar start-->
+
         <div class="navbardah fixed-top d-flex flex-row-reverse">
             <a class="p-3" href="#" style="margin-right: 30px;">
                 <i class="fa-solid fa-user fa-lg" style="color: #24457f;"></i>
@@ -27,6 +29,7 @@
         </div>
 
         <!--  nav bar end-->
+
         
             <div class="container py-md-5">
                 <div class="row d-flex align-items-top">       
@@ -93,23 +96,28 @@
                                         </div>                               
                                     </div>
                                    <br>
+
                                 <a href="../DashboardFiles/InstituteAdminProfileEdit.php">
                                     <button class="Submit-Btn" type="button" >EDIT</button>
                                 </a> 
                             </div>
                         </form>
+
                         </div>
                     </div>               
                </div>
             </div>  
         <script src="../Profile/Institute/validation.js" type="text/javascript"></script>     
+
     </body>
 </html>
 
 
- 
 
 
- 
+
+
+
+
 
 
