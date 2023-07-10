@@ -167,7 +167,7 @@ function profile() {
     xhttp.onload = function () {
         document.getElementById("col10").innerHTML = this.responseText;
     };
-    xhttp.open("GET", "../DashboardFiles/StudentProfile.html", true);
+    xhttp.open("GET", "../DashboardFiles/StudentProfile.php", true);
     xhttp.send();
 }
 

@@ -51,7 +51,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                            
                                 
                             <li>
-                                <a href="#" class="nav-link navbarcolor" >
+                                <a href="#" onclick="SuperProfile()" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-user fa-xl icondash"></i>
                                     Profile
                                 </a>
@@ -105,7 +105,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             
                            
                             <div style="margin-left: -9px;">
-                                <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i href="" onclick="SuperProfile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
                                                        <br><br>
 
@@ -142,7 +142,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     </div>
                                     
                                     <div class="col">
-                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                        <i href=""  onclick="SuperProfile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                                     </div>
                                 </div>
                             </div>
