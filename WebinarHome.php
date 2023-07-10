@@ -165,7 +165,211 @@
                                     </div>
                                     <div class="row p-2">
 
-                                        <a href="LOGIN/LOGIN/Login.php" class="btn card-link course-btn bgcol">Enroll</a>
+                                        <a href="LOGIN/LOGIN/Login.php" class="btn card-link bgcol">Enroll</a>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+                <div class="col-lg-4 mt-2 mb-4 ">
+                    <div class="card rounded-4 web backcolor" style="width: 22rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Web Development Program</b></h5>
+
+                            <p class="card-text">Join our comprehensive web development program, encompassing both web design and development, to enhance your skills and create stunning, functional websites.</p>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="shadow p-3 mb-4 rounded-3" style="background-color: #64CCC5;">
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <i class="fa-solid fa-coins fa-2xl" style="color: white;"></i>
+                                            </div> 
+
+                                            <div class="col-9" style="color: white;">
+                                                <h4> 10000</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="row p-2">
+                                        <a href="#" class="btn card-link bgcol" data-bs-toggle="modal" data-bs-target="#webinardetail1">View</a>
+                                    </div>
+                                    <div class="row p-2">
+
+                                        <a href="LOGIN/LOGIN/Login.php" class="btn card-link bgcol">Enroll</a>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+                <div class="col-lg-4 mt-2 mb-4 ">
+                    <div class="card rounded-4 web backcolor" style="width: 22rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Web Development Program</b></h5>
+
+                            <p class="card-text">Join our comprehensive web development program, encompassing both web design and development, to enhance your skills and create stunning, functional websites.</p>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="shadow p-3 mb-4 rounded-3" style="background-color: #64CCC5;">
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <i class="fa-solid fa-coins fa-2xl" style="color: white;"></i>
+                                            </div> 
+
+                                            <div class="col-9" style="color: white;">
+                                                <h4> 10000</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="row p-2">
+                                        <a href="#" class="btn card-link bgcol" data-bs-toggle="modal" data-bs-target="#webinardetail1">View</a>
+                                    </div>
+                                    <div class="row p-2">
+
+                                        <a href="LOGIN/LOGIN/Login.php" class="btn card-link bgcol">Enroll</a>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+                <div class="col-lg-4 mt-2 mb-4 ">
+                    <div class="card rounded-4 web backcolor" style="width: 22rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Web Development Program</b></h5>
+
+                            <p class="card-text">Join our comprehensive web development program, encompassing both web design and development, to enhance your skills and create stunning, functional websites.</p>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="shadow p-3 mb-4 rounded-3" style="background-color: #64CCC5;">
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <i class="fa-solid fa-coins fa-2xl" style="color: white;"></i>
+                                            </div> 
+
+                                            <div class="col-9" style="color: white;">
+                                                <h4> 10000</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="row p-2">
+                                        <a href="#" class="btn card-link bgcol" data-bs-toggle="modal" data-bs-target="#webinardetail1">View</a>
+                                    </div>
+                                    <div class="row p-2">
+
+                                        <a href="LOGIN/LOGIN/Login.php" class="btn card-link bgcol">Enroll</a>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+                <div class="col-lg-4 mt-2 mb-4 ">
+                    <div class="card rounded-4 web backcolor" style="width: 22rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Web Development Program</b></h5>
+
+                            <p class="card-text">Join our comprehensive web development program, encompassing both web design and development, to enhance your skills and create stunning, functional websites.</p>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="shadow p-3 mb-4 rounded-3" style="background-color: #64CCC5;">
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <i class="fa-solid fa-coins fa-2xl" style="color: white;"></i>
+                                            </div> 
+
+                                            <div class="col-9" style="color: white;">
+                                                <h4> 10000</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="row p-2">
+                                        <a href="#" class="btn card-link bgcol" data-bs-toggle="modal" data-bs-target="#webinardetail1">View</a>
+                                    </div>
+                                    <div class="row p-2">
+
+                                        <a href="LOGIN/LOGIN/Login.php" class="btn card-link bgcol">Enroll</a>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="col-lg-4 mt-2 mb-4 ">
+                    <div class="card rounded-4 web backcolor" style="width: 22rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>Web Development Program</b></h5>
+
+                            <p class="card-text">Join our comprehensive web development program, encompassing both web design and development, to enhance your skills and create stunning, functional websites.</p>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="shadow p-3 mb-4 rounded-3" style="background-color: #64CCC5;">
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <i class="fa-solid fa-coins fa-2xl" style="color: white;"></i>
+                                            </div> 
+
+                                            <div class="col-9" style="color: white;">
+                                                <h4> 10000</h4>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="row p-2">
+                                        <a href="#" class="btn card-link bgcol" data-bs-toggle="modal" data-bs-target="#webinardetail1">View</a>
+                                    </div>
+                                    <div class="row p-2">
+
+                                        <a href="LOGIN/LOGIN/Login.php" class="btn card-link bgcol">Enroll</a>
 
                                     </div>
                                 </div>
@@ -233,6 +437,14 @@
                                 </div>
                                 <div class="col-8">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                </div>
+                            </div> 
+                             <div class="row">
+                                <div class="col-4">
+                                    <h6>Link</h6>
+                                </div>
+                                <div class="col-8">
+                                    <a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
                                 </div>
                             </div> 
                             <div class="row">

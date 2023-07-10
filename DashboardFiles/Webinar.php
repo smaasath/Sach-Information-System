@@ -274,6 +274,15 @@
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                                 </div>
                             </div> 
+                            
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Link</h6>
+                                </div>
+                                <div class="col-8">
+                                    <a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-4">
                                     <h6>Date</h6>
@@ -377,6 +386,8 @@
                             </div> 
 
 
+                             
+                            
                             <div class="row">
                                 <div class="col-4">
                                     <h6>Description</h6>
@@ -385,6 +396,7 @@
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                                 </div>
                             </div> 
+                            
                             <div class="row">
                                 <div class="col-4">
                                     <h6>Date</h6>

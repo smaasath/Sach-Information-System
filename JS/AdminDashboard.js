@@ -41,6 +41,16 @@ function Adminprofile() {
 
 }
 
+function AdminCourse() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "../DashboardFiles/InstituteCourse.php", true);
+    xhttp.send();
+
+}
+
 
 function openStudentDetails() {
     $('#StudentDetail').modal('show');
@@ -67,9 +77,11 @@ function closeModals() {
     $('#StaffDetail').modal('hide');
     $('#StaffCourseDetail').modal('hide');
     $('#AddStaffDetail').modal('hide');
-      $('#EditStaffDetail').modal('hide');
-      $('#courseDetails').modal('hide');
-
+    $('#EditStaffDetail').modal('hide');
+    $('#courseDetails').modal('hide');
+    $('#AddCourse').modal('hide');
+    $('#CourseDetail').modal('hide');
+    $('#EditCourseDetail').modal('hide');
 }
 
 
@@ -161,4 +173,16 @@ function  AddStaff() {
 
 function  EditStaff() {
     $('#EditStaffDetail').modal('show');
+}
+
+function AddCourse() {
+    $('#AddCourse').modal('show');
+}
+
+function CourseDetail() {
+    $('#CourseDetail').modal('show');
+}
+ 
+function EditCourse(){
+       $('#EditCourseDetail').modal('show');
 }
