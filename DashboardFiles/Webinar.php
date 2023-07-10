@@ -85,7 +85,7 @@
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="openwebinardetails()">View</a>
                                     </div>
                                     <div class="row p-2">
-                                        <a href="#" class="btn card-link course-btn bgcol">Enroll</a>
+                                        <a href="#" class="btn card-link course-btn bgcol" onclick="enrollstudent()">Enroll</a>
                                     </div>
                                 </div>
 
@@ -95,6 +95,9 @@
                     </div>
                 </div>
                 
+                
+                
+               
                 
                 
                 <div class="col-lg-4 mt-2 mb-4 ">
@@ -123,7 +126,7 @@
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="openwebinardetails()">View</a>
                                     </div>
                                     <div class="row p-2">
-                                        <a href="#" class="btn card-link course-btn bgcol">Enroll</a>
+                                        <a href="#" class="btn card-link course-btn bgcol" onclick="enrollstudent()">Enroll</a>
                                     </div>
                                 </div>
 
@@ -132,10 +135,12 @@
                         </div>
                     </div>
                 </div>
+              
                 
                 
                 
                 
+              
                 
                 <div class="col-lg-4 mt-2 mb-4 ">
                     <div class="card rounded-4 web backcolor" style="width: 22rem;">
@@ -163,7 +168,7 @@
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="openwebinardetails()">View</a>
                                     </div>
                                     <div class="row p-2">
-                                        <a href="#" class="btn card-link course-btn bgcol">Enroll</a>
+                                        <a href="#" class="btn card-link course-btn bgcol" onclick="enrollstudent()">Enroll</a>
                                     </div>
                                 </div>
 
@@ -174,8 +179,8 @@
                 </div>
                 
                 
-                
-                
+
+
                 <div class="col-lg-4 mt-2 mb-4 ">
                     <div class="card rounded-4 web backcolor" style="width: 22rem;">
                         <div class="card-body">
@@ -202,7 +207,7 @@
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="openwebinardetails()">View</a>
                                     </div>
                                     <div class="row p-2">
-                                        <a href="#" class="btn card-link course-btn bgcol">Enroll</a>
+                                        <a href="#" class="btn card-link course-btn bgcol" onclick="enrollstudent()">Enroll</a>
                                     </div>
                                 </div>
 
@@ -211,55 +216,129 @@
                         </div>
                     </div>
                 </div>
+
                 
-                
-                
-                
-                <div class="col-lg-4 mt-2 mb-4 ">
-                    <div class="card rounded-4 web backcolor" style="width: 22rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"><b>Web Development Program</b></h5>
-
-                            <p class="card-text">Join our comprehensive web development program, encompassing both web design and development, to enhance your skills and create stunning, functional websites.</p>
-                            <div class="row">
-                                <div class="col-8">
-                                    <div class="shadow p-3 mb-4 rounded-3" style="background-color: #64CCC5;">
-                                        <div class="row align-items-center">
-                                            <div class="col-3">
-                                                <i class="fa-solid fa-coins fa-2xl" style="color: white;"></i>
-                                            </div> 
-
-                                            <div class="col-9" style="color: white;">
-                                                <h4> 10000</h4>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="row p-2">
-                                        <a href="#" class="btn card-link course-btn bgcol" onclick="openwebinardetails()">View</a>
-                                    </div>
-                                    <div class="row p-2">
-                                        <a href="#" class="btn card-link course-btn bgcol">Enroll</a>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+           
             </div>
         </div>
 
 
-        <!-- Student Details Modal -->
+        <!-- Webinar Details Modal -->
         <div class="modal fade" id="webinardetail" tabindex="-1" aria-labelledby="webinardetail" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="webinardetail">Webinar Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Title</h6>
+                                </div>
+                                <div class="col-8">
+                                    <p>Web Development Program</p>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Institute</h6>
+                                </div>
+                                <div class="col-8">
+                                    <p>Uva Wellassa University Of SriLanka</p>
+                                </div>
+                            </div> 
+
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Description</h6>
+                                </div>
+                                <div class="col-8">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Date</h6>
+                                </div>
+                                <div class="col-8">
+                                    <p>2023/08/09</p>
+                                </div>
+                            </div> 
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Time</h6>
+                                </div>
+                                <div class="col-8">
+                                    <p>9.00am</p>
+                                </div>
+                            </div> 
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Registration Deadline</h6>
+                                </div>
+                                <div class="col-8">
+                                    <p>2023/12/11</p>
+                                </div>
+                            </div> 
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Recording</h6>
+                                </div>
+                                <div class="col-8">
+                                    <p>Available</p>
+                                </div>
+                            </div> 
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Status</h6>
+                                </div>
+                                <div class="col-8">
+                                    <p>Active</p>
+                                </div>
+                            </div> 
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Coin Value</h6>
+                                </div>
+                                <div class="col-8">
+                                    <p>50</p>
+                                </div>
+                            </div> 
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Webinar Details Modal -->
+
+        <!-- Webinar edit Details Modal -->
+        <div class="modal fade" id="webinareditdetail" tabindex="-1" aria-labelledby="webinareditdetail" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="webinareditdetail">Webinar Enroll</h1>
                         <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
@@ -362,9 +441,7 @@
                 </div>
             </div>
         </div>
-        <!-- Student Details Modal -->
-
-
+        <!-- Webinar Details edit Modal -->
 
 
         <?php

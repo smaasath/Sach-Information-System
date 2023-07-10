@@ -181,3 +181,13 @@ function closeModals() {
    $('#webinardetail').modal('hide');
 }
 
+function openwebinareditdetails() {
+    $('#webinareditdetail').modal('show');
+   
+}
+
+
+function closeModals() {
+   $('#webinareditdetail').modal('hide');
+}
+
