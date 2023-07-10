@@ -7,6 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Texus
 */
 .colordashbord{
+
     background-color: #001C30!important;
 
     height: -webkit-fill-available;
@@ -22,7 +23,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     font-weight: bold !important;
     cursor: pointer;
     width: auto;
-}
+
 
 .navbarcolor.before {
     background-color: #64CCC5 !important;
@@ -212,6 +213,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     max-width: -webkit-fill-available !important;
   
 }
+.col10edit{
+   
+    width: 86% !important;
+    
+    margin-right: -14px !important;
+    
+    
+
+}
+
+.col11edit{
+   
+    width: 94% !important;
+    
+    margin-right: -14px !important;
+    
+    
+    
+
+}
+
+.navbarcolorafter{
+     color: #fff !important;
+     padding: 29px 25px 25px 25px !important;
+     font-size: 25px !important;
+     font-weight: bold !important;
+     cursor: pointer;
+     width: 68px !important;
+      border-radius: 12px;
+    width: fit-content;
+}
 
 @media screen and (max-width: 480px) {
     .nameimagecontainer{
@@ -275,6 +307,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .navbotcol{
     background-color: #e2e5eb !important;
 }
+
+
+}
+.navbarcolorafter.active:hover {
+  
+  color: #f5f1f0!important;
 
 
 .backcolor{

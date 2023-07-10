@@ -32,6 +32,7 @@ function bigtosmal() {
     div.style.display = "block";
 
     var col2element = document.getElementById("col10");
+
     var newClassNamecol2 = "col-11 content container p-4 col11edit";
     col2element.className = newClassNamecol2;
 
@@ -178,6 +179,45 @@ function openwebinardetails() {
 
 
 function closeModals() {
-   $('#webinardetail').modal('hide');
+   $('#webinardetail').modal('hide')
+
+function handleWindowWidth() {
+    var windowWidth = window.innerWidth;
+
+    // Code to execute based on the window width
+    if (windowWidth < 1336) {
+
+        var div = document.getElementById("col2");
+        div.style.display = "none";
+
+        var div = document.getElementById("col1");
+        div.style.display = "block";
+
+        var col2element = document.getElementById("col10");
+        var newClassNamecol2 = "col-11 content col11edit";
+        col2element.className = newClassNamecol2;
+
+    } else {
+        var div = document.getElementById("col2");
+        div.style.display = "block";
+
+        var div = document.getElementById("col1");
+        div.style.display = "none";
+
+        var col2element = document.getElementById("col10");
+        var newClassNamecol2 = "col-10 content col11edit";
+        col2element.className = newClassNamecol2;
+    }
 }
 
+// Function to run continuously while monitoring the width changes
+function runFunctionOnResize() {
+    handleWindowWidth();
+    // Add any additional code or function calls here
+}
+
+// Call the function initially
+runFunctionOnResize();
+
+// Attach the function to the window resize event
+window.addEventListener('resize', runFunctionOnResize);
