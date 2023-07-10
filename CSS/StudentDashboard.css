@@ -141,7 +141,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
     margin-right: -13px !important;
     padding-right: 0px !important ;
-    background-color: #e2e5eb;
+    background-color: #e9ecef;
 
 
 
@@ -277,3 +277,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 
+.backcolor{
+    background-color: #afd3e3 !important;
+}
+.admincount{
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.admincount:hover{
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.24);
+    background-color: #64CCC5 !important;
+
+}
+.bgcol{
+   background-color: #001C30!important; 
+   color:white !important; 
+}
+
+.bgcolli{
+    background-color: #146c94 !important; 
+   color:white !important; 
+    
+}
+
+.bgweb{
+    background-color: #64CCC5 !important;
+}
+
+.web{
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.web:hover{
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.1);
+    background-color: #64CCC5 !important;
+
+}
