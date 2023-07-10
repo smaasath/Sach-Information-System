@@ -68,7 +68,7 @@ function closeModals() {
     $('#StaffCourseDetail').modal('hide');
     $('#AddStaffDetail').modal('hide');
       $('#EditStaffDetail').modal('hide');
-      
+
 }
 
 
@@ -111,6 +111,7 @@ function savestudent() {
     })
 }
 
+
 function enrollstudent() {
     Swal.fire({
         title: 'Do you want to enroll to this webinar?',
@@ -129,6 +130,7 @@ function enrollstudent() {
         }
     })
 }
+
 
 
 

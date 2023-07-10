@@ -85,7 +85,9 @@
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="openwebinardetails()">View</a>
                                     </div>
                                     <div class="row p-2">
+
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="enrollstudent()">Enroll</a>
+
                                     </div>
                                 </div>
 
@@ -97,9 +99,11 @@
                 
                 
                 
+
                
                 
                 
+
                 <div class="col-lg-4 mt-2 mb-4 ">
                     <div class="card rounded-4 web backcolor" style="width: 22rem;">
                         <div class="card-body">
@@ -126,8 +130,9 @@
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="openwebinardetails()">View</a>
                                     </div>
                                     <div class="row p-2">
+
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="enrollstudent()">Enroll</a>
-                                    </div>
+                  </div>
                                 </div>
 
 
@@ -135,12 +140,14 @@
                         </div>
                     </div>
                 </div>
+
               
+
                 
                 
                 
                 
-              
+
                 
                 <div class="col-lg-4 mt-2 mb-4 ">
                     <div class="card rounded-4 web backcolor" style="width: 22rem;">
@@ -168,7 +175,9 @@
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="openwebinardetails()">View</a>
                                     </div>
                                     <div class="row p-2">
+
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="enrollstudent()">Enroll</a>
+
                                     </div>
                                 </div>
 
@@ -179,6 +188,8 @@
                 </div>
                 
                 
+
+
 
 
                 <div class="col-lg-4 mt-2 mb-4 ">
@@ -207,7 +218,9 @@
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="openwebinardetails()">View</a>
                                     </div>
                                     <div class="row p-2">
+
                                         <a href="#" class="btn card-link course-btn bgcol" onclick="enrollstudent()">Enroll</a>
+
                                     </div>
                                 </div>
 
@@ -216,6 +229,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 
            
@@ -339,6 +353,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="webinareditdetail">Webinar Enroll</h1>
+
                         <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
@@ -441,7 +456,9 @@
                 </div>
             </div>
         </div>
+
         <!-- Webinar Details edit Modal -->
+
 
 
         <?php

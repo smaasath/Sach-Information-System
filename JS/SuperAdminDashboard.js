@@ -4,3 +4,14 @@
  */
 
 
+function SuperProfile() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "../DashboardFiles/SuperAdminProfile.php", true);
+    xhttp.send();
+
+}
+
+

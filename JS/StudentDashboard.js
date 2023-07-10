@@ -32,6 +32,7 @@ function bigtosmal() {
     div.style.display = "block";
 
     var col2element = document.getElementById("col10");
+
     var newClassNamecol2 = "col-11 content container p-4 col11edit";
     col2element.className = newClassNamecol2;
 
@@ -81,6 +82,7 @@ function handleWindowWidth() {
         div.style.display = "block";
 
     } else if (windowWidth < 1336) {
+
 
         var div = document.getElementById("col2");
         div.style.display = "none";
@@ -167,7 +169,7 @@ function profile() {
     xhttp.onload = function () {
         document.getElementById("col10").innerHTML = this.responseText;
     };
-    xhttp.open("GET", "../DashboardFiles/StudentProfile.html", true);
+    xhttp.open("GET", "../DashboardFiles/StudentProfile.php", true);
     xhttp.send();
 }
 
@@ -178,8 +180,8 @@ function openwebinardetails() {
 
 
 function closeModals() {
-   $('#webinardetail').modal('hide');
-}
+   $('#webinardetail').modal('hide')
+
 
 function openwebinareditdetails() {
     $('#webinareditdetail').modal('show');

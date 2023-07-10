@@ -22,7 +22,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     font-weight: bold !important;
     cursor: pointer;
     width: auto;
-}
+
 
 .navbarcolor.before {
     background-color: #64CCC5 !important;
@@ -134,6 +134,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     transform: scale(1.35);
     color: white !important;
 
+
 }
 .col10edit{
 
@@ -211,7 +212,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     background: linear-gradient(90deg, rgba(25,167,205,1) 7%, rgba(175,211,227,1) 87%);
     max-width: -webkit-fill-available !important;
   
-}
 
 @media screen and (max-width: 480px) {
     .nameimagecontainer{
@@ -275,6 +275,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .navbotcol{
     background-color: #e2e5eb !important;
 }
+
 
 
 .backcolor{

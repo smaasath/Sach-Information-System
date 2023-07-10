@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=10">
-        <title>Staff Dashboard</title>
+        <title>Institute Dashboard</title>
         <link rel="stylesheet" href="../CSS/StudentDashboard.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -40,20 +40,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     Dashboard
                                 </a>
                             </li>
-                            
-                           
+                            <li>
+
+                                <a href="#" class="nav-link navbarcolor" >
+                                   <i class="fa-solid fa-users fa-xl icondash"></i>
+                                    Student
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link navbarcolor" >
+                                    <i class="fa-solid fa-user-tie fa-xl icondash"></i>
+                                     Staff
+                                </a>
+                            </li>
                             <li>
                                 <a href="#" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
                                     Course
                                 </a>
                             </li>
-                           
-                                
                             <li>
-
-                                <a href="#" onclick="StaffProfile()" class="nav-link navbarcolor" >
-
+                                <a href="#" class="nav-link navbarcolor" >
+                                    <i class="fa-solid fa-video fa-xl icondash"></i>
+                                    Webinar
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link navbarcolor" >
+                                  <i class="fa-sharp fa-solid fa-building-columns fa-xl icondash"></i>
+                                    Department
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link navbarcolor" >
                                     <i class="fa-solid fa-user fa-xl icondash"></i>
                                     Profile
                                 </a>
@@ -97,19 +117,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <div style="margin-left: -9px;">
                                 <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
-                           
-                            
+                             <div style="margin-left: -9px;">
+                                <i  href="" class="fa-solid fa-users fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
+                            <div style="margin-left: -9px;">
+                                <i  href="" class="fa-solid fa-user-tie fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
 
                             <div style="margin-left: -9px;">
                                 <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
 
-                            
-                           
                             <div style="margin-left: -9px;">
-
-                                <i href="" onclick="StaffProfile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
-
+                                <i href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
+                            <div style="margin-left: -9px;">
+                                <i href="" class="fa-sharp fa-solid fa-building-columns fa-xl icondash nav-link navbarcolorafter"></i>
+                            </div>
+                            <div style="margin-left: -9px;">
+                                <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
                                                        <br><br>
 
@@ -144,11 +170,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <div class="col">
                                         <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i> 
                                     </div>
-                                    
                                     <div class="col">
-
-                                        <i href="" onclick="StaffProfile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
-
+                                        <i  href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i> 
+                                    </div>
+                                    <div class="col">
+                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    </div>
+                                    <div class="col">
+                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    </div>
+                                    <div class="col">
+                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                                    </div>
+                                    <div class="col">
+                                        <i href="" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
                                     </div>
                                 </div>
                             </div>
@@ -191,8 +226,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             ?>
 
 
-
- <script src="../JS/StaffDashboard.js"></script>
 
             <script src="../JS/StudentDashboard.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
