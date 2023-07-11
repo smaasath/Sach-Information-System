@@ -82,41 +82,38 @@
     </head>
 
     <body>
-
-        <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white m-0">
-                    <a class="navbar-brand" href="#">
-                      <img src="./Images/Logo.png" width="70" height="70" alt="logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white m-0">
+              <a class="navbar-brand" href="#">
+                <img src="./Images/Logo.png" width="70" height="70" alt="logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            
+              <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link" href="index.php" style="color:rgb(20, 108, 148)">Home<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item" >
+                      <a class="nav-link" href="about us page\about us.html" style="color:rgb(20, 108, 148)">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="WebinarHome.php" style="color:rgb(20, 108, 148)">Webinar</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="lOGIN\LOGIN\Login.php" style="color:rgb(20, 108, 148)">Join Now</a>
+                  </li>
                   
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                      <ul class="navbar-nav">
-                        <li class="nav-item">
-                          <a class="nav-link" href="#" style="color:rgb(20, 108, 148)">Home<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item" >
-                          <a class="nav-link" href="#" style="color:rgb(20, 108, 148)">About</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#" style="color:rgb(20, 108, 148)">Webinar</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#" style="color:rgb(20, 108, 148)">Join Now</a>
-                        </li>
-                        <form class="form-inline my-2 my-lg-0">
-                          <button class="btn btn btn-primary my-2 my-sm-0" type="submit" style="color:white;background-color: rgb(20, 108, 148);">Sign In</button>
-                        </form>
-                    </div>
-                  </nav>
               </div>
-            </div>
-          </div>
+            </nav>
+        </div>
+      </div>
+    </div>
 
           <div class="container-fluid p-0 mt-2" >
             <div class="row">

@@ -7,9 +7,43 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="../../CSS/index.css">
     </head>
     <body>
-        
+               
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white m-0">
+                        <a class="navbar-brand" href="#">
+                            <img src="../../Images/Logo.png" width="70" height="70" alt="logo">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../../index.php" style="color:rgb(20, 108, 148)">Home<span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="../../about us page/about us.html" style="color:rgb(20, 108, 148)">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../../WebinarHome.php" style="color:rgb(20, 108, 148)">Webinar</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Login.php" style="color:rgb(20, 108, 148)">Join Now</a>
+                                </li>
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
         
         <section class="py-4 py-md-5 mt-5">
             <div class="container py-md-5">
@@ -24,7 +58,7 @@
                             <div class="mb-3"><input class="shadow form-control" type="password" name="password" placeholder="Password"></div>
                             <div class="mb-5"><input onclick="return ValidateForgotPasswordForm();" class="Submit-Btn" type="submit" value="Login" id="PasswordResetBtn" ></div>                    
                         </form>
-                        <p class="text-muted"><a href="forgotten-password.html">Forgot your password?</a></p>
+                        <p class="text-muted"><a href="../../fp1/fp1.html">Forgot your password?</a></p>
                     </div>               
                </div>
             </div>  
