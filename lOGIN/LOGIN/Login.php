@@ -1,3 +1,19 @@
+<?php
+$message = null;
+if(isset($_GET["status"])){
+    $status = $_GET["status"];
+    if($status == 0){
+        $message = "<h6 class='text-danger'>Required values were not submitted.</h6>";
+    }elseif($status == 1){
+        $message = "<h6 class='text-danger'>Please provide your username and password to proceed. Both fields are required for access.</h6>";        
+    }elseif($status == 2){
+        $message = "<h6 class='text-danger'>The entered email and password are incorrect. Please try again</h6>";
+    }else{
+        $message = "<h6 class='text-danger'>Oops! An unexpected error occurred. Please try again.</h6>"; 
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -52,8 +68,9 @@
                     <img class="img-fluid w-100" src="illustrations/login.svg">
                 </div>                
                     <div class="col-md-5 col-xl-4 text-center text-md-start">
-                        <h2 class="display-6 fw-bold mb-4">Login</h2>                        
-                        <form method="post" data-bs-theme="light">
+                        <h2 class="display-6 fw-bold mb-4">Login</h2>   
+                        <?= $message ?>                     
+                        <form action="../../loginProcess.php" method="POST" data-bs-theme="light">
                             <div class="mb-3"><input class="shadow form-control" type="email" id="forgotPassEmail" name="email" placeholder="Email"></div>
                             <div class="mb-3"><input class="shadow form-control" type="password" name="password" placeholder="Password"></div>
                             <div class="mb-5"><input onclick="return ValidateForgotPasswordForm();" class="Submit-Btn" type="submit" value="Login" id="PasswordResetBtn" ></div>                    
