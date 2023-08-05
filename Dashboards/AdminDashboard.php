@@ -201,7 +201,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <!--  body-->
                 <div id="col10"class="col-10 col10edit bg-body-black">
 
-                    <?php require '../DashboardFiles/InstituteFirstPage.php'; ?>
+                    <?php include '../DashboardFiles/InstituteFirstPage.php'; ?>
 
 
                 </div>

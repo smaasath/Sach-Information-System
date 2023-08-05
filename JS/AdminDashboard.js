@@ -205,32 +205,32 @@ function EditCourse() {
 
 
 
-function changeFunci() {
+function changeFunc() {
     var selectBox = document.getElementById("department");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
     alert(selectedValue);
-    
-    var xhr = new XMLHttpRequest();
-            xhr.open("POST", "process.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    console.log(xhr.responseText); // Response from PHP
-                }
-            };
-            xhr.send("data=" + encodeURIComponent(selectedValue));
-    
-    
-   }
-    
-  
 
-    
-        
-        
-        
-        
-        
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../DashboardPHP/DropDown.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText); // Response from PHP
+        }
+    };
+    xhr.send("data=" + encodeURIComponent(selectedValue));
+
+
+}
+
+
+
+
+
+
+
+
+
 
 
 
