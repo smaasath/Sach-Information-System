@@ -213,27 +213,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </div> 
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="backcolor p-2 m-2 mb-4 rounded-4 align-items-center admincount ">
-                                <div class="row">
-                                    <div class="col-1 text-center">   
-                                        <i  href="" class="fa-sharp fa-solid fa-building-columns fa-2xl p-5 ps-1"></i>
-                                    </div>
-                                    <div class="col-8 ps-5 d-flex justify-content-center align-items-center flex-column"> 
-                                        <h7>Departments</h7>
-                                        <h2>
-                                            <?php
-                                            $queryDepartmentCount = "SELECT COUNT(*) AS departmentId FROM department WHERE instituteId=$userID";
-                                            $resultDepartmentCoun = $conn->query($queryDepartmentCount);
-                                            $rowDep = $resultDepartmentCoun->fetch_assoc();
-                                            $resultCountDep = $rowDep["departmentId"];
-                                            echo $resultCountDep;
-                                            ?>
-                                        </h2>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
+                    
                     </div> 
 
 

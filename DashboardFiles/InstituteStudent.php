@@ -14,6 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         include '../DashboardPHP/connection.php';
         $userID = 1;
+// Check if the user is logged in
         ?>
         <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex  align-items-center justify-content-end">
@@ -25,18 +26,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
 
             <h6 class="p-3" href="#">
-                <?php
-                $query = "SELECT instituteName FROM institute WHERE instituteId=1";
-                $result = $conn->query($query);
-                if (!$result) {
-                    die("Query failed: " . $conn->error);
-                }
+        <?php
+        $query = "SELECT instituteName FROM institute WHERE instituteId=1";
+        $result = $conn->query($query);
+        if (!$result) {
+            die("Query failed: " . $conn->error);
+        }
 
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    echo $row["instituteName"];
-                }
-                ?>   
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            echo $row["instituteName"];
+        }
+        $instituteName=$row["instituteName"];
+        ?>   
             </h6>
 
 
@@ -45,18 +47,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <div class="col-1">
                 <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <?php
-                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId=1";
-                    $resultUserImage = $conn->query($queryUserImage);
+                <?php
+                $queryUserImage = "SELECT Logo FROM institute WHERE instituteId=1";
+                $resultUserImage = $conn->query($queryUserImage);
 
-                    if ($resultUserImage->num_rows > 0) {
-                        $row = $resultUserImage->fetch_assoc();
-                        $imageData = $row["Logo"];
-                        echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" style="width:30%">';
-                    } else {
-                        echo "Image not found.";
-                    }
-                    ?>
+                if ($resultUserImage->num_rows > 0) {
+                    $row = $resultUserImage->fetch_assoc();
+                    $imageData = $row["Logo"];
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" style="width:30%">';
+                } else {
+                    echo "Image not found.";
+                }
+                ?>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
@@ -79,13 +81,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="col-8 ps-5 d-flex justify-content-center align-items-center flex-column"> 
                         <h7>Students</h7>
                         <h2>
-                            <?php
-                            $queryStudentCount = "SELECT COUNT(*) AS studentID FROM student WHERE instituteId=$userID";
-                            $resultStudentCount = $conn->query($queryStudentCount);
-                            $row = $resultStudentCount->fetch_assoc();
-                            $resultCount = $row["studentID"];
-                            echo $resultCount;
-                            ?>
+<?php
+$queryStudentCount = "SELECT COUNT(*) AS studentID FROM student WHERE instituteId=$userID";
+$resultStudentCount = $conn->query($queryStudentCount);
+$row = $resultStudentCount->fetch_assoc();
+$resultCount = $row["studentID"];
+echo $resultCount;
+?>
                         </h2>
                     </div>
                 </div> 
@@ -579,7 +581,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <!-- Add Student Details Modal -->
-        <form method="post" action="../dashboardPHP/StudentAdd.php" id="myform">
+        <form method="post" action="../DashboardPHP/StudentAdd.php" id="myform">Location:Employee/dashboard.php?id=" . $rows['id']
             <div class="modal fade" id="AddStudentDetail" tabindex="-1" aria-labelledby="AddStudentDetail" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -589,38 +591,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <div class="modal-body">
 
-                            <div class="row align-items-center">
-                                <div class="col-3">
-                                    <h6>Department</h6>
-                                </div>
-                                <div class="col-9 p-3">
 
-                                    <select class="form-select" onchange="changeFunc();" name="department" id="department" aria-label="Default select example">
-                                        <?php
-                                        $queryGetDepartment = "SELECT departmentName, departmentId  FROM department WHERE instituteId=$userID";
-                                        $resultDepartment = $conn->query($queryGetDepartment);
-                                        if (!$result) {
-                                            die("Query failed: " . $conn->error);
-                                        }
-
-                                        while ($rowdep = $resultDepartment->fetch_assoc()) {
-                                            echo '<option  value="' . $rowdep["departmentId"] . '">' . $rowdep["departmentName"] . '</option>';
-                                        }
-                                        ?> 
-
-
-                                    </select>
-                                </div>
-                            </div>
 
                             <div class="row align-items-center">
                                 <div class="col-3">
                                     <h6>Degree</h6>
                                 </div>
                                 <div class="col-9 p-3">
-                                    <select class="form-select" name="degree" name="degree" aria-label="Default select example">
+                                    <select class="form-select"  name="degree" id="degree" aria-label="Default select example">
+<?php
+$queryGetdegree = "SELECT degreeName,degreeId FROM degree WHERE instituteId=$userID";
+$resultDegree = $conn->query($queryGetdegree);
+if (!$resultDegree) {
+    die("Query failed: " . $conn->error);
+}
 
-
+while ($rowdeg = $resultDegree->fetch_assoc()) {
+    echo '<option  value="' . $rowdeg["degreeId"] . '">' . $rowdeg["degreeName"] . '</option>';
+}
+?> 
 
 
                                     </select>
@@ -641,10 +630,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                             <div class="row align-items-center pb-3">
                                 <div class="col-3">
-                                    <h6>Enrollment No</h6>
+                                    <h6>Entrollment No</h6>
                                 </div>
                                 <div class="col-9">
                                     <input type="text"  id="entrlmentNumber" name="entrlmentNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                </div>
+                            </div>
+                            
+                             <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Accedamic Year</h6>
+                                </div>
+                                <div class="col-9">
+                                    <input type="number"  id="accedamicYear" name="accedamicYear" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -672,6 +670,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </div>
                                 <div class="col-9">
                                     <input type="email" id="studentEmail" name="studentEmail" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center pb-3">
+                                <div class="col-3">
+                                    <h6>Gender</h6>
+                                </div>
+                                <div class="col-9">
+                                    <select  name="gender" class="form-select" aria-label="Default select example" required>
+
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+
+                                    </select>
                                 </div>
                             </div>
 
@@ -757,7 +769,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     </div>
                                     <div class="col-9">
                                         <select  name="guardianRelation" class="form-select" aria-label="Default select example" required>
-                                            <option selected>Relationship</option>
                                             <option value="Father">Father</option>
                                             <option value="Mother">Mother</option>
                                             <option value="Guardian">Guardian</option>
@@ -806,7 +817,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     </div>
                                 </div>
 
-
+                                <input type="hidden" name="Instituteid" value=<?php echo $userID; ?>>
+                                  <input type="hidden" name="instituteName" value=<?php echo $instituteName; ?>>
 
 
 
@@ -818,7 +830,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                             <div class="modal-footer">
                                 <button class="btn btn-primary bgcolli" data-bs-target="#AddStudentDetail" data-bs-toggle="modal">Back</button>
-                                <button type="button" class="btn btn-primary bgcolli" id="AddStudent" onclick="savestudent()" >Save Student</button>
+                                <button type="submit" class="btn btn-primary bgcolli" id="AddStudent" >Save Student</button>
 
 
                                 <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
@@ -1036,9 +1048,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-        <?php
+<?php
 // put your code here
-        ?>
+?>
 
 
         <script>
