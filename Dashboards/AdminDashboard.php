@@ -39,189 +39,191 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <a href="#">
                             <img src="../Images/Logo.png" alt="Home"  class="logo">
                         </a>
-                        <hr class="dashboardhr">
-                        <ul class="nav nav-pills flex-column mb-auto">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link navbarcolor"  onclick="Admindashborad()" aria-current="page">
-                                    <i class="fa-solid fa-gauge fa-xl icondash"></i>
-                                    Dashboard
-                                </a>
-                            </li>
-                            <li>
+                    </ul>
+                    <hr class="dashboardhr">
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link navbarcolor"  onclick="Admindashborad()" aria-current="page">
+                                <i class="fa-solid fa-gauge fa-xl icondash"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
 
-                                <a href="#" onclick="AdminStudent()" class="nav-link navbarcolor" >
-                                    <i class="fa-solid fa-users fa-xl icondash"></i>
-                                    Student
-                                </a>
+                            <a href="#" onclick="AdminStudent()" class="nav-link navbarcolor" >
+                                <i class="fa-solid fa-users fa-xl icondash"></i>
+                                Student
+                            </a>
 
-                            </li>
-                            <li>
-                                <a href="#" onclick="AdminStaff()" class="nav-link navbarcolor" >
-                                    <i class="fa-solid fa-user-tie fa-xl icondash"></i>
-                                    Staff
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" onclick="AdminCourse()" class="nav-link navbarcolor" >
-                                    <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
-                                    Course
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link navbarcolor" >
-                                    <i class="fa-solid fa-video fa-xl icondash"></i>
-                                    Webinar
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link navbarcolor" >
-                                    <i class="fa-sharp fa-solid fa-building-columns fa-xl icondash"></i>
-                                    Department
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" onclick="Adminprofile()" class="nav-link navbarcolor" >
-                                    <i class="fa-solid fa-user fa-xl icondash"></i>
-                                    Profile
-                                </a>
-                            </li>
-                            <br>
-                            <br>
+                        </li>
+                        <li>
+                            <a href="#" onclick="AdminStaff()" class="nav-link navbarcolor" >
+                                <i class="fa-solid fa-user-tie fa-xl icondash"></i>
+                                Staff
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="AdminCourse()" class="nav-link navbarcolor" >
+                                <i class="fa-solid fa-graduation-cap fa-xl icondash"></i>
+                                Course
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link navbarcolor" >
+                                <i class="fa-solid fa-video fa-xl icondash"></i>
+                                Webinar
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link navbarcolor" >
+                                <i class="fa-sharp fa-solid fa-building-columns fa-xl icondash"></i>
+                                Department
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="Adminprofile()" class="nav-link navbarcolor" >
+                                <i class="fa-solid fa-user fa-xl icondash"></i>
+                                Profile
+                            </a>
+                        </li>
+                        <br>
+                        <br>
 
+                    </ul>
+
+                    <hr class="dashboardhr">
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-power-off fa-lg loggedicon"></i>
+                            <strong class="loggedout">Log Out</strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
                         </ul>
+                    </div>
+                    <hr class="dashboardhr">
+                </div>
 
-                        <hr class="dashboardhr">
+                <!--  large Side bar end-->
+
+                <!--  small Side bar start-->
+                <div id="col1" class="col-1 flex-column colordashbord fixed-top">
+
+                    <hr class="dashboardhr">
+
+                    <div class="p-2">
+                        <button onclick="smalltobig()" id="smalltobig" style="background-color: transparent;
+                                border: none;"><i class="fa-solid fa-arrow-right-to-bracket fa-flip-vertical fa-lg" style="color: #ffffff;"></i></button>
+                    </div>
+                    <div class="p-2">
+                        <a href="#">
+                            <img src="../Images/Logo.png" alt="Home" class="img-fluid">
+                        </a>
+                    </div>
+                    <hr class="dashboardhr">
+                    <div style="margin-left: -9px;">
+                        <i onclick="Admindashborad()" href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
+                    </div>
+                    <div style="margin-left: -9px;">
+                        <i onclick="AdminStudent()" href="" class="fa-solid fa-users fa-xl icondash nav-link navbarcolorafter"></i>
+                    </div>
+                    <div style="margin-left: -9px;">
+                        <i  href="" onclick="AdminStaff()" class="fa-solid fa-user-tie fa-xl icondash nav-link navbarcolorafter"></i>
+                    </div>
+
+                    <div style="margin-left: -9px;">
+                        <i  href="" onclick="AdminCourse()" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
+                    </div>
+
+                    <div style="margin-left: -9px;">
+                        <i href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
+                    </div>
+                    <div style="margin-left: -9px;">
+                        <i href="" class="fa-sharp fa-solid fa-building-columns fa-xl icondash nav-link navbarcolorafter"></i>
+                    </div>
+                    <div style="margin-left: -9px;">
+                        <i href="" onclick="Adminprofile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
+                    </div>
+                    <br><br>
+
+
+                    <hr class="dashboardhr">
+                    <div style="margin-left: -9px;">
                         <div class="dropdown">
                             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-power-off fa-lg loggedicon"></i>
-                                <strong class="loggedout">Log Out</strong>
+                                <i class="fa-solid fa-power-off fa-lg icondash"></i>
+
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                <li><a class="dropdown-item" href="#">Log out</a></li>
                             </ul>
                         </div>
-                        <hr class="dashboardhr">
+                    </div>
+                    <hr class="dashboardhr">
+
+                </div>
+
+                <!--  small Side bar End-->
+
+                <!--  bottom bar start-->
+
+                <nav id="navbott" class="bg-black fixed-bottom">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col-2">
+                                <i onclick="Admindashborad()" href="" class="fa-solid fa-gauge fa-lg icondash nav-link navbarcolorafter"></i>   
+                            </div>
+                            <div class="col-2">
+                                <i  href="" onclick="AdminStudent()" class="fa-solid fa-users fa-lg icondash nav-link navbarcolorafter"></i> 
+                            </div>
+                            <div class="col-2">
+                                <i  href="" onclick="AdminStaff()" class="fa-solid fa-user-tie fa-lg icondash nav-link navbarcolorafter"></i> 
+                            </div>
+                            <div class="col-2">
+                                <i href="" onclick="AdminCourse()" class="fa-solid fa-graduation-cap fa-lg icondash nav-link navbarcolorafter"></i>
+                            </div>
+                            <div class="col-2">
+                                <i href="" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
+                            </div>
+                            <div class="col-1">
+                                <i href="" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
+                            </div>
+                            <div class="col-1">
+                                <i href="" onclick="Adminprofile()" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
+                            </div>
                         </div>
+                    </div>
+                </nav>
+                <!--  bottom bar end-->
 
-                        <!--  large Side bar end-->
+                <!--  body-->
+                <div id="col10"class="col-10 col10edit bg-body-black">
 
-                        <!--  small Side bar start-->
-                        <div id="col1" class="col-1 flex-column colordashbord fixed-top">
-
-                            <hr class="dashboardhr">
-
-                            <div class="p-2">
-                                <button onclick="smalltobig()" id="smalltobig" style="background-color: transparent;
-                                        border: none;"><i class="fa-solid fa-arrow-right-to-bracket fa-flip-vertical fa-lg" style="color: #ffffff;"></i></button>
-                            </div>
-                            <div class="p-2">
-                                <a href="#">
-                                    <img src="../Images/Logo.png" alt="Home" class="img-fluid">
-                                </a>
-                            </div>
-                            <hr class="dashboardhr">
-                            <div style="margin-left: -9px;">
-                                <i onclick="Admindashborad()" href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <div style="margin-left: -9px;">
-                                <i onclick="AdminStudent()" href="" class="fa-solid fa-users fa-xl icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <div style="margin-left: -9px;">
-                                <i  href="" onclick="AdminStaff()" class="fa-solid fa-user-tie fa-xl icondash nav-link navbarcolorafter"></i>
-                            </div>
-
-                            <div style="margin-left: -9px;">
-                                <i  href="" onclick="AdminCourse()" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
-                            </div>
-
-                            <div style="margin-left: -9px;">
-                                <i href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <div style="margin-left: -9px;">
-                                <i href="" class="fa-sharp fa-solid fa-building-columns fa-xl icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <div style="margin-left: -9px;">
-                                <i href="" onclick="Adminprofile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <br><br>
-
-
-                            <hr class="dashboardhr">
-                            <div style="margin-left: -9px;">
-                                <div class="dropdown">
-                                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-power-off fa-lg icondash"></i>
-
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
-
-                                        <li><a class="dropdown-item" href="#">Log out</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <hr class="dashboardhr">
-
-                        </div>
-
-                        <!--  small Side bar End-->
-
-                        <!--  bottom bar start-->
-
-                        <nav id="navbott" class="bg-black fixed-bottom">
-                            <div class="container text-center">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <i onclick="Admindashborad()" href="" class="fa-solid fa-gauge fa-lg icondash nav-link navbarcolorafter"></i>   
-                                    </div>
-                                    <div class="col-2">
-                                        <i  href="" onclick="AdminStudent()" class="fa-solid fa-users fa-lg icondash nav-link navbarcolorafter"></i> 
-                                    </div>
-                                    <div class="col-2">
-                                        <i  href="" onclick="AdminStaff()" class="fa-solid fa-user-tie fa-lg icondash nav-link navbarcolorafter"></i> 
-                                    </div>
-                                    <div class="col-2">
-                                        <i href="" onclick="AdminCourse()" class="fa-solid fa-graduation-cap fa-lg icondash nav-link navbarcolorafter"></i>
-                                    </div>
-                                    <div class="col-2">
-                                        <i href="" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
-                                    </div>
-                                    <div class="col-1">
-                                        <i href="" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
-                                    </div>
-                                    <div class="col-1">
-                                        <i href="" onclick="Adminprofile()" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </nav>
-                        <!--  bottom bar end-->
-
-                        <!--  body-->
-                        <div id="col10"class="col-10 col10edit bg-body-black">
-
-                            <?php include '../DashboardFiles/InstituteFirstPage.php'; ?>
-
-
-                        </div>
-
-
-
-
-
+                    <?php require '../DashboardFiles/InstituteFirstPage.php'; ?>
 
 
                 </div>
-            </div>
 
+
+
+
+
+
+
+            </div>
         </div>
+
+
         <?php
         // put your code here
         ?>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../JS/AdminDashboard.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
         <script src="../JS/StudentDashboard.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>

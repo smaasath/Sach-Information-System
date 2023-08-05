@@ -11,21 +11,61 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
 
+        
+        <?php
+        include '../DashboardPHP/connection.php';
+        ?>
         <!--  nav bar start-->
-        <div class="navbardah fixed-top d-flex flex-row-reverse">
-            <a class="p-3" href="#" style="margin-right: 30px;">
-                <i class="fa-solid fa-user fa-lg" style="color: #24457f;"></i>
-            </a>
-
-            <h6 class="p-3" href="#">
-                User Name
-            </h6>
+        <div class="navbardah fixed-top d-flex  align-items-center justify-content-end">
 
             <div id= "resimage" class="p-1 w-50 d-block d-sm-none">
                 <a href="#">
                     <img src="../Images/Logo.png" alt="Home" class="img-fluid" style="width: 20%">
                 </a>
             </div>
+
+            <h6 class="p-3" href="#">
+                <?php
+                $query = "SELECT instituteName FROM institute WHERE instituteId=1";
+                $result = $conn->query($query);
+                if (!$result) {
+                    die("Query failed: " . $conn->error);
+                }
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    echo $row["instituteName"];
+                }
+                ?>   
+            </h6>
+
+
+
+
+
+            <div class="col-1">
+                <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?php
+                    $imageId = 1; // Replace with the actual ID of the image you want to retrieve
+
+                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId=1";
+                    $resultUserImage = $conn->query($queryUserImage);
+
+                    if ($resultUserImage->num_rows > 0) {
+                        $row = $resultUserImage->fetch_assoc();
+                        $imageData = $row["Logo"];
+                        echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" style="width:30%">';
+                    } else {
+                        echo "Image not found.";
+                    }
+                    ?>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+
+                    <li><a class="dropdown-item" href="../index.php">Sign out</a></li>
+                </ul>
+            </div>
+
         </div>
 
         <!--  nav bar end-->
