@@ -5,6 +5,9 @@
 
 var navLinks = document.getElementsByClassName("nav-link");
 
+// JavaScript code to highlight the selected navigation link
+
+
 function setActiveLink(event) {
     // Remove 'active' class from all links
     for (var i = 0; i < navLinks.length; i++) {
