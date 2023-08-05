@@ -37,10 +37,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="WebinarHome.php" style="color:rgb(20, 108, 148)">Webinar</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="lOGIN\LOGIN\Login.php" style="color:rgb(20, 108, 148)">Join Now</a>
-                  </li>
-                  
+                  <form class="form-inline my-2 my-lg-0"  action="LOGIN\LOGIN\Login.php" method="get">
+                      <button class="btn btn my-2 my-sm-0" type="submit" style="color:white;background-color: rgb(20, 108, 148);">Log In</button>
+                  </form>   
               </div>
             </nav>
         </div>
@@ -99,8 +98,9 @@
                 <br>vision in mind, our student information system aims to empower students by providing a 
                 comprehensive platform for managing and accessing essential academic information.
                </small></p><br>
-               <button type="submit" class="btn btn-primary mb-2 custom-try-button" style="color:white;background-color: rgb(20, 108, 148);">Register Now</button>
-              
+               <form class="form-inline my-2 my-lg-0"  action="LOGIN\LOGIN\Login.php" method="get">
+                  <button type="submit" class="btn btn-primary mb-2 custom-try-button" style="color:white;background-color: rgb(20, 108, 148);">Sign In Now</button>
+               </form>
           </div>
           
           <div class="col-md-5 pt-4 mt-1">
