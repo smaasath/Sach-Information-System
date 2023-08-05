@@ -71,8 +71,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <br>
                             <li>
 
-                                <hr class="dashboardhr">
-                                <div class="shadow p-3 mb-4 rounded Coincard ag-courses-item_link">
+                                
+<!--                                <div class="shadow p-3 mb-4 rounded Coincard ag-courses-item_link">
 
                                     <div class="ag-courses-item_bg">
                                         <i class="fa-solid fa-coins fa-2xl coinicon" style="color: #146c94;"></i>
@@ -86,7 +86,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         10000
                                     </div>
 
-                                </div>
+                                </div>-->
 
                             </li>
                         </ul>

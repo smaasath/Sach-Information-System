@@ -29,20 +29,18 @@
               <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="#" style="color:rgb(20, 108, 148)">Home<span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="index.php" style="color:rgb(20, 108, 148)">Home<span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item" >
-                    <a class="nav-link" href="#" style="color:rgb(20, 108, 148)">About</a>
+                      <a class="nav-link" href="about us page\about us.html" style="color:rgb(20, 108, 148)">About</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#" style="color:rgb(20, 108, 148)">Webinar</a>
+                    <a class="nav-link" href="WebinarHome.php" style="color:rgb(20, 108, 148)">Webinar</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#" style="color:rgb(20, 108, 148)">Join Now</a>
+                    <a class="nav-link" href="lOGIN\LOGIN\Login.php" style="color:rgb(20, 108, 148)">Join Now</a>
                   </li>
-                  <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn btn-primary my-2 my-sm-0" type="submit" style="color:white;background-color: rgb(20, 108, 148);">Sign In</button>
-                  </form>
+                  
               </div>
             </nav>
         </div>
