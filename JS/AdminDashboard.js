@@ -129,33 +129,33 @@ function closeModals() {
 }
 
 
-function  Addstudent() {
+function  Addstudent(value) {
+    $.ajax({url: "../PopupBody/StudentAdd.php",
+        method: 'post',
+        data: {Ins_ID: value},
+        success: function (result) {
+             $(".modal-body").html(result);
+        }});
+     $.ajax({url: "../DashboardPHP/StudentAdd.php",
+        method: 'post',
+        data: {Ins_ID: value},
+        success: function (result) {
+            console.log("send");
+        }});
+    
     $('#AddStudentDetail').modal('show');
 }
 
-function AddGuardianDetail() {
-    var name = document.getElementById("studentName").value;
-    var entrlmentNumber = document.getElementById("entrlmentNumber").value;
-    var DOB = document.getElementById("DOB").value;
-    var studentContactNum = document.getElementById("studentContactNum").value;
-    var studentEmail = document.getElementById("studentEmail").value;
-    var studentAddress = document.getElementById("studentAddress").value;
-    var userName = document.getElementById("userName").value;
-    var password = document.getElementById("password").value;
 
-
-
-    if (name === "" || entrlmentNumber === "" || DOB === "" || studentContactNum === "" || studentEmail === "" || studentAddress === "" || userName === "" || password === "") {
-
-    } else {
-        $('#AddGuardianDetail').modal('show');
-        $('#AddStudentDetail').modal('hide');
-    }
-}
 
 function EditStudent() {
     console.log("asth");
     $('#EditStudentDetail').modal('show');
+
+}
+
+function AddStudent(value) {
+    
 
 }
 

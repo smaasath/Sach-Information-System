@@ -129,7 +129,7 @@ try {
 
 
 header("Location: ../Dashboards/AdminDashboard.php");
-?>
+
 
 
 
