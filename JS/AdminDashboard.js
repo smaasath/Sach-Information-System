@@ -90,8 +90,23 @@ function  Addstudent() {
 }
 
 function AddGuardianDetail() {
-    $('#AddGuardianDetail').modal('show');
-    $('#AddStudentDetail').modal('hide');
+    var name = document.getElementById("studentName").value;
+    var entrlmentNumber = document.getElementById("entrlmentNumber").value;
+    var DOB = document.getElementById("DOB").value;
+    var studentContactNum = document.getElementById("studentContactNum").value;
+    var studentEmail = document.getElementById("studentEmail").value;
+    var studentAddress = document.getElementById("studentAddress").value;
+    var userName = document.getElementById("userName").value;
+    var password = document.getElementById("password").value;
+
+
+
+    if (name === "" || entrlmentNumber === "" || DOB === "" || studentContactNum === "" || studentEmail === "" || studentAddress === "" || userName === "" || password === "") {
+
+    } else {
+        $('#AddGuardianDetail').modal('show');
+        $('#AddStudentDetail').modal('hide');
+    }
 }
 
 function EditStudent() {
@@ -182,7 +197,40 @@ function AddCourse() {
 function CourseDetail() {
     $('#CourseDetail').modal('show');
 }
- 
-function EditCourse(){
-       $('#EditCourseDetail').modal('show');
+
+function EditCourse() {
+    $('#EditCourseDetail').modal('show');
 }
+
+
+
+
+function changeFunc() {
+    var selectBox = document.getElementById("department");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    alert(selectedValue);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../DashboardPHP/DropDown.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText); // Response from PHP
+        }
+    };
+    xhr.send("data=" + encodeURIComponent(selectedValue));
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
