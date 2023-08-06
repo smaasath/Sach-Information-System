@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+$user_instituteId = $_SESSION["user_instituteId"];
+
+?>
+
+
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
