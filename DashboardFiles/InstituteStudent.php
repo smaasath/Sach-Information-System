@@ -198,8 +198,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         </div> 
                                         <div class="modal-footer">
 
-                                            <button type="button" class="btn btn-primary bgcolli" id="openModal2" onclick="openGuardianDetail()" >Guardian Details</button>
-                                            <button type="button" class="btn btn-primary bgcolli" onclick="openCourseDetail()">Course Details</button>
+                                            <button type="button" class="btn btn-primary bgcolli" id="openModal2" onclick="openGuardianDetail(<?php echo $rowtable["studentID"]?>)" >Guardian Details</button>
+                                            <button type="button" class="btn btn-primary bgcolli" onclick="openCourseDetail(<?php echo $rowtable["studentID"]?>)">Course Details</button>
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
@@ -229,66 +229,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <button type="button" class="btn-close" onclick="closeModals()"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h6>Full Name</h6>
-                                    </div>
-                                    <div class="col-8">
-                                        <p>Seeni Muhammadhu Amiza Umma</p>
-                                    </div>
-                                </div> 
-
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h6>Relationship</h6>
-                                    </div>
-                                    <div class="col-8">
-                                        <p>Mother</p>
-                                    </div>
-                                </div> 
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h6>Contact NO</h6>
-                                    </div>
-                                    <div class="col-8">
-                                        <p>0755701347</p>
-                                    </div>
-                                </div> 
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h6>Email</h6>
-                                    </div>
-                                    <div class="col-8">
-                                        <p>N/A</p>
-                                    </div>
-                                </div> 
-
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h6>Address</h6>
-                                    </div>
-                                    <div class="col-8">
-                                        <p>185,A/1,Hajiyar Road Sainthamaruthu-13</p>
-                                    </div>
-                                </div> 
-
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h6>Occupation</h6>
-                                    </div>
-                                    <div class="col-8">
-                                        <p>Taylor</p>
-                                    </div>
-                                </div> 
-
-
-
-
-
-
-
-                            </div>
                         </div>
                         <div class="modal-footer">
 
@@ -309,103 +249,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <button type="button" class="btn-close" onclick="closeModals()"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="container">
-                                <table class="table mb-0 table-hover">
-
-
-                                    <tr>
-
-                                        <th class="col-3">ID</th>
-                                        <th class="col-6">Course Name</th>
-                                        <th class="col-3">Score</th>
-
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td class="col-3">001</td>
-                                        <td class="col-6">Web Application</td>
-                                        <td class="col-3">88%</td>
-
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td class="col-3">001</td>
-                                        <td class="col-6">Web Application</td>
-                                        <td class="col-3">88%</td>
-
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td class="col-3">001</td>
-                                        <td class="col-6">Web Application</td>
-                                        <td class="col-3">88%</td>
-
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td class="col-3">001</td>
-                                        <td class="col-6">Web Application</td>
-                                        <td class="col-3">88%</td>
-
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td class="col-3">001</td>
-                                        <td class="col-6">Web Application</td>
-                                        <td class="col-3">88%</td>
-
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td class="col-3">001</td>
-                                        <td class="col-6">Web Application</td>
-                                        <td class="col-3">88%</td>
-
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td class="col-3">001</td>
-                                        <td class="col-6">Web Application</td>
-                                        <td class="col-3">88%</td>
-
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td class="col-3">001</td>
-                                        <td class="col-6">Web Application</td>
-                                        <td class="col-3">88%</td>
-
-
-                                    </tr>
-
-
-
-                                </table>
-
-
-
-
-
-
-
-
-                            </div>
+                            
                         </div>
                         <div class="modal-footer">
 
@@ -423,7 +267,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
             <!-- Add Student Details Modal -->
-            <form method="post" action="../DashboardPHP/StudentAdd.php" id="myform">Location:Employee/dashboard.php?id=" . $rows['id']
+            <form method="post" action="../DashboardPHP/StudentAdd.php" id="myform">
                 <div class="modal fade" id="AddStudentDetail" tabindex="-1" aria-labelledby="AddStudentDetail" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
