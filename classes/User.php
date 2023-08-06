@@ -14,16 +14,10 @@ class User{
     private $email;
     private $role;
 
-    public function __construct($email,$password)
+    public function __construct($userName,$password)
     {
-        /*$this->userId = $userId;
-        $this->userName = $userName;
-        $this->instituteId = $instituteId;
-        $this->studentId = $studentId;
-        $this->staffId = $staffId;
-        $this->role = $role;*/
         $this->password = $password;
-        $this->email = $email;
+        $this->userName = $userName;
         
     }
     public function getUserId(){
@@ -77,10 +71,10 @@ class User{
 
     public function login($con){
         try{
-            $con = DBConnector :: getConnection();
-            $query = "SELECT * FROM user WHERE email=?";
+            
+            $query = "SELECT * FROM user WHERE userName=?";
             $pstmt = $con->prepare($query);
-            $pstmt->bindValue(1,$this->email);
+            $pstmt->bindValue(1,$this->userName);
             $pstmt->execute();
 
             $rs = $pstmt->fetch(PDO::FETCH_OBJ);
@@ -121,6 +115,42 @@ class User{
             die("Error in User class's login function: ".$e->getMessage());
         }
     }
+
+    /*public function forgotPassword($con){
+        try{
+            $con = DBConnector :: getConnection();
+            $query = "SELECT * FROM user WHERE email=?";
+            $pstmt = $con->prepare($query);
+            $pstmt->bindValue(1,$this->email);
+            $pstmt->execute();
+
+            $rs = $pstmt->fetch(PDO::FETCH_OBJ);
+            $db_email = $rs->email;
+
+            if(!empty($rs)){
+                $new_password = $this->generateRandomPassword();
+                
+
+            }else{
+                return false;
+            }
+
+        }catch(PDOException $e){
+            die("Error in User class's forgotPassword method".$e->getMessage());
+        }
+
+    }
+
+    private function generateRandomPassword($length = 5) {
+        $possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        $reset_password = "";
+
+        for ($i = 0; $i < $length; $i++) {
+            $reset_password .= $possible[rand(0, strlen($possible) - 1)];
+        }
+
+        return $reset_password;
+    }*/
 
 }
 

@@ -7,9 +7,10 @@
             <file>file:/C:/xampp/htdocs/Sach-Information-System/Profile/Admin/validation.js</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/classes/DBConnector.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/classes/User.php</file>
-            <file>file:/C:/xampp/htdocs/Sach-Information-System/loginProcess.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/lOGIN/LOGIN/Login.php</file>
 
+            
+            <file>file:/C:/xampp/htdocs/Sach-Information-System/sign_out.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/Dashboards/StaffDashboard.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/DashboardFiles/InstituteCourse.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/index.php</file>
@@ -22,6 +23,7 @@
             <file>file:/C:/xampp/htdocs/Sach-Information-System/DashboardFiles/InstituteStaff.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/DashboardFiles/InstituteFirstPage.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/Dashboards/AdminDashboard.php</file>
+
 
         </group>
     </open-files>
