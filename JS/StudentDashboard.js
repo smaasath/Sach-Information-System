@@ -5,6 +5,9 @@
 
 var navLinks = document.getElementsByClassName("nav-link");
 
+// JavaScript code to highlight the selected navigation link
+
+
 function setActiveLink(event) {
     // Remove 'active' class from all links
     for (var i = 0; i < navLinks.length; i++) {
@@ -83,6 +86,7 @@ function handleWindowWidth() {
 
     } else if (windowWidth < 1336) {
 
+
         var div = document.getElementById("col2");
         div.style.display = "none";
 
@@ -150,7 +154,7 @@ function Course() {
     xhttp.onload = function () {
         document.getElementById("col10").innerHTML = this.responseText;
     };
-    xhttp.open("GET", "../DashboardFiles/", true);
+    xhttp.open("GET", "../DashboardFiles/StudentCourse.php", true);
     xhttp.send();
 }
 
@@ -178,46 +182,19 @@ function openwebinardetails() {
 }
 
 
-function closeModals() {
-   $('#webinardetail').modal('hide')
+function closeModalsss() {
+   $('#webinardetail').modal('hide');
+   $('#courseDetails').modal('hide');
+   }
 
-function handleWindowWidth() {
-    var windowWidth = window.innerWidth;
-
-    // Code to execute based on the window width
-    if (windowWidth < 1336) {
-
-        var div = document.getElementById("col2");
-        div.style.display = "none";
-
-        var div = document.getElementById("col1");
-        div.style.display = "block";
-
-        var col2element = document.getElementById("col10");
-        var newClassNamecol2 = "col-11 content col11edit";
-        col2element.className = newClassNamecol2;
-
-    } else {
-        var div = document.getElementById("col2");
-        div.style.display = "block";
-
-        var div = document.getElementById("col1");
-        div.style.display = "none";
-
-        var col2element = document.getElementById("col10");
-        var newClassNamecol2 = "col-10 content col11edit";
-        col2element.className = newClassNamecol2;
-    }
+function openwebinareditdetails() {
+    $('#webinareditdetail').modal('show');
+   
 }
 
-// Function to run continuously while monitoring the width changes
-function runFunctionOnResize() {
-    handleWindowWidth();
-    // Add any additional code or function calls here
+
+
+
+function opencoursedetails(){
+    $('#courseDetails').modal('show');
 }
-
-// Call the function initially
-runFunctionOnResize();
-
-// Attach the function to the window resize event
-window.addEventListener('resize', runFunctionOnResize);

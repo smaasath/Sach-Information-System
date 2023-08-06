@@ -41,6 +41,16 @@ function Adminprofile() {
 
 }
 
+function AdminCourse() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "../DashboardFiles/InstituteCourse.php", true);
+    xhttp.send();
+
+}
+
 
 function openStudentDetails() {
     $('#StudentDetail').modal('show');
@@ -67,7 +77,11 @@ function closeModals() {
     $('#StaffDetail').modal('hide');
     $('#StaffCourseDetail').modal('hide');
     $('#AddStaffDetail').modal('hide');
-      $('#EditStaffDetail').modal('hide');
+    $('#EditStaffDetail').modal('hide');
+    $('#courseDetails').modal('hide');
+    $('#AddCourse').modal('hide');
+    $('#CourseDetail').modal('hide');
+    $('#EditCourseDetail').modal('hide');
 }
 
 
@@ -76,8 +90,23 @@ function  Addstudent() {
 }
 
 function AddGuardianDetail() {
-    $('#AddGuardianDetail').modal('show');
-    $('#AddStudentDetail').modal('hide');
+    var name = document.getElementById("studentName").value;
+    var entrlmentNumber = document.getElementById("entrlmentNumber").value;
+    var DOB = document.getElementById("DOB").value;
+    var studentContactNum = document.getElementById("studentContactNum").value;
+    var studentEmail = document.getElementById("studentEmail").value;
+    var studentAddress = document.getElementById("studentAddress").value;
+    var userName = document.getElementById("userName").value;
+    var password = document.getElementById("password").value;
+
+
+
+    if (name === "" || entrlmentNumber === "" || DOB === "" || studentContactNum === "" || studentEmail === "" || studentAddress === "" || userName === "" || password === "") {
+
+    } else {
+        $('#AddGuardianDetail').modal('show');
+        $('#AddStudentDetail').modal('hide');
+    }
 }
 
 function EditStudent() {
@@ -111,6 +140,27 @@ function savestudent() {
 }
 
 
+function enrollstudent() {
+    Swal.fire({
+        title: 'Do you want to enroll to this webinar?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Enroll',
+        denyButtonText: `No`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            closeModals();
+            Swal.fire('Enrolled!', '', 'success')
+        } else if (result.isDenied) {
+            closeModals();
+            Swal.fire('Not enrolled', '', 'info')
+        }
+    })
+}
+
+
+
 
 function showpassword() {
     var x = document.getElementById("mypass");
@@ -139,3 +189,48 @@ function  AddStaff() {
 function  EditStaff() {
     $('#EditStaffDetail').modal('show');
 }
+
+function AddCourse() {
+    $('#AddCourse').modal('show');
+}
+
+function CourseDetail() {
+    $('#CourseDetail').modal('show');
+}
+
+function EditCourse() {
+    $('#EditCourseDetail').modal('show');
+}
+
+
+
+
+function changeFunc() {
+    var selectBox = document.getElementById("department");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    alert(selectedValue);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../DashboardPHP/DropDown.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText); // Response from PHP
+        }
+    };
+    xhr.send("data=" + encodeURIComponent(selectedValue));
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

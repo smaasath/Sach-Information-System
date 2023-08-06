@@ -7,7 +7,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Texus
 */
 .colordashbord{
-
     background-color: #001C30!important;
 
     height: -webkit-fill-available;
@@ -23,7 +22,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     font-weight: bold !important;
     cursor: pointer;
     width: auto;
-
+}
 
 .navbarcolor.before {
     background-color: #64CCC5 !important;
@@ -135,6 +134,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     transform: scale(1.35);
     color: white !important;
 
+
 }
 .col10edit{
 
@@ -213,38 +213,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     max-width: -webkit-fill-available !important;
   
 }
-.col10edit{
-   
-    width: 86% !important;
-    
-    margin-right: -14px !important;
-    
-    
-
-}
-
-.col11edit{
-   
-    width: 94% !important;
-    
-    margin-right: -14px !important;
-    
-    
-    
-
-}
-
-.navbarcolorafter{
-     color: #fff !important;
-     padding: 29px 25px 25px 25px !important;
-     font-size: 25px !important;
-     font-weight: bold !important;
-     cursor: pointer;
-     width: 68px !important;
-      border-radius: 12px;
-    width: fit-content;
-}
-
 @media screen and (max-width: 480px) {
     .nameimagecontainer{
         background-color: black;
@@ -309,11 +277,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 
-}
-.navbarcolorafter.active:hover {
-  
-  color: #f5f1f0!important;
-
 
 .backcolor{
     background-color: #afd3e3 !important;
@@ -358,4 +321,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     transform: scale(1.1);
     background-color: #64CCC5 !important;
 
+}
+
+.bgwebcour{
+    background-color: #afd3e3 !important;
+}
+.mrl{
+    margin-left: 300px;
 }
