@@ -6,15 +6,15 @@ require_once './classes/User.php';
 use classes\DBConnector;
 use classes\User;
 
-if(isset($_POST["email"],$_POST["password"])){
-    if(empty($_POST["email"]) || empty($_POST["password"])){
+if(isset($_POST["username"],$_POST["password"])){
+    if(empty($_POST["username"]) || empty($_POST["password"])){
         $location = "LOGIN/LOGIN/Login.php?status=1";
     }
     else{
-        $email = $_POST["email"];
+        $username = $_POST["username"];
         $password = $_POST["password"];
 
-        $user = new User($email,$password);
+        $user = new User($username,$password);
 
         if($user->login(DBConnector::getConnection())){
             $_SESSION["user_role"] = $user->getRole(); 
