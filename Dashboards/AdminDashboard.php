@@ -1,7 +1,14 @@
 <?php
 session_start();
 
-$user_instituteId = $_SESSION["user_instituteId"];
+$ins_ID = $_SESSION["user_instituteId"];
+$expiration = time() + (30 * 24 * 60 * 60); 
+setcookie("Ins_Login", $ins_ID, $expiration, "/");
+
+if (isset($_COOKIE['Ins_Login'])) {
+    $UserID = $_COOKIE['Ins_Login'];
+    echo "Cookie value: " . $UserID;
+}
 
 ?>
 
@@ -226,20 +233,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <?php
  
-        if (isset($_POST['variable'])) {
-            $variable = $_POST['variable'];
-            // You can do further processing or store the variable as needed
-            // For example: update a database, session, etc.
-            // Optionally, you can echo a response back
-            echo "Variable updated successfully!";
-            exit;
-        }
+   
+
+
         ?>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../JS/AdminDashboard.js"></script>
-
+        <script>
+        function logout() {
+        // Delete the cookie by setting its expiration time to a past date
+        document.cookie = "user_token=Ins_Login; expires=Thu, 01 Jan 1970 00:00:00 UTC; ";
+        
+        // Redirect to the logout script or another page
+        window.location.href = "../index.php";
+    }
+        </script>
         <script src="../JS/StudentDashboard.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>

@@ -13,7 +13,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
         <?php
         include '../DashboardPHP/connection.php';
-        $userID = 1;
+
+       
+
+        $userID= $_COOKIE['Ins_Login'];
         ?>
         <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex  align-items-center justify-content-end">
@@ -26,7 +29,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <h6 class="p-3" href="#">
                 <?php
-                $query = "SELECT instituteName FROM institute WHERE instituteId=1";
+                $query = "SELECT instituteName FROM institute WHERE instituteId=" . $userID;
                 $result = $conn->query($query);
                 if (!$result) {
                     die("Query failed: " . $conn->error);
@@ -46,7 +49,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="col-1">
                 <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                     <?php
-                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId=1";
+                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId=" . $userID;
                     $resultUserImage = $conn->query($queryUserImage);
 
                     if ($resultUserImage->num_rows > 0) {
@@ -60,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                    <li><a class="dropdown-item" href="../index.php">Sign out</a></li>
+                    <li><a class="dropdown-item" onclick="logout()" href="../index.php">Sign out</a></li>
                 </ul>
             </div>
 
@@ -304,7 +307,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
             <!-- Add Student Details Modal -->
-     <form method="post" action="../DashboardPHP/StudentAdd.php" id="editform">
+            <form method="post" action="../DashboardPHP/StudentAdd.php" id="editform">
                 <div class="modal fade" id="AddStudentDetail" tabindex="-1" aria-labelledby="AddStudentDetail" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -327,7 +330,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                 </div>
-     </form>
+            </form>
             <!-- Add Student Details Modal -->
 
 

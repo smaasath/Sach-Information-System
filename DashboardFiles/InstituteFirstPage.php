@@ -24,7 +24,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <?php
         include '../DashboardPHP/connection.php';
-        $userID = 1;
+       $userID= $_COOKIE['Ins_Login'];
         ?>
         <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex  align-items-center justify-content-end">
