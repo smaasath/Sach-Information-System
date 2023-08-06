@@ -74,7 +74,7 @@ function ShowErrorMessage(InputBoxID,Message){
 	
 }
 
-function isValidEmail(email){
+/*function isValidEmail(email){
 
 	const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -87,7 +87,21 @@ function isValidEmail(email){
 	}
 
 	return "valid";
+}*/
+function isValidUsername(username) {
+	const usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+  
+	if (username === "") {
+	  return "Please fill the field.";
+	}
+  
+	if (usernameRegex.test(username) === false) {
+	  return "This is not a valid username.";
+	}
+  
+	return "valid";
 }
+  
 
 function isValidPassword(password) {
 	
