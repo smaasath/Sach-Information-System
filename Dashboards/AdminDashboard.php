@@ -217,7 +217,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <?php
-        // put your code here
+ 
+        if (isset($_POST['variable'])) {
+            $variable = $_POST['variable'];
+            // You can do further processing or store the variable as needed
+            // For example: update a database, session, etc.
+            // Optionally, you can echo a response back
+            echo "Variable updated successfully!";
+            exit;
+        }
         ?>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         
