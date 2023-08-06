@@ -37,7 +37,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             $row = $result->fetch_assoc();
             echo $row["instituteName"];
         }
-        $instituteName=$row["instituteName"];
+       
         ?>   
             </h6>
 
@@ -818,7 +818,9 @@ while ($rowdeg = $resultDegree->fetch_assoc()) {
                                 </div>
 
                                 <input type="hidden" name="Instituteid" value=<?php echo $userID; ?>>
-                                  <input type="hidden" name="instituteName" value=<?php echo $instituteName; ?>>
+                     
+
+
 
 
 
