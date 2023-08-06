@@ -63,6 +63,7 @@ function openStudentDetails(value) {
             $(".modal-body").html(result);
         }});
     $('#StudentDetail').modal('show');
+    
 
 
 }

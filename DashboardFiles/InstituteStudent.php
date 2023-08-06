@@ -137,25 +137,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <table class="table mb-0">
 
 
-                    <tr>
 
-                        <th class="col-1 bgcol p-2">ID</th>
-                        <th class="col-3 bgcol p-2">Name</th>
-                        <th class="col-2 bgcol p-2">Gender</th>
-                        <th class="col-3 bgcol p-2">Contact No</th>
-                        <th class="col-1 bgcol p-2">View</th>
-                        <th class="col-1 bgcol p-2">Edit</th>
-
-                    </tr>
 
 
                 </table>
                 <!-- Table Head -->
             </div>
             <!-- Table body -->
-            <div class="container bg-white mt-0" style=" max-height: 373px; overflow: scroll;">
+            <div class="container bg-white mt-0" style=" max-height: 500px; overflow: scroll;">
                 <table class="table table-hover">
+                    <tr class="sticky-top">
 
+                        <th class="col-1 bgcol p-2">ID</th>
+                        <th class="col-3 bgcol p-2">Name</th>
+                        <th class="col-2 bgcol p-2">Gender</th>
+                        <th class="col-3 bgcol p-2">Contact No</th>
+                        <th class="col-3 bgcol p-2"></th>
+                        
+
+                    </tr>
                     <!-- Table row -->
 
 
@@ -174,38 +174,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 <td class = "col-3"><?php echo $rowtable["studentName"] ?></td>
                                 <td class = "col-2"><?php echo $rowtable["gender"] ?></td>
                                 <td class = "col-3"><?php echo $rowtable["phoneNo"] ?></td>
-                                <td class = "col-1"><button type = "button" class = "btn btn-info" onclick = "openStudentDetails(<?php echo $rowtable["studentID"]?>)">View</button></td>
-                                <td class = "col-1"><button type = "button" class = "btn btn-secondary" onclick = "EditStudent()">Edit</button></td>
+                                <td class = "col-3">
+                                    <i class="fa-solid fa-user-graduate fa-xl m-2" onclick = "openStudentDetails(<?php echo $rowtable["studentID"] ?>)"></i>
+                                    <i class="fa-solid fa-user-shield fa-xl m-2" onclick = "openGuardianDetail(<?php echo $rowtable["studentID"] ?>)"></i>
+                                    <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "openCourseDetail(<?php echo $rowtable["studentID"] ?>)"></i>
+                                    <i class="fa-solid fa-user-pen fa-xl m-2" onclick = "EditStudent()"></i>
+
+
+                                </td>
+
+
+
                             </tr>
 
 
                             <!-- Table row -->
-
-
-
-
-
-
-                            <!-- Student Details Modal -->
-                            <div class="modal fade" id="StudentDetail" tabindex="-1" aria-labelledby="StudentDetail" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="StudentDetail">Student Details</h1>
-                                            <button type="button" class="btn-close" onclick="closeModals()"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                        </div> 
-                                        <div class="modal-footer">
-
-                                            <button type="button" class="btn btn-primary bgcolli" id="openModal2" onclick="openGuardianDetail(<?php echo $rowtable["studentID"]?>)" >Guardian Details</button>
-                                            <button type="button" class="btn btn-primary bgcolli" onclick="openCourseDetail(<?php echo $rowtable["studentID"]?>)">Course Details</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Student Details Modal -->
 
                             <?php
                         }
@@ -220,6 +203,32 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
 
 
+
+
+            <!-- Student Details Modal -->
+            <div class="modal fade" id="StudentDetail" tabindex="-1" aria-labelledby="StudentDetail" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="StudentDetail">Student Details</h1>
+                            <button type="button" class="btn-close" onclick="closeModals()"></button>
+                        </div>
+                        <div class="modal-body">
+                        </div> 
+                        <div class="modal-footer">
+
+
+
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Student Details Modal -->
+
+
+
+
             <!-- Guardian Details Modal -->
             <div class="modal fade" id="GuardianDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
                 <div class="modal-dialog">
@@ -232,7 +241,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                         <div class="modal-footer">
 
-                            <button class="btn btn-primary bgcolli" data-bs-target="#StudentDetail" data-bs-toggle="modal">Back</button>
+                    
                             <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
                         </div>
                     </div>
@@ -249,11 +258,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <button type="button" class="btn-close" onclick="closeModals()"></button>
                         </div>
                         <div class="modal-body">
-                            
+
                         </div>
                         <div class="modal-footer">
 
-                            <button class="btn btn-primary bgcolli" data-bs-target="#StudentDetail" data-bs-toggle="modal">Back</button>
+                         
                             <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
                         </div>
                     </div>

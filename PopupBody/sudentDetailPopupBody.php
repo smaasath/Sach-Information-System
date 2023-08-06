@@ -20,31 +20,86 @@ if (isset($_POST["std_ID"])) {
         $resultdegree = $conn->query($querydegree);
         $rowDegree = $resultdegree->fetch_assoc();
         $output = '  
-  <div class="container">
-                                <table class="table mb-0 table-hover">
+    <div class="container">
+    
+                            <div class="row">
+                                    <div class="col-4">
+                                        <h6>Degree</h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>' . $rowDegree["degreeName"] . '</p>
+                                    </div>
+                                </div> 
+
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h6>Full Name</h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>' . $row["studentName"] . '</p>
+                                    </div>
+                                </div> 
+
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h6>Entrollment Number</h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>' . $row["entrollmentNumber"] . '</p>
+                                    </div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h6>DOB</h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>' . $row["studentDOB"] . '</p>
+                                    </div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h6>Address</h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>' . $row["address"] . '</p>
+                                    </div>
+                                </div> 
+
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h6>Phone Number</h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>' . $row["phoneNo"] . '</p>
+                                    </div>
+                                </div> 
+
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h6>Coins</h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>' . $row["coinValue"] . '</p>
+                                    </div>
+                                </div> 
+                                
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h6>Acedemic Year</h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <p>' . $row["acedemicYear"] . '</p>
+                                    </div>
+                                </div> 
 
 
-                                    <tr>
-
-                                        <th class="col-3">ID</th>
-                                        <th class="col-6">Course Name</th>
-                                        <th class="col-3">Score</th>
 
 
-                                    </tr>
-
-                                    <tr>
-
-                                        <td class="col-3">001</td>
-                                        <td class="col-6">Web Application</td>
-                                        <td class="col-3">88%</td>
 
 
-                                    </tr>
 
-                                </table>
-
-                            </div>';
+                            </div>
+                        </div>';
     }
 
    

@@ -11,7 +11,7 @@ if (isset($_POST["std_ID"])) {
     $query = "SELECT * FROM guardian WHERE StudentId=" . $_POST["std_ID"];
     $result = $conn->query($query);
     if (!$result) {
-        die("Query failed: " . $conn->error);
+        echo 'Gaurdian not Added';
     }
 
     if ($result->num_rows > 0) {
@@ -78,9 +78,12 @@ if (isset($_POST["std_ID"])) {
 
                             </div>
                         </div>';
-    }
+         echo $output;
+    }else {
+    echo 'parent not added'; 
+}
 
    
 
-    echo $output;
-}
+   
+} 
