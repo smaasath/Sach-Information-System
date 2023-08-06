@@ -213,6 +213,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                 </div> 
                             </div>
                         </div>
+                        
+                          <div class="col-md-4 ">
+                            <div class=" backcolor m-2 p-2 mb-4 rounded-4 admincount ">
+                                <div class="row">
+                                    <div class="col-1 text-center">   
+                                        <i  href="" class="fa-solid fa-graduation-cap fa-2xl p-5 ps-1"></i>
+                                    </div>
+                                    <div class="col-8 ps-5 d-flex justify-content-center align-items-center flex-column"> 
+                                        <h7>Degree</h7>
+                                        <h2>
+                                            <?php
+                                            $querydeg = "SELECT COUNT(*) AS degreeId FROM degree WHERE instituteId=$userID";
+                                            $resultdegcou = $conn->query($querydeg);
+                                            $rowdeg = $resultdegcou->fetch_assoc();
+                                            $resultdeg = $rowdeg["degreeId"];
+                                            echo $resultdeg;
+                                            ?>
+                                        </h2>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
                     
                     </div> 
 

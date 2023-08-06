@@ -63,7 +63,7 @@ function openStudentDetails(value) {
             $(".modal-body").html(result);
         }});
     $('#StudentDetail').modal('show');
-    
+
 
 
 }
@@ -92,6 +92,23 @@ function openCourseDetail(value) {
     $('#StudentDetail').modal('hide');
 }
 
+function openeditDetailsStudent(value) {
+    console.log(value);
+    $.ajax({url: "../PopupBody/StudentEditPopup.php",
+        method: 'post',
+        data: {std_ID: value},
+        success: function (result) {
+            $(".modal-body").html(result);
+        }});
+    $.ajax({url: "../DashboardPHP/studentEdit.php",
+        method: 'post',
+        data: {std_ID: value},
+        success: function (result) {
+            console.log("send");
+        }});
+    $('#stdEdit').modal('show');
+}
+
 function closeModals() {
     $('#GuardianDetail').modal('hide');
     $('#StudentDetail').modal('hide');
@@ -108,6 +125,7 @@ function closeModals() {
     $('#AddCourse').modal('hide');
     $('#CourseDetail').modal('hide');
     $('#EditCourseDetail').modal('hide');
+    $('#stdEdit').modal('hide');
 }
 
 
@@ -136,6 +154,7 @@ function AddGuardianDetail() {
 }
 
 function EditStudent() {
+    console.log("asth");
     $('#EditStudentDetail').modal('show');
 
 }
@@ -157,10 +176,16 @@ function savestudent() {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
             closeModals();
-            Swal.fire('Saved!', '', 'success')
+            Swal.fire('Saved!', '', 'success');
+            $.ajax({url: "../PopupBody/StudentEditPopup.php",
+                method: 'post',
+                data: {std_ID: value},
+                success: function (result) {
+                    $(".modal-body").html(result);
+                }});
         } else if (result.isDenied) {
             closeModals();
-            Swal.fire('Changes are not saved', '', 'info')
+            Swal.fire('Changes are not saved', '', 'info');
         }
     })
 }
@@ -252,7 +277,30 @@ function changeFunc() {
 
 
 
+function studel(value) {
+    Swal.fire({
+        title: 'Are You Sure To Detele This?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({url: "../DashboardPHP/stdDelete.php",
+                method: 'post',
+                data: {std_ID: value},
+                success: function (result) {
+                    console.log("send");
+                }});
+            Swal.fire('Deleted!', '', 'success')
+        } else if (result.isDenied) {
 
+            Swal.fire('Not Deleted', '', 'info')
+        }
+    });
+
+}
 
 
 

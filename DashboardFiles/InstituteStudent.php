@@ -110,22 +110,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                     <div class="col-3"> 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Department</option>
-                            <option value="1">Department1</option>
-                            <option value="2">Department2</option>
-                            <option value="3">Department3</option>
-                        </select>
+                       <select class="form-select"  name="degree" id="degree" aria-label="Default select example">
+                                            <?php
+                                            $queryGetdegree = "SELECT degreeName,degreeId FROM degree WHERE instituteId=$userID";
+                                            $resultDegree = $conn->query($queryGetdegree);
+                                            if (!$resultDegree) {
+                                                die("Query failed: " . $conn->error);
+                                            }
+
+                                            while ($rowdeg = $resultDegree->fetch_assoc()) {
+                                                echo '<option  value="' . $rowdeg["degreeId"] . '">' . $rowdeg["degreeName"] . '</option>';
+                                            }
+                                            ?> 
+
+
+                                        </select>
                     </div>
 
-                    <div class="col-3"> 
-                        <select class="form-select"  id="as" aria-label="Default select example">
-                            <option selected>Course</option>
-                            <option value="1">Course 1</option>
-                            <option value="2">Course 2</option>
-                            <option value="3">Course 3</option>
-                        </select>
-                    </div>
+                
                     <div class="col-3 "> 
                         <button type="button" class="btn btn-primary bgcol" onclick="Addstudent()">Add Student</button>
                     </div>
@@ -144,7 +146,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <!-- Table Head -->
             </div>
             <!-- Table body -->
-            <div class="container bg-white mt-0" style=" max-height: 500px; overflow: scroll;">
+            <div class="container bg-white mt-0" style=" max-height: 700px; overflow: scroll;">
                 <table class="table table-hover">
                     <tr class="sticky-top">
 
@@ -178,7 +180,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <i class="fa-solid fa-user-graduate fa-xl m-2" onclick = "openStudentDetails(<?php echo $rowtable["studentID"] ?>)"></i>
                                     <i class="fa-solid fa-user-shield fa-xl m-2" onclick = "openGuardianDetail(<?php echo $rowtable["studentID"] ?>)"></i>
                                     <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "openCourseDetail(<?php echo $rowtable["studentID"] ?>)"></i>
-                                    <i class="fa-solid fa-user-pen fa-xl m-2" onclick = "EditStudent()"></i>
+                                    <i class="fa-solid fa-user-pen fa-xl m-2" onclick = "openeditDetailsStudent(<?php echo $rowtable["studentID"] ?>)"></i>
+                                    <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="studel(<?php echo $rowtable["studentID"] ?>)"></i>
 
 
                                 </td>
@@ -268,6 +271,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                 </div>
             </div>
+            <!-- Course Details Modal -->
+            
+            
+             <!-- student Edit Modal -->
+              <form method="post" action="../DashboardPHP/studentEdit.php" id="editform">
+            <div class="modal fade" id="stdEdit" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="CourseDetail">Edit Details</h1>
+                            <button type="button" class="btn-close" onclick="closeModals()"></button>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+
+                          <button type="submit" class="btn btn-primary bgcolli" id="editstudent" >Save</button>
+                         
+                            <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              </form>
             <!-- Course Details Modal -->
 
 
@@ -541,6 +569,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
             <!-- Edit Student Details Modal -->
+            
             <div class="modal fade" id="EditStudentDetail" tabindex="-1" aria-labelledby="EditStudentDetail" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -552,75 +581,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>First Name</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" value="Mohamed" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Last Name</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" value="Aasath" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-
-
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Contact No</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" Value="0755701765" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Email</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="email" value="aasadh200@gmail.com" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Address</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" value="sainthamaruthu" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <hr>
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>User Name</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" value="sm_aasath" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Password</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="Password" value="aasath" id="mypass" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    <input type="checkbox" onclick="showpassword()">Show Password
-                                </div>
-                            </div>
-
+                       
 
 
 
@@ -631,9 +592,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary bgcolli" id="EditStudent" onclick="savestudent()" >Save</button>
+                            <button type="button" class="btn btn-primary bgcolli" id="EditStudent" onclick="savestudent" >Save</button>
 
-                            <button type="button" class="btn btn-primary bgcolli" id="EditGuardian" onclick="EditGuardianDetail()" >Edit Guardian</button>
+                           
 
                             <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
                         </div>
@@ -644,119 +605,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <!-- Edit Student Details Modal -->
 
 
-            <!-- Edit Guardian Details Modal -->
-            <div class="modal fade" id="EditGuardianDetail" tabindex="-1" aria-labelledby="EditGuardianDetail" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="EditGuardianDetail">Edit Guardian Detail</h1>
-                            <button type="button" class="btn-close" onclick="closeModals()"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row align-items-center">
-
-
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Full Name</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" Value="Amiza Umma" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    </div>
-                                </div>
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Relationship</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>Relationship</option>
-                                            <option value="1">Mother</option>
-                                            <option value="2">Father</option>
-                                            <option value="3">Gaurdian</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Contact No</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" Value="0755701347" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    </div>
-                                </div>
-
-
-
-
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Email</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="email" Value="N/A" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    </div>
-                                </div>
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Address</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" Value="Sainthamaruthu" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    </div>
-                                </div>
-
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Occupation</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" Value="Taylor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    </div>
-                                </div>
-
-
-
-
-
-
-
-
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button class="btn btn-primary bgcolli" data-bs-target="#EditStudentDetail" data-bs-toggle="modal">Back</button>
-                                <button type="button" class="btn btn-primary bgcolli" id="EditStudent" onclick="savestudent()" >Save</button>
-
-                                <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Edit Guardian Details Modal -->
-
-
+            
 
             <?php
 // put your code here
             ?>
 
 
-            <script>
-                function changeFunc() {
-                    var selectBox = document.getElementById("department");
-                    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-                    alert(selectedValue);
-                }
-            </script>
+        
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
