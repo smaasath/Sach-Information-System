@@ -17,25 +17,36 @@ if(isset($_POST["username"],$_POST["password"])){
         $user = new User($username,$password);
 
         if($user->login(DBConnector::getConnection())){
-            $_SESSION["user_role"] = $user->getRole(); 
+            $_SESSION["user_role"] = $user->getRole();
 
             switch($_SESSION["user_role"]){
                 case 1:
                     $location = "Dashboards/SuperAdminDashboard.php";
                     break;
                 case 2:
+                    $_SESSION["user_instituteId"] = $user->getInstituteId();
                     $location = "Dashboards/AdminDashboard.php";
                     break;
                 case 3:
+                    $_SESSION["user_staffId"] = $user->getStaffId();
                     $location = "Dashboards/StaffDashboard.php";
                     break;
                 case 4:
+                    $_SESSION["user_studentId"] = $user->getStudentId();
                     $location = "Dashboards/studentDadhboard.php";
                     break;
                 default:
                     $location = "LOGIN/LOGIN/Login.php?status=3";
                     break;
             }
+
+            
+            $cookie_name = "user_login_session";
+            $cookie_value = session_id();
+            $cookie_expiry = time() + 7200; 
+            $cookie_path = "/"; 
+
+            setcookie($cookie_name, $cookie_value, $cookie_expiry, $cookie_path);
         }
         else{
             $location = "LOGIN/LOGIN/Login.php?status=2"; 
