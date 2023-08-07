@@ -154,10 +154,7 @@ function EditStudent() {
 
 }
 
-function AddStudent(value) {
-    
 
-}
 
 function EditGuardianDetail() {
     $('#EditGuardianDetail').modal('show');
@@ -165,30 +162,7 @@ function EditGuardianDetail() {
 }
 
 
-function savestudent() {
-    Swal.fire({
-        title: 'Do you want to save the changes?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: 'Save',
-        denyButtonText: `Don't save`,
-    }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            closeModals();
-            Swal.fire('Saved!', '', 'success');
-            $.ajax({url: "../PopupBody/StudentEditPopup.php",
-                method: 'post',
-                data: {std_ID: value},
-                success: function (result) {
-                    $(".modal-body").html(result);
-                }});
-        } else if (result.isDenied) {
-            closeModals();
-            Swal.fire('Changes are not saved', '', 'info');
-        }
-    })
-}
+
 
 
 function enrollstudent() {
@@ -224,13 +198,27 @@ function showpassword() {
 
 
 
-function  OpenStaffStaff() {
+function  OpenStaffStaff(value) {
+        console.log(value);
+    $.ajax({url: "../PopupBody/staffDetailsPopup.php",
+        method: 'post',
+        data: {staffId: value},
+        success: function (result) {
+            $(".modal-body").html(result);
+        }});
     $('#StaffDetail').modal('show');
 }
 
-function openstaffCourseDetail() {
+function openstaffCourseDetail(value) {
+     console.log(value);
+    $.ajax({url: "../PopupBody/staffCoursePopup.php",
+        method: 'post',
+        data: {staffId: value},
+        success: function (result) {
+            $(".modal-body").html(result);
+        }});
     $('#StaffCourseDetail').modal('show');
-    $('#StaffDetail').modal('hide');
+    
 }
 
 function  AddStaff(value) {
@@ -240,17 +228,31 @@ function  AddStaff(value) {
         success: function (result) {
              $(".modal-body").html(result);
         }});
-     $.ajax({url: "../DashboardPHP/StaffAdd.php",
+      $.ajax({url: "../DashboardPHP/staffAdd.php",
         method: 'post',
         data: {Ins_ID: value},
         success: function (result) {
             console.log("send");
         }});
+     
     
     $('#AddStaffDetail').modal('show');
 }
 
-function  EditStaff() {
+function  EditStaff(value) {
+    console.log(value);
+    $.ajax({url: "../PopupBody/StudentEditPopup.php",
+        method: 'post',
+        data: {staffId: value},
+        success: function (result) {
+            $(".modal-body").html(result);
+        }});
+    $.ajax({url: "../DashboardPHP/studentEdit.php",
+        method: 'post',
+        data: {staffId: value},
+        success: function (result) {
+            console.log("send");
+        }});
     $('#EditStaffDetail').modal('show');
 }
 
@@ -264,27 +266,6 @@ function CourseDetail() {
 
 function EditCourse() {
     $('#EditCourseDetail').modal('show');
-}
-
-
-
-
-function changeFunc() {
-    var selectBox = document.getElementById("department");
-    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    alert(selectedValue);
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "../DashboardPHP/DropDown.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log(xhr.responseText); // Response from PHP
-        }
-    };
-    xhr.send("data=" + encodeURIComponent(selectedValue));
-
-
 }
 
 

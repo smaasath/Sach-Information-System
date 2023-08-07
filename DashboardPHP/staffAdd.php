@@ -19,11 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Instituteid = sanitizeInput($_POST["Instituteid"]);
     $staffName = sanitizeInput($_POST["staffName"]);
     $phoneNo = sanitizeInput($_POST["phoneNo"]);
-    $email = sanitizeInput($_POST["entrlmentNumber"]);
+    $email = sanitizeInput($_POST["email"]);
     $position = sanitizeInput($_POST["position"]);
     $userName = sanitizeInput($_POST["userName"]);
     $Password = sanitizeInput($_POST["Password"]);
-   
 }
 $passwordch = htmlentities($Password);
 // Hash the password
@@ -32,16 +31,27 @@ echo $passwordch;
 
 include '../DashboardPHP/connection.php';
 
-$query = "SELECT instituteName FROM institute WHERE instituteId=$Instituteid";
-$result = $conn->query($query);
-if (!$result) {
-    die("Query failed: " . $conn->error);
+// Construct and execute the query using a prepared statement
+$query = "SELECT instituteName FROM institute WHERE instituteId = :instituteId";
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':instituteId', $Instituteid, PDO::PARAM_INT);
+$stmt->execute();
+
+if ($stmt) {
+    // Fetch the institute name
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        $InstituteName = $row["instituteName"];
+    } else {
+        echo "No institute found.";
+    }
+} else {
+    echo "Query failed.";
 }
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $Instituteid = $row["instituteName"];
-}
+// Close the statement
+$stmt = null;
 
 try {
 
@@ -65,17 +75,17 @@ try {
     $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     //Recipients
     $mail->setFrom('aststore39@gmail.com');
-    $mail->addAddress($studentEmail);     //Add a recipient             //Name is optional
+    $mail->addAddress($email);     //Add a recipient             //Name is optional
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Student Registration';
+    $mail->Subject = 'Staff Registration';
     $message = "Dear " . $staffName . ",<br><br>";
-    $message .= "You are registered into " . $instituteName . " via Sachini Information System As a .$position.<br><br>";
+    $message .= "You are registered into " . $InstituteName . " via Sachini Information System As a .$position.<br><br>";
     $message .= "Your User Name & password for the System is Given Below <br><br>";
     $message .= "Your User Name :  " . $userName . "<br><br>";
     $message .= "Your password :  " . $passwordch . "<br><br>";
-    $message .= "Regards," ."<br>";
-    $message .= "Sach Infomation System" ."<br>";
+    $message .= "Regards," . "<br>";
+    $message .= "Sach Infomation System" . "<br>";
 
     $mail->Body = $message;
 
@@ -83,26 +93,43 @@ try {
 
     include '../DashboardPHP/connection.php';
 
-    $sqlStudent = "INSERT INTO `student` (`staffId`, `staffName`, `position`, `phoneNo`, `institudeID `) VALUES (NULL, '$staffName', '$position', '$phoneNo', '$Instituteid')";
+    // Construct and execute the query using a prepared statement
+    $query = "INSERT INTO `staff` (`staffId`, `staffName`, `position`, `phoneNo`, `institudeID`) VALUES (NULL, :staffName, :position, :phoneNo, :instituteID)";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':instituteID', $Instituteid);
+    $stmt->bindParam(':staffName', $staffName);
+    $stmt->bindParam(':position', $position);
+    $stmt->bindParam(':phoneNo', $phoneNo);
 
-    if (mysqli_query($conn, $sqlStudent)) {
-        $staffID = $conn->insert_id;
-        echo "New record created successfully" . $student_id;
+    if ($stmt->execute()) {
+        $staff_id = $conn->lastInsertId();
+        echo "New record created successfully" . $staff_id;
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error creating record: " . $stmt->errorInfo()[2];
     }
 
-   
-    
-      $sqluser = "INSERT INTO `user` (`uderId`, `userName`, `institutetId`, `studentId`, `staffId`, `Password`, `email`, `Role`) "
-              . "VALUES (NULL, '$userName', NULL, '$staffID', NULL, '$hashedPassword', '$email', '3')";
+// Close the statement
+    $stmt = null;
 
-    if (mysqli_query($conn, $sqluser)) {
+    // Prepare the SQL query
+    $sqluser = "INSERT INTO `user` (`uderId`, `userName`, `institutetId`, `studentId`, `staffId`, `Password`, `email`, `Role`) "
+            . "VALUES (NULL, :userName, NULL, NULL,:staff_id, :hashedPassword, :email, '3')";
+    $stmtUser = $conn->prepare($sqluser);
 
-        echo "user created successfully";
+    // Bind parameters
+    $stmtUser->bindParam(':userName', $userName);
+    $stmtUser->bindParam(':staff_id', $staff_id);
+    $stmtUser->bindParam(':hashedPassword', $hashedPassword);
+    $stmtUser->bindParam(':email', $email);
+
+    if ($stmtUser->execute()) {
+        echo "User created successfully";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error creating user: " . $stmtUser->errorInfo()[2];
     }
+
+// Close the statement
+    $stmtUser = null;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
@@ -111,9 +138,4 @@ try {
 
 
 header("Location: ../Dashboards/AdminDashboard.php");
-
-
-
-
-
 
