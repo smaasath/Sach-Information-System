@@ -189,37 +189,65 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         <th class="col-1 bgcol p-2">ID</th>
                         <th class="col-3 bgcol p-2">Name</th>
-                        <th class="col-2 bgcol p-2">Email</th>
-                        <th class="col-2 bgcol p-2">Position</th>
+                        <th class="col-3 bgcol p-2">Position</th>
                         <th class="col-2 bgcol p-2">Phone</th>
-                        <th class="col-1 bgcol p-2">View</th>
-                        <th class="col-1 bgcol p-2">Edit</th>
+                        <th class="col-3 bgcol p-2"></th>
+                        
 
                     </tr>
                     <!-- Table row -->
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
+                     <?php
+                    $queryGetTable = "SELECT * FROM staff WHERE institudeID  = :userID";
 
-                   
+// Prepare and execute the query using a prepared statement
+                    $stmtGetTable = $conn->prepare($queryGetTable);
+                    $stmtGetTable->bindParam(':userID', $userID, PDO::PARAM_INT);
+                    $stmtGetTable->execute();
 
-                    <!-- Table row -->
+                    if ($stmtGetTable) {
+                        // Fetch results
+                        $resultTable = $stmtGetTable->fetchAll(PDO::FETCH_ASSOC);
 
-                </table> 
+                        if ($resultTable) {
+                            // Output data of each row
+                            foreach ($resultTable as $rowtable) {
+                                ?>
 
-            </div>
+                                <tr>
+                                    <td class = "col-1"> <?php echo $rowtable["staffId"] ?></td>
+                                    <td class = "col-3"><?php echo $rowtable["staffName"] ?></td>
+                                    <td class = "col-3"><?php echo $rowtable["position"] ?></td>
+                                    <td class = "col-2"><?php echo $rowtable["phoneNo"] ?></td>
+                                    <td class = "col-3">
+                                        <i class="fa-solid fa-user-graduate fa-xl m-2" onclick = "OpenStaffStaff(<?php echo $rowtable["staffId"] ?>)"></i>
+                                        <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "openstaffCourseDetail(<?php echo $rowtable["staffId"] ?>)"></i>
+                                        <i class="fa-solid fa-user-pen fa-xl m-2" onclick = "EditStaff(<?php echo $rowtable["staffId"] ?>)"></i>
+                                        <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="studel(<?php echo $rowtable["staffId"] ?>)"></i>
+
+
+                                    </td>
+
+
+
+                                </tr>
+
+
+                                <!-- Table row -->
+
+                                <?php
+                            }
+                        } else {
+                            echo "0 results";
+                        }
+
+                    }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+
             <br>
-            <!-- Table Head -->
-            <div class="text-end" >
-                <button type="button" class="btn btn-success">Save</button>
-            </div>
-        </div>
+            
 
         <!-- Table -->
 
@@ -235,77 +263,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Department</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Computer Science And Informatics</p>
-                                </div>
-                            </div> 
-
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Name</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Mohamed Aasath</p>
-                                </div>
-                            </div> 
-
-
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Position</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Lecturer</p>
-                                </div>
-                            </div> 
-
-
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Contact</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>0755701765</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Email</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>aasadh2000@gmail.com</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Qualification</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs</p>
-                                </div>
-                            </div> 
-
-
-
-
-
-
-                        </div>
+                        
                     </div>
                     <div class="modal-footer">
 
 
-                        <button type="button" class="btn btn-primary bgcolli" onclick="openstaffCourseDetail()">Course Details</button>
+                       
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -417,6 +380,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <!-- Add Staff Details Modal -->
+               <form method="post" action="../DashboardPHP/staffAdd.php" >
         <div class="modal fade" id="AddStaffDetail" tabindex="-1" aria-labelledby="AddStaffDetail" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -432,13 +396,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="modal-footer">
 
 
-                        <button type="button" class="btn btn-primary bgcolli" id="AddStaff" onclick="savestudent()" >Save Student</button>
+                        <button type="submit" class="btn btn-primary bgcolli">Add Staff</button>
                         <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
-
+               </form>
         <!-- Add Staff Details Modal -->
 
 
