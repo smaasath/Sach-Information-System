@@ -8,22 +8,26 @@
 if (isset($_POST["std_ID"])) {
     include '../DashboardPHP/connection.php';
 
-    $query = "SELECT * FROM guardian WHERE StudentId=" . $_POST["std_ID"];
-    $result = $conn->query($query);
-    if (!$result) {
-        echo 'Gaurdian not Added';
-    }
+    $stdID = $_POST["std_ID"]; // Assuming you have the student ID from the form
+// Construct and execute the query using a prepared statement
+    $query = "SELECT * FROM guardian WHERE StudentId = :stdID";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':stdID', $stdID, PDO::PARAM_INT);
+    $stmt->execute();
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $output = '  
+    if ($stmt) {
+        // Fetch the guardian data
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+            $output = '  
    <div class="container">
                                 <div class="row">
                                     <div class="col-4">
                                         <h6>Full Name</h6>
                                     </div>
                                     <div class="col-8">
-                                        <p>'.$row["name"].'</p>
+                                        <p>' . $row["name"] . '</p>
                                     </div>
                                 </div> 
 
@@ -32,7 +36,7 @@ if (isset($_POST["std_ID"])) {
                                         <h6>Relationship</h6>
                                     </div>
                                     <div class="col-8">
-                                        <p>'.$row["relationShip"].'</p>
+                                        <p>' . $row["relationShip"] . '</p>
                                     </div>
                                 </div> 
                                 <div class="row">
@@ -40,7 +44,7 @@ if (isset($_POST["std_ID"])) {
                                         <h6>Contact NO</h6>
                                     </div>
                                     <div class="col-8">
-                                        <p>'.$row["phoneNo"].'</p>
+                                        <p>' . $row["phoneNo"] . '</p>
                                     </div>
                                 </div> 
                                 <div class="row">
@@ -48,7 +52,7 @@ if (isset($_POST["std_ID"])) {
                                         <h6>Email</h6>
                                     </div>
                                     <div class="col-8">
-                                        <p>'.$row["email"].'</p>
+                                        <p>' . $row["email"] . '</p>
                                     </div>
                                 </div> 
 
@@ -57,7 +61,7 @@ if (isset($_POST["std_ID"])) {
                                         <h6>Address</h6>
                                     </div>
                                     <div class="col-8">
-                                        <p>'.$row["address"].'</p>
+                                        <p>' . $row["address"] . '</p>
                                     </div>
                                 </div> 
 
@@ -66,7 +70,7 @@ if (isset($_POST["std_ID"])) {
                                         <h6>Occupation</h6>
                                     </div>
                                     <div class="col-8">
-                                        <p>'.$row["occupation"].'</p>
+                                        <p>' . $row["occupation"] . '</p>
                                     </div>
                                 </div> 
 
@@ -78,12 +82,13 @@ if (isset($_POST["std_ID"])) {
 
                             </div>
                         </div>';
-         echo $output;
-    }else {
-    echo 'parent not added'; 
+            echo $output;
+        } else {
+        echo 'Guardian not Added';
+    }
+} else {
+    echo "Query failed.";
 }
 
-   
 
-   
-} 
+    }    

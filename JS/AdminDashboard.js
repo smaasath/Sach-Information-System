@@ -233,7 +233,20 @@ function openstaffCourseDetail() {
     $('#StaffDetail').modal('hide');
 }
 
-function  AddStaff() {
+function  AddStaff(value) {
+     $.ajax({url: "../PopupBody/StaffAddPopup.php",
+        method: 'post',
+        data: {Ins_ID: value},
+        success: function (result) {
+             $(".modal-body").html(result);
+        }});
+     $.ajax({url: "../DashboardPHP/StaffAdd.php",
+        method: 'post',
+        data: {Ins_ID: value},
+        success: function (result) {
+            console.log("send");
+        }});
+    
     $('#AddStaffDetail').modal('show');
 }
 

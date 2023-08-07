@@ -14,9 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         include '../DashboardPHP/connection.php';
 
-       
-
-        $userID= $_COOKIE['Ins_Login'];
+        $userID = $_COOKIE['Ins_Login'];
         ?>
         <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex  align-items-center justify-content-end">
@@ -29,16 +27,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <h6 class="p-3" href="#">
                 <?php
-                $query = "SELECT instituteName FROM institute WHERE instituteId=" . $userID;
-                $result = $conn->query($query);
-                if (!$result) {
-                    die("Query failed: " . $conn->error);
+                $query = "SELECT instituteName FROM institute WHERE instituteId = :userID";
+                $stmtInsName = $conn->prepare($query);
+                $stmtInsName->bindParam(':userID', $userID, PDO::PARAM_INT);
+                $stmtInsName->execute();
+
+// Fetch the result
+                $rowName = $stmtInsName->fetch(PDO::FETCH_ASSOC);
+
+                if ($rowName) {
+                    echo $rowName["instituteName"];
                 }
 
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    echo $row["instituteName"];
-                }
+// Close the statement
+                $stmtInsName = null;
+
+// Close the PDO connection
                 ?>   
             </h6>
 
@@ -49,16 +53,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="col-1">
                 <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                     <?php
-                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId=" . $userID;
-                    $resultUserImage = $conn->query($queryUserImage);
+                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId = :userID";
+                    $stmtUserImage = $conn->prepare($queryUserImage);
+                    $stmtUserImage->bindParam(':userID', $userID, PDO::PARAM_INT);
+                    $stmtUserImage->execute();
 
-                    if ($resultUserImage->num_rows > 0) {
-                        $row = $resultUserImage->fetch_assoc();
-                        $imageData = $row["Logo"];
+// Fetch the result
+                    $rowUserImage = $stmtUserImage->fetch(PDO::FETCH_ASSOC);
+
+                    if ($rowUserImage && isset($rowUserImage["Logo"])) {
+                        $imageData = $rowUserImage["Logo"];
                         echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" style="width:30%">';
                     } else {
                         echo "Image not found.";
                     }
+
+// Close the statement
+                    $stmtUserImage = null;
+
+// Close the PDO connection
                     ?>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
@@ -83,11 +96,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <h7>Students</h7>
                         <h2>
                             <?php
-                            $queryStudentCount = "SELECT COUNT(*) AS studentID FROM student WHERE instituteId=$userID";
-                            $resultStudentCount = $conn->query($queryStudentCount);
-                            $row = $resultStudentCount->fetch_assoc();
-                            $resultCount = $row["studentID"];
-                            echo $resultCount;
+// Construct and execute the query using a prepared statement
+                            $queryStudentCount = "SELECT COUNT(*) AS studentCount FROM student WHERE instituteId = :userID";
+                            $stmtStudentCount = $conn->prepare($queryStudentCount);
+                            $stmtStudentCount->bindParam(':userID', $userID, PDO::PARAM_INT);
+                            $stmtStudentCount->execute();
+
+// Fetch the result
+                            $rowStudentCount = $stmtStudentCount->fetch(PDO::FETCH_ASSOC);
+
+                            if ($rowStudentCount && isset($rowStudentCount["studentCount"])) {
+                                echo $rowStudentCount["studentCount"];
+                            } else {
+                                echo "Student count not found.";
+                            }
+
+// Close the statement
+                            $stmtStudentCount = null;
                             ?>
                         </h2>
                     </div>
@@ -115,15 +140,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="col-3"> 
                         <select class="form-select"  name="degree" id="degree" aria-label="Default select example">
                             <?php
-                            $queryGetdegree = "SELECT degreeName,degreeId FROM degree WHERE instituteId=$userID";
-                            $resultDegree = $conn->query($queryGetdegree);
-                            if (!$resultDegree) {
-                                die("Query failed: " . $conn->error);
+                            // Construct and execute the query using a prepared statement
+                            $queryGetDegree = "SELECT degreeName, degreeId FROM degree WHERE instituteId = :userID";
+                            $stmtGetDegree = $conn->prepare($queryGetDegree);
+                            $stmtGetDegree->bindParam(':userID', $userID, PDO::PARAM_INT);
+                            $stmtGetDegree->execute();
+
+// Fetch results
+                            $resultDegrees = $stmtGetDegree->fetchAll(PDO::FETCH_ASSOC);
+
+                            foreach ($resultDegrees as $rowDegree) {
+                                echo '<option value="' . $rowDegree["degreeId"] . '">' . $rowDegree["degreeName"] . '</option>';
                             }
 
-                            while ($rowdeg = $resultDegree->fetch_assoc()) {
-                                echo '<option  value="' . $rowdeg["degreeId"] . '">' . $rowdeg["degreeName"] . '</option>';
-                            }
+// Close the statement
+                            $stmtGetDegree = null;
                             ?> 
 
 
@@ -138,15 +169,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-                <!-- Table Head -->
-                <table class="table mb-0">
-
-
-
-
-
-                </table>
-                <!-- Table Head -->
+           
             </div>
             <!-- Table body -->
             <div class="container bg-white mt-0" style=" max-height: 700px; overflow: scroll;">
@@ -165,164 +188,213 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
                     <?php
-                    $queryGettable = "SELECT * FROM student ";
+                    $queryGetTable = "SELECT * FROM student WHERE instituteId = :userID";
 
-                    $resulttable = mysqli_query($conn, $queryGettable);
+// Prepare and execute the query using a prepared statement
+                    $stmtGetTable = $conn->prepare($queryGetTable);
+                    $stmtGetTable->bindParam(':userID', $userID, PDO::PARAM_INT);
+                    $stmtGetTable->execute();
 
-                    if (mysqli_num_rows($result) > 0) {
-                        // output data of each row
-                        while ($rowtable = mysqli_fetch_assoc($resulttable)) {
-                            ?>
+                    if ($stmtGetTable) {
+                        // Fetch results
+                        $resultTable = $stmtGetTable->fetchAll(PDO::FETCH_ASSOC);
 
-                            <tr>
-                                <td class = "col-1"> <?php echo $rowtable["studentID"] ?></td>
-                                <td class = "col-3"><?php echo $rowtable["studentName"] ?></td>
-                                <td class = "col-2"><?php echo $rowtable["gender"] ?></td>
-                                <td class = "col-3"><?php echo $rowtable["phoneNo"] ?></td>
-                                <td class = "col-3">
-                                    <i class="fa-solid fa-user-graduate fa-xl m-2" onclick = "openStudentDetails(<?php echo $rowtable["studentID"] ?>)"></i>
-                                    <i class="fa-solid fa-user-shield fa-xl m-2" onclick = "openGuardianDetail(<?php echo $rowtable["studentID"] ?>)"></i>
-                                    <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "openCourseDetail(<?php echo $rowtable["studentID"] ?>)"></i>
-                                    <i class="fa-solid fa-user-pen fa-xl m-2" onclick = "openeditDetailsStudent(<?php echo $rowtable["studentID"] ?>)"></i>
-                                    <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="studel(<?php echo $rowtable["studentID"] ?>)"></i>
+                        if ($resultTable) {
+                            // Output data of each row
+                            foreach ($resultTable as $rowtable) {
+                                ?>
 
-
-                                </td>
-
-
-
-                            </tr>
+                                <tr>
+                                    <td class = "col-1"> <?php echo $rowtable["studentID"] ?></td>
+                                    <td class = "col-3"><?php echo $rowtable["studentName"] ?></td>
+                                    <td class = "col-2"><?php echo $rowtable["gender"] ?></td>
+                                    <td class = "col-3"><?php echo $rowtable["phoneNo"] ?></td>
+                                    <td class = "col-3">
+                                        <i class="fa-solid fa-user-graduate fa-xl m-2" onclick = "openStudentDetails(<?php echo $rowtable["studentID"] ?>)"></i>
+                                        <i class="fa-solid fa-user-shield fa-xl m-2" onclick = "openGuardianDetail(<?php echo $rowtable["studentID"] ?>)"></i>
+                                        <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "openCourseDetail(<?php echo $rowtable["studentID"] ?>)"></i>
+                                        <i class="fa-solid fa-user-pen fa-xl m-2" onclick = "openeditDetailsStudent(<?php echo $rowtable["studentID"] ?>)"></i>
+                                        <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="studel(<?php echo $rowtable["studentID"] ?>)"></i>
 
 
-                            <!-- Table row -->
+                                    </td>
 
-                            <?php
+
+
+                                </tr>
+
+
+                                <!-- Table row -->
+
+                                <?php
+                            }
+                        } else {
+                            echo "0 results";
                         }
-                    } else {
-                        echo "0 results";
+
                     }
-
-                    mysqli_close($conn);
-                    ?>
-                    </tbody>
-                </table>
-            </div>
-
-
-
-
-            <!-- Student Details Modal -->
-            <div class="modal fade" id="StudentDetail" tabindex="-1" aria-labelledby="StudentDetail" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="StudentDetail">Student Details</h1>
-                            <button type="button" class="btn-close" onclick="closeModals()"></button>
-                        </div>
-                        <div class="modal-body">
-                        </div> 
-                        <div class="modal-footer">
-
-
-
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-            <!-- Student Details Modal -->
 
 
 
 
-            <!-- Guardian Details Modal -->
-            <div class="modal fade" id="GuardianDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="GuardianDetail">Guardian Detail</h1>
-                            <button type="button" class="btn-close" onclick="closeModals()"></button>
-                        </div>
-                        <div class="modal-body">
-                        </div>
-                        <div class="modal-footer">
-
-
-                            <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Guardian Details Modal -->
-
-            <!-- Course Details Modal -->
-            <div class="modal fade" id="CourseDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="CourseDetail">Course Detail</h1>
-                            <button type="button" class="btn-close" onclick="closeModals()"></button>
-                        </div>
-                        <div class="modal-body">
-
-                        </div>
-                        <div class="modal-footer">
-
-
-                            <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Course Details Modal -->
-
-
-            <!-- student Edit Modal -->
-            <form method="post" action="../DashboardPHP/studentEdit.php" id="editform">
-                <div class="modal fade" id="stdEdit" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+                <!-- Student Details Modal -->
+                <div class="modal fade" id="StudentDetail" tabindex="-1" aria-labelledby="StudentDetail" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="CourseDetail">Edit Details</h1>
+                                <h1 class="modal-title fs-5" id="StudentDetail">Student Details</h1>
                                 <button type="button" class="btn-close" onclick="closeModals()"></button>
                             </div>
                             <div class="modal-body">
+                            </div> 
+                            <div class="modal-footer">
 
+
+
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Student Details Modal -->
+
+
+
+
+                <!-- Guardian Details Modal -->
+                <div class="modal fade" id="GuardianDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="GuardianDetail">Guardian Detail</h1>
+                                <button type="button" class="btn-close" onclick="closeModals()"></button>
+                            </div>
+                            <div class="modal-body">
                             </div>
                             <div class="modal-footer">
 
-                                <button type="submit" class="btn btn-primary bgcolli" id="editstudent" >Save</button>
 
                                 <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
-            <!-- Course Details Modal -->
+                <!-- Guardian Details Modal -->
 
-
-
-
-
-
-            <!-- Add Student Details Modal -->
-            <form method="post" action="../DashboardPHP/StudentAdd.php" id="editform">
-                <div class="modal fade" id="AddStudentDetail" tabindex="-1" aria-labelledby="AddStudentDetail" aria-hidden="true">
+                <!-- Course Details Modal -->
+                <div class="modal fade" id="CourseDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="AddStudentDetail">Add Student Details</h1>
+                                <h1 class="modal-title fs-5" id="CourseDetail">Course Detail</h1>
+                                <button type="button" class="btn-close" onclick="closeModals()"></button>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+
+
+                                <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course Details Modal -->
+
+
+                <!-- student Edit Modal -->
+                <form method="post" action="../DashboardPHP/studentEdit.php" id="editform">
+                    <div class="modal fade" id="stdEdit" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="CourseDetail">Edit Details</h1>
+                                    <button type="button" class="btn-close" onclick="closeModals()"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                                <div class="modal-footer">
+
+                                    <button type="submit" class="btn btn-primary bgcolli" id="editstudent" >Save</button>
+
+                                    <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- Course Details Modal -->
+
+
+
+
+
+
+                <!-- Add Student Details Modal -->
+                <form method="post" action="../DashboardPHP/StudentAdd.php" id="editform">
+                    <div class="modal fade" id="AddStudentDetail" tabindex="-1" aria-labelledby="AddStudentDetail" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="AddStudentDetail">Add Student Details</h1>
+                                    <button type="button" class="btn-close" onclick="closeModals()"></button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                </div>
+
+                                <div class="modal-footer">
+
+                                    <button type="submit" class="btn btn-primary bgcolli" id="AddGuardian" >Save</button>
+
+
+                                    <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- Add Student Details Modal -->
+
+
+
+
+
+
+
+                <!-- Edit Student Details Modal -->
+
+                <div class="modal fade" id="EditStudentDetail" tabindex="-1" aria-labelledby="EditStudentDetail" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="EditStudentDetail">Edit Student Details</h1>
                                 <button type="button" class="btn-close" onclick="closeModals()"></button>
                             </div>
                             <div class="modal-body">
 
 
+
+
+
+
+
+
+
+
+
                             </div>
 
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-primary bgcolli" id="EditStudent"  >Save</button>
 
-                                <button type="submit" class="btn btn-primary bgcolli" id="AddGuardian" >Save</button>
 
 
                                 <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
@@ -330,57 +402,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                 </div>
-            </form>
-            <!-- Add Student Details Modal -->
+
+                <!-- Edit Student Details Modal -->
 
 
 
 
-
-
-
-            <!-- Edit Student Details Modal -->
-
-            <div class="modal fade" id="EditStudentDetail" tabindex="-1" aria-labelledby="EditStudentDetail" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="EditStudentDetail">Edit Student Details</h1>
-                            <button type="button" class="btn-close" onclick="closeModals()"></button>
-                        </div>
-                        <div class="modal-body">
-
-
-
-
-
-
-
-
-
-
-
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary bgcolli" id="EditStudent"  >Save</button>
-
-
-
-                            <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Edit Student Details Modal -->
-
-
-
-
-            <?php
+                <?php
 // put your code here
-            ?>
+                ?>
 
 
 

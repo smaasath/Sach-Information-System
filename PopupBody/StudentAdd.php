@@ -7,10 +7,8 @@
 
 if (isset($_POST["Ins_ID"])) {
     include '../DashboardPHP/connection.php';
-    
 
-   
-        $output = '  
+    $output = '  
         <div class="row align-items-center">
          <div class="row align-items-center pb-3">
                                     <div class="col-3">
@@ -18,20 +16,34 @@ if (isset($_POST["Ins_ID"])) {
                                     </div>
                     <div class="col-9">                 
     <select class="form-select"  name="degree" id="degree" aria-label="Default select example">';
-                            echo $output;
-                            $queryGetdegree = "SELECT degreeName,degreeId FROM degree WHERE instituteId=".$_POST["Ins_ID"];
-                            $resultDegree = $conn->query($queryGetdegree);
-                            if (!$resultDegree) {
-                                die("Query failed: " . $conn->error);
-                            }
+    echo $output;
+    $insID = $_POST["Ins_ID"]; // Assuming you have the institute ID from the form
+// Construct and execute the query using a prepared statement
+    $queryGetDegree = "SELECT degreeName, degreeId FROM degree WHERE instituteId = :insID";
+    $stmtGetDegree = $conn->prepare($queryGetDegree);
+    $stmtGetDegree->bindParam(':insID', $insID, PDO::PARAM_INT);
+    $stmtGetDegree->execute();
 
-                            while ($rowdeg = $resultDegree->fetch_assoc()) {
-                                echo '<option  value="' . $rowdeg["degreeId"] . '">' . $rowdeg["degreeName"] . '</option>';
-                            }
-                           
+    if ($stmtGetDegree) {
+        // Fetch results
+        $resultDegree = $stmtGetDegree->fetchAll(PDO::FETCH_ASSOC);
 
+        if ($resultDegree) {
+            // Output options for select dropdown
+            foreach ($resultDegree as $rowDegree) {
+                echo '<option value="' . $rowDegree["degreeId"] . '">' . $rowDegree["degreeName"] . '</option>';
+            }
+        } else {
+            echo "No degree options found.";
+        }
+    } else {
+        echo "Query failed.";
+    }
 
-                       $output2= ' 
+// Close the statement
+    $stmtGetDegree = null;
+
+    $output2 = ' 
 </select></div></div>
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
@@ -193,15 +205,14 @@ if (isset($_POST["Ins_ID"])) {
                                         <input type="text" name="guardianOccupation" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
- <input type="hidden" name="Instituteid" value='.$_POST["Ins_ID"].'>                                
+ <input type="hidden" name="Instituteid" value=' . $_POST["Ins_ID"] . '>                                
 
 ';
-       
-        echo $output2;
-    } else {
-        echo 'parent not added';
-    
-    }
+
+    echo $output2;
+} else {
+    echo 'parent not added';
+}
 
 
 
@@ -211,3 +222,4 @@ if (isset($_POST["Ins_ID"])) {
 
 
 
+        

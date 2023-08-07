@@ -42,16 +42,27 @@ echo $passwordch;
 
 include '../DashboardPHP/connection.php';
 
-$query = "SELECT instituteName FROM institute WHERE instituteId=$Instituteid";
-$result = $conn->query($query);
-if (!$result) {
-    die("Query failed: " . $conn->error);
+// Construct and execute the query using a prepared statement
+$query = "SELECT instituteName FROM institute WHERE instituteId = :instituteId";
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':instituteId', $InstituteId, PDO::PARAM_INT);
+$stmt->execute();
+
+if ($stmt) {
+    // Fetch the institute name
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        $InstituteName = $row["instituteName"];
+    } else {
+        echo "No institute found.";
+    }
+} else {
+    echo "Query failed.";
 }
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $instituteName = $row["instituteName"];
-}
+// Close the statement
+$stmt = null;
 
 try {
 
@@ -80,12 +91,12 @@ try {
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Student Registration';
     $message = "Dear " . $studentName . ",<br><br>";
-    $message .= "You are registered into " . $instituteName . " via Sachini Information System.<br><br>";
+    $message .= "You are registered into " . $InstituteName . " via Sachini Information System.<br><br>";
     $message .= "Your User Name & password for the System is Given Below <br><br>";
     $message .= "Your User Name :  " . $userName . "<br><br>";
     $message .= "Your password :  " . $passwordch . "<br><br>";
-    $message .= "Regards," ."<br>";
-    $message .= "Sach Infomation System" ."<br>";
+    $message .= "Regards," . "<br>";
+    $message .= "Sach Infomation System" . "<br>";
 
     $mail->Body = $message;
 
@@ -93,34 +104,67 @@ try {
 
     include '../DashboardPHP/connection.php';
 
-    $sqlStudent = "INSERT INTO `student` (`studentID`, `instituteId`, `degreeId`, `studentName`, `entrollmentNumber`, `studentDOB`, `gender`, `address`, `phoneNo`, `coinValue`, `acedemicYear`) VALUES (NULL, '$Instituteid', '$degree', '$studentName', '$entrlmentNumber', '$DOB', '$gender', '$studentAddress', '$studentContactNum','100', '$accedamicYear')";
+    // Construct and execute the query using a prepared statement
+    $query = "INSERT INTO `student` (`studentID`, `instituteId`, `degreeId`, `studentName`, `entrollmentNumber`, `studentDOB`, `gender`, `address`, `phoneNo`, `coinValue`, `acedemicYear`) VALUES (NULL, :instituteID, :degreeID, :studentName, :entrollmentNumber, :DOB, :gender, :studentAddress, :studentContactNum, '100', :accedamicYear)";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':instituteID', $Instituteid);
+    $stmt->bindParam(':degreeID', $degree);
+    $stmt->bindParam(':studentName', $studentName);
+    $stmt->bindParam(':entrollmentNumber', $entrlmentNumber);
+    $stmt->bindParam(':DOB', $DOB);
+    $stmt->bindParam(':gender', $gender);
+    $stmt->bindParam(':studentAddress', $studentAddress);
+    $stmt->bindParam(':studentContactNum', $studentContactNum);
+    $stmt->bindParam(':accedamicYear', $accedamicYear);
 
-    if (mysqli_query($conn, $sqlStudent)) {
-        $student_id = $conn->insert_id;
+    if ($stmt->execute()) {
+        $student_id = $conn->lastInsertId();
         echo "New record created successfully" . $student_id;
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error creating record: " . $stmt->errorInfo()[2];
     }
 
-    $sqlgurdian = "INSERT INTO `guardian` (`guardianId`, `studentID`, `name`, `relationShip`, `email`, `phoneNo`, `address`, `occupation`) "
-            . "VALUES (NULL, '$student_id', '$guardianName', '$guardianRelation', '$guardianEmail', '$guardianContactNum', '$guardianAddress', '$guardianOccupation')";
+// Close the statement
+    $stmt = null;
 
-    if (mysqli_query($conn, $sqlgurdian)) {
+    // Construct and execute the query using a prepared statement
+    $queryGuardian = "INSERT INTO `guardian` (`guardianId`, `studentID`, `name`, `relationShip`, `email`, `phoneNo`, `address`, `occupation`) "
+            . "VALUES (NULL, :studentID, :guardianName, :guardianRelation, :guardianEmail, :guardianContactNum, :guardianAddress, :guardianOccupation)";
+    $stmtGuardian = $conn->prepare($queryGuardian);
+    $stmtGuardian->bindParam(':studentID', $student_id);
+    $stmtGuardian->bindParam(':guardianName', $guardianName);
+    $stmtGuardian->bindParam(':guardianRelation', $guardianRelation);
+    $stmtGuardian->bindParam(':guardianEmail', $guardianEmail);
+    $stmtGuardian->bindParam(':guardianContactNum', $guardianContactNum);
+    $stmtGuardian->bindParam(':guardianAddress', $guardianAddress);
+    $stmtGuardian->bindParam(':guardianOccupation', $guardianOccupation);
 
-        echo "guadian created successfully";
+    if ($stmtGuardian->execute()) {
+        echo "Guardian created successfully";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error creating guardian: " . $stmtGuardian->errorInfo()[2];
     }
-    
-      $sqluser = "INSERT INTO `user` (`uderId`, `userName`, `institutetId`, `studentId`, `staffId`, `Password`, `email`, `Role`) "
-              . "VALUES (NULL, '$userName', NULL, '$student_id', NULL, '$hashedPassword', '$studentEmail', '4')";
 
-    if (mysqli_query($conn, $sqluser)) {
+// Close the statement
+    $stmtGuardian = null;
 
-        echo "user created successfully";
+// Construct and execute the query using a prepared statement
+    $queryUser = "INSERT INTO `user` (`uderId`, `userName`, `institutetId`, `studentId`, `staffId`, `Password`, `email`, `Role`) "
+            . "VALUES (NULL, :userName, NULL, :studentID, NULL, :hashedPassword, :studentEmail, '4')";
+    $stmtUser = $conn->prepare($queryUser);
+    $stmtUser->bindParam(':userName', $userName);
+    $stmtUser->bindParam(':studentID', $student_id);
+    $stmtUser->bindParam(':hashedPassword', $hashedPassword);
+    $stmtUser->bindParam(':studentEmail', $studentEmail);
+
+    if ($stmtUser->execute()) {
+        echo "User created successfully";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error creating user: " . $stmtUser->errorInfo()[2];
     }
+
+// Close the statement
+    $stmtUser = null;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
@@ -129,9 +173,4 @@ try {
 
 
 header("Location: ../Dashboards/AdminDashboard.php");
-
-
-
-
-
 

@@ -1,65 +1,59 @@
 <?php
 
-
 function sanitizeInput($input) {
     return htmlspecialchars(trim($input));
 }
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    $id=sanitizeInput($_POST["std_id"]);
+    $id = sanitizeInput($_POST["std_id"]);
     $studentName = sanitizeInput($_POST["studentName"]);
-    $entrlmentNumber = sanitizeInput($_POST["entrlmentNumber"]);
+    $entrollmentNumber = sanitizeInput($_POST["entrollmentNumber"]);
     $DOB = sanitizeInput($_POST["DOB"]);
     $studentContactNum = sanitizeInput($_POST["studentContactNum"]);
     $studentEmail = sanitizeInput($_POST["studentEmail"]);
     $studentAddress = sanitizeInput($_POST["studentAddress"]);
     $userName = sanitizeInput($_POST["userName"]);
-    
-    
-
-
-
-
-
-
-
-
 
     include 'connection.php';
 
-    $sqlStudent = "UPDATE `student` SET `studentName` = '$studentName',`entrollmentNumber` = '$entrlmentNumber',`studentDOB` = '$DOB',`address` = '$studentAddress',`phoneNo` = '$studentContactNum' WHERE `studentID` =".$id;
+    // Update student data using a prepared statement
+    $sqlStudent = "UPDATE `student` SET `studentName` = :studentName, `entrollmentNumber` = :entrollmentNumber, `studentDOB` = :DOB, `address` = :studentAddress, `phoneNo` = :studentContactNum WHERE `studentID` = :id";
+    $stmtStudent = $conn->prepare($sqlStudent);
+    $stmtStudent->bindParam(':studentName', $studentName);
+    $stmtStudent->bindParam(':entrollmentNumber', $entrollmentNumber);
+    $stmtStudent->bindParam(':DOB', $DOB);
+    $stmtStudent->bindParam(':studentAddress', $studentAddress);
+    $stmtStudent->bindParam(':studentContactNum', $studentContactNum);
+    $stmtStudent->bindParam(':id', $id);
 
-    if (mysqli_query($conn, $sqlStudent)) {
-        $student_id = $conn->insert_id;
-        echo "New record created successfully" . $student_id;
+    if ($stmtStudent->execute()) {
+        echo "Student record updated successfully";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error updating student record: " . $stmtStudent->errorInfo()[2];
     }
 
-    
-      $sqluser = "UPDATE `user` SET `userName` = '$userName',`email` = '$studentEmail'  WHERE `studentID` =" .$id;
+// Update user data using a prepared statement
+    $sqlUser = "UPDATE `user` SET `userName` = :userName, `email` = :studentEmail WHERE `studentID` = :id";
+    $stmtUser = $conn->prepare($sqlUser);
+    $stmtUser->bindParam(':userName', $userName);
+    $stmtUser->bindParam(':studentEmail', $studentEmail);
+    $stmtUser->bindParam(':id', $id);
 
-    if (mysqli_query($conn, $sqluser)) {
-
-        echo "user created successfully";
+    if ($stmtUser->execute()) {
+        echo "User record updated successfully";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error updating user record: " . $stmtUser->errorInfo()[2];
     }
 
+
+
+
+
+    header("Location: ../Dashboards/AdminDashboard.php");
 }
-
-
-
-
-header("Location: ../Dashboards/AdminDashboard.php");
-
-
-
-
 
 
 

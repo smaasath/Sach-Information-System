@@ -8,26 +8,37 @@
 if (isset($_POST["std_ID"])) {
     include '../DashboardPHP/connection.php';
 
-    $query = "SELECT * FROM student WHERE StudentId=" . $_POST["std_ID"];
+    $stdID = $_POST["std_ID"]; // Assuming you have the student ID from the form
+// Construct and execute the query using a prepared statement
+    $queryStudent = "SELECT * FROM student WHERE StudentId = :stdID";
+    $stmtStudent = $conn->prepare($queryStudent);
+    $stmtStudent->bindParam(':stdID', $stdID, PDO::PARAM_INT);
+    $stmtStudent->execute();
 
-    $result = $conn->query($query);
+    if ($stmtStudent) {
+        // Fetch the student data
+        $rowStudent = $stmtStudent->fetch(PDO::FETCH_ASSOC);
 
-    if (!$result) {
-        
-    }
+        if ($rowStudent) {
+            // Process student data here
+            // Construct and execute the query to get user data
+            $queryUser = "SELECT * FROM user WHERE StudentId = :stdID";
+            $stmtUser = $conn->prepare($queryUser);
+            $stmtUser->bindParam(':stdID', $stdID, PDO::PARAM_INT);
+            $stmtUser->execute();
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $queryuser = "SELECT * FROM user WHERE StudentId=" . $_POST["std_ID"];
-        $resultuser = $conn->query($queryuser);
-        $rowuser = $resultuser->fetch_assoc();
-        $output = '  
+            if ($stmtUser) {
+                // Fetch the user data
+                $rowUser = $stmtUser->fetch(PDO::FETCH_ASSOC);
+
+                if ($rowUser) {
+                    $output = '  
         <div class="row align-items-center pb-3">
                                 <div class="col-3">
                                     <h6>Name</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input name="studentName" type="text" value="' . $row["studentName"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input name="studentName" type="text" value="' . $rowStudent["studentName"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -37,7 +48,7 @@ if (isset($_POST["std_ID"])) {
                                     <h6>Entrollment Number</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input name="entrlmentNumber" type="text" Value="' . $row["entrollmentNumber"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input name="entrollmentNumber" type="text" Value="' . $rowStudent["entrollmentNumber"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -46,7 +57,7 @@ if (isset($_POST["std_ID"])) {
                                     <h6>DOB</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input name="DOB" type="date" value="' . $row["studentDOB"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input name="DOB" type="date" value="' . $rowStudent["studentDOB"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -55,7 +66,7 @@ if (isset($_POST["std_ID"])) {
                                     <h6>Address</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input name="studentAddress" type="text" value="' . $row["address"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input name="studentAddress" type="text" value="' . $rowStudent["address"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
 
@@ -65,7 +76,7 @@ if (isset($_POST["std_ID"])) {
                                     <h6>Phone Number</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input name="studentContactNum" type="text" value="' . $row["phoneNo"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input name="studentContactNum" type="text" value="' . $rowStudent["phoneNo"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
                             
@@ -74,7 +85,7 @@ if (isset($_POST["std_ID"])) {
                                     <h6>User Name</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input name="userName" type="text" value="' . $rowuser["userName"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input name="userName" type="text" value="' . $rowUser["userName"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
                             
@@ -83,7 +94,7 @@ if (isset($_POST["std_ID"])) {
                                     <h6>Email</h6>
                                 </div>
                                 <div class="col-9">
-                                    <input name="studentEmail" type="email" value="' . $rowuser["email"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    <input name="studentEmail" type="email" value="' . $rowUser["email"] . '" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                 </div>
                             </div>
                             
@@ -94,10 +105,23 @@ if (isset($_POST["std_ID"])) {
                            
                             
 ';
-        echo $output;
+                    echo $output;
+                } else {
+                    echo 'User not found.';
+                }
+            } else {
+                echo "User query failed.";
+            }
+        } else {
+            echo 'Student not found.';
+        }
     } else {
-        echo 'parent not added';
+        echo "Student query failed.";
     }
+
+// Close the statements
+    $stmtStudent = null;
+    $stmtUser = null;
 }
 
 
@@ -108,3 +132,4 @@ if (isset($_POST["std_ID"])) {
 
 
 
+            

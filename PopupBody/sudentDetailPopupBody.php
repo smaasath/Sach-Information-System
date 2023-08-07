@@ -8,18 +8,28 @@
 if (isset($_POST["std_ID"])) {
     include '../DashboardPHP/connection.php';
 
-    $query = "SELECT * FROM student WHERE StudentId=" . $_POST["std_ID"];
-    $result = $conn->query($query);
-    if (!$result) {
-        die("Query failed: " . $conn->error);
-    }
+    $stdID = $_POST["std_ID"]; // Assuming you have the student ID from the form
+// Construct and execute the query using a prepared statement
+    $query = "SELECT * FROM student WHERE StudentId = :stdID";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':stdID', $stdID, PDO::PARAM_INT);
+    $stmt->execute();
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $querydegree = "SELECT degreeName FROM degree WHERE degreeId =" . $row["degreeId"];
-        $resultdegree = $conn->query($querydegree);
-        $rowDegree = $resultdegree->fetch_assoc();
-        $output = '  
+    if ($stmt) {
+        // Fetch the student data
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+            // Fetch the degree name using a new query
+            $queryDegree = "SELECT degreeName FROM degree WHERE degreeId = :degreeID";
+            $stmtDegree = $conn->prepare($queryDegree);
+            $stmtDegree->bindParam(':degreeID', $row["degreeId"], PDO::PARAM_INT);
+            $stmtDegree->execute();
+
+            $rowDegree = $stmtDegree->fetch(PDO::FETCH_ASSOC);
+
+            if ($rowDegree) {
+                $output = '  
     <div class="container">
     
                             <div class="row">
@@ -100,9 +110,20 @@ if (isset($_POST["std_ID"])) {
 
                             </div>
                         </div>';
+            }
+
+
+
+            echo $output;
+            $stmtDegree = null;
+        }
+          
+}
+
+$stmt = null;
+
+
     }
 
-   
-
-    echo $output;
-}
+    
+  
