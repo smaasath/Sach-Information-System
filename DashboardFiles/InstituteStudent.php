@@ -329,7 +329,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                 </form>
-                <!-- Course Details Modal -->
+                <!-- edit student Details Modal -->
 
 
 
@@ -352,7 +352,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                 <div class="modal-footer">
 
-                                    <button type="submit" class="btn btn-primary bgcolli" id="AddGuardian" >Save</button>
+                                    <button type="submit" class="btn btn-primary bgcolli"  >Save</button>
 
 
                                     <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
@@ -369,41 +369,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-                <!-- Edit Student Details Modal -->
-
-                <div class="modal fade" id="EditStudentDetail" tabindex="-1" aria-labelledby="EditStudentDetail" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="EditStudentDetail">Edit Student Details</h1>
-                                <button type="button" class="btn-close" onclick="closeModals()"></button>
-                            </div>
-                            <div class="modal-body">
-
-
-
-
-
-
-
-
-
-
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary bgcolli" id="EditStudent"  >Save</button>
-
-
-
-                                <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Edit Student Details Modal -->
+            
 
 
 
