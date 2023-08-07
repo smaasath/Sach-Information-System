@@ -241,13 +241,13 @@ function  AddStaff(value) {
 
 function  EditStaff(value) {
     console.log(value);
-    $.ajax({url: "../PopupBody/StudentEditPopup.php",
+    $.ajax({url: "../PopupBody/staffEditPopup.php",
         method: 'post',
         data: {staffId: value},
         success: function (result) {
             $(".modal-body").html(result);
         }});
-    $.ajax({url: "../DashboardPHP/studentEdit.php",
+    $.ajax({url: "../DashboardPHP/staffEdit.php",
         method: 'post',
         data: {staffId: value},
         success: function (result) {
@@ -294,6 +294,32 @@ function studel(value) {
         }
     });
 
+}
+
+
+function staffDel(value){
+        Swal.fire({
+        title: 'Are You Sure To Detele This?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({url: "../DashboardPHP/staffDelete.php",
+                method: 'post',
+                data: {staffId: value},
+                success: function (result) {
+                    console.log("send");
+                }});
+            Swal.fire('Deleted!', '', 'success')
+        } else if (result.isDenied) {
+
+            Swal.fire('Not Deleted', '', 'info')
+        }
+    });
+    
 }
 
 
