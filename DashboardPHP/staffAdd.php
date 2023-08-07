@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 $passwordch = htmlentities($Password);
 // Hash the password
-$hashedPassword = password_hash($Password, PASSWORD_DEFAULT);
+$hashedPassword = password_hash($Password, PASSWORD_BCRYPT);
 echo $passwordch;
 
 include '../DashboardPHP/connection.php';
