@@ -41,12 +41,7 @@ if(isset($_POST["username"],$_POST["password"])){
             }
 
             
-            $cookie_name = "user_login_session";
-            $cookie_value = session_id();
-            $cookie_expiry = time() + 7200; 
-            $cookie_path = "/"; 
-
-            setcookie($cookie_name, $cookie_value, $cookie_expiry, $cookie_path);
+           
         }
         else{
             $location = "LOGIN/LOGIN/Login.php?status=2"; 

@@ -1,14 +1,14 @@
 <?php
 session_start();
 
+ob_start();
 $ins_ID = $_SESSION["user_instituteId"];
 $expiration = time() + (30 * 24 * 60 * 60); 
 setcookie("Ins_Login", $ins_ID, $expiration, "/");
 
 if (isset($_COOKIE['Ins_Login'])) {
-    $UserID = $_COOKIE['Ins_Login'];
-    echo "Cookie value: " . $UserID;
-}
+    
+
 
 ?>
 
@@ -233,7 +233,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
         <?php
  
-   
+   } else {
+   header("Location: " . $_SERVER['REQUEST_URI']);    
+   }
 
 
         ?>
@@ -242,9 +244,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../JS/AdminDashboard.js"></script>
         <script>
-        function logout() {
+        function logout(cookieName) {
         // Delete the cookie by setting its expiration time to a past date
-        document.cookie = "user_token=Ins_Login; expires=Thu, 01 Jan 1970 00:00:00 UTC; ";
+        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         
         // Redirect to the logout script or another page
         window.location.href = "../index.php";
