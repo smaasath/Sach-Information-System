@@ -256,7 +256,20 @@ function  EditStaff(value) {
     $('#EditStaffDetail').modal('show');
 }
 
-function AddCourse() {
+function AddCourse(value) {
+     $.ajax({url: "../PopupBody/courseAddPopup.php",
+        method: 'post',
+        data: {Ins_ID: value},
+        success: function (result) {
+             $(".modal-body").html(result);
+        }});
+      $.ajax({url: "../DashboardPHP/courseAdd.php",
+        method: 'post',
+        data: {Ins_ID: value},
+        success: function (result) {
+            console.log("send");
+        }});
+     
     $('#AddCourse').modal('show');
 }
 

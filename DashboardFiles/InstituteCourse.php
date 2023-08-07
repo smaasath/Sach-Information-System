@@ -164,7 +164,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
                     <div class="col-4 "> 
-                        <button type="button" class="btn btn-primary bgcol" onclick="AddCourse()">Add Course</button>
+                        <button type="button" class="btn btn-primary bgcol" onclick="AddCourse(<?php echo $userID; ?>)">Add Course</button>
                     </div>
                 </div>
 
@@ -353,6 +353,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <!-- Add Course Details Modal -->
+         <form method="post" action="../DashboardPHP/courseAdd.php">
         <div class="modal fade" id="AddCourse" tabindex="-1" aria-labelledby="AddCourse" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -361,98 +362,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="row align-items-center">
-                            <div class="col-3">
-                                <h6>Department</h6>
-                            </div>
-                            <div class="col-9 p-3">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Department</option>
-                                    <option value="1">Department1</option>
-                                    <option value="2">Department2</option>
-                                    <option value="3">Department3</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="row align-items-center">
-                            <div class="col-3">
-                                <h6>Degree</h6>
-                            </div>
-                            <div class="col-9 p-3">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Degree</option>
-                                    <option value="1">Degree1</option>
-                                    <option value="2">Degree2</option>
-                                    <option value="3">Degree3</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center">
-                            <div class="col-3">
-                                <h6>Assign Lecturer</h6>
-                            </div>
-                            <div class="col-9 p-3">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Lecturer</option>
-                                    <option value="1">Lecturer1</option>
-                                    <option value="2">Lecturer2</option>
-                                    <option value="3">Lecturer3</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Course Name</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Description</h6>
-                            </div>
-                            <div class="col-9">
-                                <textarea class="form-control" id="" rows="3"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Credits</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-
-
+                        
 
                     </div>
 
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-primary bgcolli" id="Addcourse" onclick="savestudent()" >Add Course</button>
+                        <button type="submit" class="btn btn-primary bgcolli" >Add Course</button>
 
                         <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
-
+</form>
         <!-- Add Course Details Modal -->
 
 
