@@ -1,10 +1,7 @@
 <?php
 session_start();
 
-ob_start();
-$ins_ID = $_SESSION["user_instituteId"];
-$expiration = time() + (30 * 24 * 60 * 60); 
-setcookie("Ins_Login", $ins_ID, $expiration, "/");
+
 
 if (isset($_COOKIE['Ins_Login'])) {
     
@@ -114,7 +111,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li><a class="dropdown-item" onclick="logout('Ins_Login')">Log out</a></li>
                         </ul>
                     </div>
                     <hr class="dashboardhr">
@@ -172,7 +169,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                                <li><a class="dropdown-item" href="#">Log out</a></li>
+                                <li><a class="dropdown-item" onclick="logout('Ins_Login')">Log out</a></li>
                             </ul>
                         </div>
                     </div>
@@ -234,6 +231,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
  
    } else {
+       $ins_ID = $_SESSION["user_instituteId"];
+$expiration = time() + (30 * 24 * 60 * 60); 
+setcookie("Ins_Login", $ins_ID, $expiration, "/");
    header("Location: " . $_SERVER['REQUEST_URI']);    
    }
 

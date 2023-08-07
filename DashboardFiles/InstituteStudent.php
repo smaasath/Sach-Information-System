@@ -76,7 +76,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                    <li><a class="dropdown-item" onclick="logout()" href="../index.php">Sign out</a></li>
+                    <li><a class="dropdown-item" onclick="logout('Ins_Login')" href="../index.php">Sign out</a></li>
                 </ul>
             </div>
 
