@@ -277,7 +277,20 @@ function CourseDetail() {
     $('#CourseDetail').modal('show');
 }
 
-function EditCourse() {
+function EditCourse(value) {
+        console.log(value);
+    $.ajax({url: "../PopupBody/CourseEditPopup.php",
+        method: 'post',
+        data: {course_id: value},
+        success: function (result) {
+            $(".modal-body").html(result);
+        }});
+    $.ajax({url: "../DashboardPHP/courseEdit.php",
+        method: 'post',
+        data: {course_id: value},
+        success: function (result) {
+            console.log("send");
+        }});
     $('#EditCourseDetail').modal('show');
 }
 

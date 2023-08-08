@@ -220,7 +220,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <td class = "col-1"><?php echo $rowtable["staffId"] ?></td>
                                     <td class = "col-2"><?php echo $row["staffName"] ?></td>
                                     <td class = "col-2">
-                                        <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "openCourseDetail(<?php echo $rowtable["courseId"] ?>)"></i>
+                                        <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "EditCourse(<?php echo $rowtable["courseId"] ?>)"></i>
                                         <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="studel(<?php echo $rowtable["courseId"] ?>)"></i>
 
 
@@ -249,106 +249,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
 
         <!-- Table -->
-
-
-
-
-        <!-- Course Details Modal -->
-        <div class="modal fade" id="CourseDetail" tabindex="-1" aria-labelledby="CourseDetail" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="CourseDetail">Course Details</h1>
-                        <button type="button" class="btn-close" onclick="closeModals()"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Department</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Computer Science And Informatics</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Degree</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Computer Science & Technology</p>
-                                </div>
-                            </div> 
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Lecturer</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Mohamed Aasadh</p>
-                                </div>
-                            </div> 
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Course Name</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Web Application</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Description</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Credits</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>3</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Student Count</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>100</p>
-                                </div>
-                            </div> 
-
-
-
-
-
-
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Course Details Modal -->
-
-
-
-
-
-
-
-
-
 
 
 
@@ -385,6 +285,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <!-- Edit Student Details Modal -->
+         <form method="post" action="../DashboardPHP/courseEdit.php">
         <div class="modal fade" id="EditCourseDetail" tabindex="-1" aria-labelledby="EditCourseDetail" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -395,57 +296,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="modal-body">
 
 
-                        <div class="row align-items-center">
-                            <div class="col-3">
-                                <h6>Assign Lecturer</h6>
-                            </div>
-                            <div class="col-9 p-3">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Lecturer</option>
-                                    <option value="1">Lecturer1</option>
-                                    <option value="2">Lecturer2</option>
-                                    <option value="3">Lecturer3</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Course Name</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" value="Computer SCience & Technology" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Description</h6>
-                            </div>
-                            <div class="col-9">
-                                <textarea class="form-control" value="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs" id="" rows="3"></textarea>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>"Credits</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" Value="3" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-
 
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary bgcolli" id="EditStudent" onclick="savestudent()" >Save</button>
+                        <button type="submit" class="btn btn-primary bgcolli" >Save</button>
 
 
 
@@ -454,7 +309,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </div>
-
+         </form>
         <!-- Edit Student Details Modal -->
 
 
