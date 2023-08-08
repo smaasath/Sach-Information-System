@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -186,9 +189,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-            <?php
-            // put your code here
-            ?>
+          
+  
 
 
 

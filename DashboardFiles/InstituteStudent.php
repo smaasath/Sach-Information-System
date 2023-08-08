@@ -13,8 +13,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     <body>
         <?php
         include '../DashboardPHP/connection.php';
-        $userID = 1;
-// Check if the user is logged in
+
+        $userID = $_COOKIE['Ins_Login'];
         ?>
         <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex  align-items-center justify-content-end">
@@ -26,19 +26,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
 
             <h6 class="p-3" href="#">
-        <?php
-        $query = "SELECT instituteName FROM institute WHERE instituteId=1";
-        $result = $conn->query($query);
-        if (!$result) {
-            die("Query failed: " . $conn->error);
-        }
+                <?php
+                $query = "SELECT instituteName FROM institute WHERE instituteId = :userID";
+                $stmtInsName = $conn->prepare($query);
+                $stmtInsName->bindParam(':userID', $userID, PDO::PARAM_INT);
+                $stmtInsName->execute();
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            echo $row["instituteName"];
-        }
-       
-        ?>   
+// Fetch the result
+                $rowName = $stmtInsName->fetch(PDO::FETCH_ASSOC);
+
+                if ($rowName) {
+                    echo $rowName["instituteName"];
+                }
+
+// Close the statement
+                $stmtInsName = null;
+
+// Close the PDO connection
+                ?>   
             </h6>
 
 
@@ -47,22 +52,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <div class="col-1">
                 <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <?php
-                $queryUserImage = "SELECT Logo FROM institute WHERE instituteId=1";
-                $resultUserImage = $conn->query($queryUserImage);
+                    <?php
+                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId = :userID";
+                    $stmtUserImage = $conn->prepare($queryUserImage);
+                    $stmtUserImage->bindParam(':userID', $userID, PDO::PARAM_INT);
+                    $stmtUserImage->execute();
 
-                if ($resultUserImage->num_rows > 0) {
-                    $row = $resultUserImage->fetch_assoc();
-                    $imageData = $row["Logo"];
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" style="width:30%">';
-                } else {
-                    echo "Image not found.";
-                }
-                ?>
+// Fetch the result
+                    $rowUserImage = $stmtUserImage->fetch(PDO::FETCH_ASSOC);
+
+                    if ($rowUserImage && isset($rowUserImage["Logo"])) {
+                        $imageData = $rowUserImage["Logo"];
+                        echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" style="width:30%">';
+                    } else {
+                        echo "Image not found.";
+                    }
+
+// Close the statement
+                    $stmtUserImage = null;
+
+// Close the PDO connection
+                    ?>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                    <li><a class="dropdown-item" href="../index.php">Sign out</a></li>
+                    <li><a class="dropdown-item" onclick="logout('Ins_Login')" href="../index.php">Sign out</a></li>
                 </ul>
             </div>
 
@@ -81,13 +95,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <div class="col-8 ps-5 d-flex justify-content-center align-items-center flex-column"> 
                         <h7>Students</h7>
                         <h2>
-<?php
-$queryStudentCount = "SELECT COUNT(*) AS studentID FROM student WHERE instituteId=$userID";
-$resultStudentCount = $conn->query($queryStudentCount);
-$row = $resultStudentCount->fetch_assoc();
-$resultCount = $row["studentID"];
-echo $resultCount;
-?>
+                            <?php
+// Construct and execute the query using a prepared statement
+                            $queryStudentCount = "SELECT COUNT(*) AS studentCount FROM student WHERE instituteId = :userID";
+                            $stmtStudentCount = $conn->prepare($queryStudentCount);
+                            $stmtStudentCount->bindParam(':userID', $userID, PDO::PARAM_INT);
+                            $stmtStudentCount->execute();
+
+// Fetch the result
+                            $rowStudentCount = $stmtStudentCount->fetch(PDO::FETCH_ASSOC);
+
+                            if ($rowStudentCount && isset($rowStudentCount["studentCount"])) {
+                                echo $rowStudentCount["studentCount"];
+                            } else {
+                                echo "Student count not found.";
+                            }
+
+// Close the statement
+                            $stmtStudentCount = null;
+                            ?>
                         </h2>
                     </div>
                 </div> 
@@ -112,960 +138,252 @@ echo $resultCount;
                         </div>
                     </div>
                     <div class="col-3"> 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Department</option>
-                            <option value="1">Department1</option>
-                            <option value="2">Department2</option>
-                            <option value="3">Department3</option>
+                        <select class="form-select"  name="degree" id="degree" aria-label="Default select example">
+                            <?php
+                            // Construct and execute the query using a prepared statement
+                            $queryGetDegree = "SELECT degreeName, degreeId FROM degree WHERE instituteId = :userID";
+                            $stmtGetDegree = $conn->prepare($queryGetDegree);
+                            $stmtGetDegree->bindParam(':userID', $userID, PDO::PARAM_INT);
+                            $stmtGetDegree->execute();
+
+// Fetch results
+                            $resultDegrees = $stmtGetDegree->fetchAll(PDO::FETCH_ASSOC);
+
+                            foreach ($resultDegrees as $rowDegree) {
+                                echo '<option value="' . $rowDegree["degreeId"] . '">' . $rowDegree["degreeName"] . '</option>';
+                            }
+
+// Close the statement
+                            $stmtGetDegree = null;
+                            ?> 
+
+
                         </select>
                     </div>
 
-                    <div class="col-3"> 
-                        <select class="form-select"  id="as" aria-label="Default select example">
-                            <option selected>Course</option>
-                            <option value="1">Course 1</option>
-                            <option value="2">Course 2</option>
-                            <option value="3">Course 3</option>
-                        </select>
-                    </div>
+
                     <div class="col-3 "> 
-                        <button type="button" class="btn btn-primary bgcol" onclick="Addstudent()">Add Student</button>
+                        <button type="button" class="btn btn-primary bgcol" onclick="Addstudent(<?php echo $userID; ?>)">Add Student</button>
                     </div>
                 </div>
 
 
 
-                <!-- Table Head -->
-                <table class="table mb-0">
-
-
-                    <tr>
+           
+            </div>
+            <!-- Table body -->
+            <div class="container bg-white mt-0" style=" max-height: 700px; overflow: scroll;">
+                <table class="table table-hover">
+                    <tr class="sticky-top">
 
                         <th class="col-1 bgcol p-2">ID</th>
                         <th class="col-3 bgcol p-2">Name</th>
                         <th class="col-2 bgcol p-2">Gender</th>
                         <th class="col-3 bgcol p-2">Contact No</th>
-                        <th class="col-1 bgcol p-2">View</th>
-                        <th class="col-1 bgcol p-2">Edit</th>
+                        <th class="col-3 bgcol p-2"></th>
+
 
                     </tr>
-
-
-                </table>
-                <!-- Table Head -->
-            </div>
-            <!-- Table body -->
-            <div class="container bg-white mt-0" style=" max-height: 373px; overflow: scroll;">
-                <table class="table table-hover">
-
-                    <!-- Table row -->
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">Male</td>
-                        <td class="col-3">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="openStudentDetails()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStudent()">Edit</button></td>
-                    </tr>
-
-
                     <!-- Table row -->
 
-                </table> 
 
-            </div>
-            <br>
-            <!-- Table Head -->
-            <div class="text-end" >
-                <button type="button" class="btn btn-success">Save</button>
-            </div>
-        </div>
+                    <?php
+                    $queryGetTable = "SELECT * FROM student WHERE instituteId = :userID";
 
-        <!-- Table -->
+// Prepare and execute the query using a prepared statement
+                    $stmtGetTable = $conn->prepare($queryGetTable);
+                    $stmtGetTable->bindParam(':userID', $userID, PDO::PARAM_INT);
+                    $stmtGetTable->execute();
+
+                    if ($stmtGetTable) {
+                        // Fetch results
+                        $resultTable = $stmtGetTable->fetchAll(PDO::FETCH_ASSOC);
+
+                        if ($resultTable) {
+                            // Output data of each row
+                            foreach ($resultTable as $rowtable) {
+                                ?>
+
+                                <tr>
+                                    <td class = "col-1"> <?php echo $rowtable["studentID"] ?></td>
+                                    <td class = "col-3"><?php echo $rowtable["studentName"] ?></td>
+                                    <td class = "col-2"><?php echo $rowtable["gender"] ?></td>
+                                    <td class = "col-3"><?php echo $rowtable["phoneNo"] ?></td>
+                                    <td class = "col-3">
+                                        <i class="fa-solid fa-user-graduate fa-xl m-2" onclick = "openStudentDetails(<?php echo $rowtable["studentID"] ?>)"></i>
+                                        <i class="fa-solid fa-user-shield fa-xl m-2" onclick = "openGuardianDetail(<?php echo $rowtable["studentID"] ?>)"></i>
+                                        <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "openCourseDetail(<?php echo $rowtable["studentID"] ?>)"></i>
+                                        <i class="fa-solid fa-user-pen fa-xl m-2" onclick = "openeditDetailsStudent(<?php echo $rowtable["studentID"] ?>)"></i>
+                                        <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="studel(<?php echo $rowtable["studentID"] ?>)"></i>
 
 
-
-
-        <!-- Student Details Modal -->
-        <div class="modal fade" id="StudentDetail" tabindex="-1" aria-labelledby="StudentDetail" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="StudentDetail">Student Details</h1>
-                        <button type="button" class="btn-close" onclick="closeModals()"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Department</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Computer Science And Informatics</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Enrollment Number</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>UWU/CST/20/031</p>
-                                </div>
-                            </div> 
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Year</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Second Year</p>
-                                </div>
-                            </div> 
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>First Name</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Mohamed</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Last Name</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Aasath</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>DOB</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>2000/12/11</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Gender</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Male</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Contact</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>0755701765</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Email</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>aasadh2000@gmail.com</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Address</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>185,A/1,Hajiyar Road Sainthamaruthu-13</p>
-                                </div>
-                            </div> 
+                                    </td>
 
 
 
+                                </tr>
 
 
+                                <!-- Table row -->
 
-                        </div>
-                    </div>
-                    <div class="modal-footer">
+                                <?php
+                            }
+                        } else {
+                            echo "0 results";
+                        }
 
-                        <button type="button" class="btn btn-primary bgcolli" id="openModal2" onclick="openGuardianDetail()" >Guardian Details</button>
-                        <button type="button" class="btn btn-primary bgcolli" onclick="openCourseDetail()">Course Details</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
+                    }
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-        </div>
-        <!-- Student Details Modal -->
 
 
 
 
-
-        <!-- Guardian Details Modal -->
-        <div class="modal fade" id="GuardianDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="GuardianDetail">Guardian Detail</h1>
-                        <button type="button" class="btn-close" onclick="closeModals()"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Full Name</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Seeni Muhammadhu Amiza Umma</p>
-                                </div>
+                <!-- Student Details Modal -->
+                <div class="modal fade" id="StudentDetail" tabindex="-1" aria-labelledby="StudentDetail" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="StudentDetail">Student Details</h1>
+                                <button type="button" class="btn-close" onclick="closeModals()"></button>
+                            </div>
+                            <div class="modal-body">
                             </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Relationship</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Mother</p>
-                                </div>
-                            </div> 
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Contact NO</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>0755701347</p>
-                                </div>
-                            </div> 
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Email</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>N/A</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Address</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>185,A/1,Hajiyar Road Sainthamaruthu-13</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Occupation</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Taylor</p>
-                                </div>
-                            </div> 
-
-
-
-
-
-
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-
-                        <button class="btn btn-primary bgcolli" data-bs-target="#StudentDetail" data-bs-toggle="modal">Back</button>
-                        <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Guardian Details Modal -->
-
-        <!-- Course Details Modal -->
-        <div class="modal fade" id="CourseDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="CourseDetail">Course Detail</h1>
-                        <button type="button" class="btn-close" onclick="closeModals()"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <table class="table mb-0 table-hover">
-
-
-                                <tr>
-
-                                    <th class="col-3">ID</th>
-                                    <th class="col-6">Course Name</th>
-                                    <th class="col-3">Score</th>
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-                                    <td class="col-3">88%</td>
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-                                    <td class="col-3">88%</td>
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-                                    <td class="col-3">88%</td>
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-                                    <td class="col-3">88%</td>
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-                                    <td class="col-3">88%</td>
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-                                    <td class="col-3">88%</td>
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-                                    <td class="col-3">88%</td>
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-                                    <td class="col-3">88%</td>
-
-
-                                </tr>
-
-
-
-                            </table>
-
-
-
-
-
-
-
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-
-                        <button class="btn btn-primary bgcolli" data-bs-target="#StudentDetail" data-bs-toggle="modal">Back</button>
-                        <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Course Details Modal -->
-
-
-
-
-
-
-        <!-- Add Student Details Modal -->
-        <form method="post" action="../DashboardPHP/StudentAdd.php" id="myform">Location:Employee/dashboard.php?id=" . $rows['id']
-            <div class="modal fade" id="AddStudentDetail" tabindex="-1" aria-labelledby="AddStudentDetail" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="AddStudentDetail">Add Student Details</h1>
-                            <button type="button" class="btn-close" onclick="closeModals()"></button>
-                        </div>
-                        <div class="modal-body">
-
-
-
-                            <div class="row align-items-center">
-                                <div class="col-3">
-                                    <h6>Degree</h6>
-                                </div>
-                                <div class="col-9 p-3">
-                                    <select class="form-select"  name="degree" id="degree" aria-label="Default select example">
-<?php
-$queryGetdegree = "SELECT degreeName,degreeId FROM degree WHERE instituteId=$userID";
-$resultDegree = $conn->query($queryGetdegree);
-if (!$resultDegree) {
-    die("Query failed: " . $conn->error);
-}
-
-while ($rowdeg = $resultDegree->fetch_assoc()) {
-    echo '<option  value="' . $rowdeg["degreeId"] . '">' . $rowdeg["degreeName"] . '</option>';
-}
-?> 
-
-
-                                    </select>
-                                </div>
-                            </div>
-
-
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Full Name</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" id="studentName" name="studentName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Entrollment No</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text"  id="entrlmentNumber" name="entrlmentNumber" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-                            
-                             <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Accedamic Year</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="number"  id="accedamicYear" name="accedamicYear" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>DOB</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="Date" id="DOB" name="DOB" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Contact No</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" id="studentContactNum" name="studentContactNum" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Email</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="email" id="studentEmail" name="studentEmail" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Gender</h6>
-                                </div>
-                                <div class="col-9">
-                                    <select  name="gender" class="form-select" aria-label="Default select example" required>
-
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Address</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" id="studentAddress" name="studentAddress" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-                            <hr>
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>User Name</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" id="userName" name="userName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Password</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="Password" id="password" name="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-
-                        </div>
-
-                        <div class="modal-footer">
-
-                            <button type="submit" class="btn btn-primary bgcolli" id="AddGuardian" onclick="AddGuardianDetail()" >Add Guardian</button>
-
-
-                            <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Add Student Details Modal -->
-
-
-
-
-
-            <!-- Add Guardian Details Modal -->
-            <div class="modal fade" id="AddGuardianDetail" tabindex="-1" aria-labelledby="AddGuardianDetail" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="AddGuardianDetail">Add Guardian Detail</h1>
-                            <button type="button" class="btn-close" onclick="closeModals()"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row align-items-center">
-
-
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Full Name</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" name="guardianName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Relationship</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <select  name="guardianRelation" class="form-select" aria-label="Default select example" required>
-                                            <option value="Father">Father</option>
-                                            <option value="Mother">Mother</option>
-                                            <option value="Guardian">Guardian</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Contact No</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" name="guardianContactNum" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
-
-
-
-
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Email</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="email" name="guardianEmail" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Address</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" name="guardianAddress" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
-
-
-                                <div class="row align-items-center pb-3">
-                                    <div class="col-3">
-                                        <h6>Occupation</h6>
-                                    </div>
-                                    <div class="col-9">
-                                        <input type="text" name="guardianOccupation" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                    </div>
-                                </div>
-
-                                <input type="hidden" name="Instituteid" value=<?php echo $userID; ?>>
-                     
-
-
-
-
-
-
-
-
-
-                            </div>
-
                             <div class="modal-footer">
-                                <button class="btn btn-primary bgcolli" data-bs-target="#AddStudentDetail" data-bs-toggle="modal">Back</button>
-                                <button type="submit" class="btn btn-primary bgcolli" id="AddStudent" >Save Student</button>
 
 
-                                <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
-        <!-- Add Guardian Details Modal -->
-
-
-        <!-- Edit Student Details Modal -->
-        <div class="modal fade" id="EditStudentDetail" tabindex="-1" aria-labelledby="EditStudentDetail" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="EditStudentDetail">Edit Student Details</h1>
-                        <button type="button" class="btn-close" onclick="closeModals()"></button>
-                    </div>
-                    <div class="modal-body">
+                <!-- Student Details Modal -->
 
 
 
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>First Name</h6>
+
+                <!-- Guardian Details Modal -->
+                <div class="modal fade" id="GuardianDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="GuardianDetail">Guardian Detail</h1>
+                                <button type="button" class="btn-close" onclick="closeModals()"></button>
                             </div>
-                            <div class="col-9">
-                                <input type="text" value="Mohamed" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            <div class="modal-body">
                             </div>
-                        </div>
+                            <div class="modal-footer">
 
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Last Name</h6>
+
+                                <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
                             </div>
-                            <div class="col-9">
-                                <input type="text" value="Aasath" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Contact No</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" Value="0755701765" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Email</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="email" value="aasadh200@gmail.com" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Address</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" value="sainthamaruthu" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <hr>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>User Name</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" value="sm_aasath" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Password</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="Password" value="aasath" id="mypass" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                <input type="checkbox" onclick="showpassword()">Show Password
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary bgcolli" id="EditStudent" onclick="savestudent()" >Save</button>
-
-                        <button type="button" class="btn btn-primary bgcolli" id="EditGuardian" onclick="EditGuardianDetail()" >Edit Guardian</button>
-
-                        <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Edit Student Details Modal -->
-
-
-        <!-- Edit Guardian Details Modal -->
-        <div class="modal fade" id="EditGuardianDetail" tabindex="-1" aria-labelledby="EditGuardianDetail" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="EditGuardianDetail">Edit Guardian Detail</h1>
-                        <button type="button" class="btn-close" onclick="closeModals()"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row align-items-center">
-
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Full Name</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" Value="Amiza Umma" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Relationship</h6>
-                                </div>
-                                <div class="col-9">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Relationship</option>
-                                        <option value="1">Mother</option>
-                                        <option value="2">Father</option>
-                                        <option value="3">Gaurdian</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Contact No</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" Value="0755701347" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-
-
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Email</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="email" Value="N/A" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Address</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" Value="Sainthamaruthu" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Occupation</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" Value="Taylor" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-
-
-                        </div>
-
-                        <div class="modal-footer">
-                            <button class="btn btn-primary bgcolli" data-bs-target="#EditStudentDetail" data-bs-toggle="modal">Back</button>
-                            <button type="button" class="btn btn-primary bgcolli" id="EditStudent" onclick="savestudent()" >Save</button>
-
-                            <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Edit Guardian Details Modal -->
+                <!-- Guardian Details Modal -->
+
+                <!-- Course Details Modal -->
+                <div class="modal fade" id="CourseDetail" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="CourseDetail">Course Detail</h1>
+                                <button type="button" class="btn-close" onclick="closeModals()"></button>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+
+
+                                <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course Details Modal -->
+
+
+                <!-- student Edit Modal -->
+                <form method="post" action="../DashboardPHP/studentEdit.php" id="editform">
+                    <div class="modal fade" id="stdEdit" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="CourseDetail">Edit Details</h1>
+                                    <button type="button" class="btn-close" onclick="closeModals()"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                                <div class="modal-footer">
+
+                                    <button type="submit" class="btn btn-primary bgcolli" id="editstudent" >Save</button>
+
+                                    <button type="button" class="btn btn-secondary" onclick="closeModals()" >Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- edit student Details Modal -->
 
 
 
-<?php
+
+
+
+                <!-- Add Student Details Modal -->
+                <form method="post" action="../DashboardPHP/StudentAdd.php" id="editform">
+                    <div class="modal fade" id="AddStudentDetail" tabindex="-1" aria-labelledby="AddStudentDetail" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="AddStudentDetail">Add Student Details</h1>
+                                    <button type="button" class="btn-close" onclick="closeModals()"></button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                </div>
+
+                                <div class="modal-footer">
+
+                                    <button type="submit" class="btn btn-primary bgcolli"  >Save</button>
+
+
+                                    <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- Add Student Details Modal -->
+
+
+
+
+
+
+
+            
+
+
+
+
+                <?php
 // put your code here
-?>
+                ?>
 
 
-        <script>
-            function changeFunc() {
-                var selectBox = document.getElementById("department");
-                var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-                alert(selectedValue);
-            }
-        </script>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     </body>
 </html>

@@ -11,9 +11,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
 
-       
+
         <?php
         include '../DashboardPHP/connection.php';
+
+        $userID = $_COOKIE['Ins_Login'];
         ?>
         <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex  align-items-center justify-content-end">
@@ -26,16 +28,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <h6 class="p-3" href="#">
                 <?php
-                $query = "SELECT instituteName FROM institute WHERE instituteId=1";
-                $result = $conn->query($query);
-                if (!$result) {
-                    die("Query failed: " . $conn->error);
+                $query = "SELECT instituteName FROM institute WHERE instituteId = :userID";
+                $stmtInsName = $conn->prepare($query);
+                $stmtInsName->bindParam(':userID', $userID, PDO::PARAM_INT);
+                $stmtInsName->execute();
+
+// Fetch the result
+                $rowName = $stmtInsName->fetch(PDO::FETCH_ASSOC);
+
+                if ($rowName) {
+                    echo $rowName["instituteName"];
                 }
 
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    echo $row["instituteName"];
-                }
+// Close the statement
+                $stmtInsName = null;
+
+// Close the PDO connection
                 ?>   
             </h6>
 
@@ -46,18 +54,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <div class="col-1">
                 <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                     <?php
-                    $imageId = 1; // Replace with the actual ID of the image you want to retrieve
+                   
+                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId = :userID";
+                    $stmtUserImage = $conn->prepare($queryUserImage);
+                    $stmtUserImage->bindParam(':userID', $userID, PDO::PARAM_INT);
+                    $stmtUserImage->execute();
 
-                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId=1";
-                    $resultUserImage = $conn->query($queryUserImage);
+// Fetch the result
+                    $rowUserImage = $stmtUserImage->fetch(PDO::FETCH_ASSOC);
 
-                    if ($resultUserImage->num_rows > 0) {
-                        $row = $resultUserImage->fetch_assoc();
-                        $imageData = $row["Logo"];
+                    if ($rowUserImage && isset($rowUserImage["Logo"])) {
+                        $imageData = $rowUserImage["Logo"];
                         echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" style="width:30%">';
                     } else {
                         echo "Image not found.";
                     }
+
+// Close the statement
+                    $stmtUserImage = null;
+
+// Close the PDO connection
                     ?>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
@@ -80,7 +96,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
                     <div class="col-8 ps-5 d-flex justify-content-center align-items-center flex-column"> 
                         <h7>Staffs</h7>
-                        <h2>1234</h2>
+                        <h2>
+                            <?php
+                            // Construct and execute the query using a prepared statement
+                            $queryStaffCount = "SELECT COUNT(*) AS staffCount FROM staff WHERE institudeID = :userID";
+                            $stmtStaffCount = $conn->prepare($queryStaffCount);
+                            $stmtStaffCount->bindParam(':userID', $userID, PDO::PARAM_INT);
+                            $stmtStaffCount->execute();
+
+// Fetch the result
+                            $rowStaffCount = $stmtStaffCount->fetch(PDO::FETCH_ASSOC);
+
+                            if ($rowStaffCount && isset($rowStaffCount["staffCount"])) {
+                                echo $rowStaffCount["staffCount"];
+                            } else {
+                                echo "Staff count not found.";
+                            }
+
+// Close the statement
+                            $stmtStaffCount = null;
+                            ?>
+                        </h2>
                     </div>
                 </div> 
             </div> 
@@ -104,24 +140,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </div>
                     </div>
                     <div class="col-3"> 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Department</option>
-                            <option value="1">Department1</option>
-                            <option value="2">Department2</option>
-                            <option value="3">Department3</option>
+                        <select class="form-select"  name="degree" id="degree" aria-label="Default select example">
+                            <?php
+                            // Construct and execute the query using a prepared statement
+                            $queryGetDegree = "SELECT degreeName, degreeId FROM degree WHERE instituteId = :userID";
+                            $stmtGetDegree = $conn->prepare($queryGetDegree);
+                            $stmtGetDegree->bindParam(':userID', $userID, PDO::PARAM_INT);
+                            $stmtGetDegree->execute();
+
+// Fetch results
+                            $resultDegrees = $stmtGetDegree->fetchAll(PDO::FETCH_ASSOC);
+
+                            foreach ($resultDegrees as $rowDegree) {
+                                echo '<option value="' . $rowDegree["degreeId"] . '">' . $rowDegree["degreeName"] . '</option>';
+                            }
+
+// Close the statement
+                            $stmtGetDegree = null;
+                            ?> 
+
+
                         </select>
                     </div>
 
-                    <div class="col-3"> 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Course</option>
-                            <option value="1">Course 1</option>
-                            <option value="2">Course 2</option>
-                            <option value="3">Course 3</option>
-                        </select>
-                    </div>
+
+
                     <div class="col-3 "> 
-                        <button type="button" class="btn btn-primary bgcol" onclick="AddStaff()">Add Staff</button>
+                        <button type="button" class="btn btn-primary bgcol" onclick="AddStaff(<?php echo $userID; ?>)">Add Staff</button>
                     </div>
                 </div>
 
@@ -131,17 +176,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <table class="table mb-0">
 
 
-                    <tr>
 
-                        <th class="col-1 bgcol p-2">ID</th>
-                        <th class="col-3 bgcol p-2">Name</th>
-                        <th class="col-2 bgcol p-2">Email</th>
-                        <th class="col-2 bgcol p-2">Position</th>
-                        <th class="col-2 bgcol p-2">Phone</th>
-                        <th class="col-1 bgcol p-2">View</th>
-                        <th class="col-1 bgcol p-2">Edit</th>
-
-                    </tr>
 
 
                 </table>
@@ -150,145 +185,76 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <!-- Table body -->
             <div class="container bg-white mt-0" style=" max-height: 373px; overflow: scroll;">
                 <table class="table table-hover">
+                    <tr class="sticky-top">
 
+                        <th class="col-1 bgcol p-2">ID</th>
+                        <th class="col-3 bgcol p-2">Name</th>
+                        <th class="col-3 bgcol p-2">Position</th>
+                        <th class="col-2 bgcol p-2">Phone</th>
+                        <th class="col-3 bgcol p-2"></th>
+                        
+
+                    </tr>
                     <!-- Table row -->
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
+                     <?php
+                    $queryGetTable = "SELECT * FROM staff WHERE institudeID  = :userID";
 
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
+// Prepare and execute the query using a prepared statement
+                    $stmtGetTable = $conn->prepare($queryGetTable);
+                    $stmtGetTable->bindParam(':userID', $userID, PDO::PARAM_INT);
+                    $stmtGetTable->execute();
 
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
+                    if ($stmtGetTable) {
+                        // Fetch results
+                        $resultTable = $stmtGetTable->fetchAll(PDO::FETCH_ASSOC);
 
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
+                        if ($resultTable) {
+                            // Output data of each row
+                            foreach ($resultTable as $rowtable) {
+                                ?>
 
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
+                                <tr>
+                                    <td class = "col-1"> <?php echo $rowtable["staffId"] ?></td>
+                                    <td class = "col-3"><?php echo $rowtable["staffName"] ?></td>
+                                    <td class = "col-3"><?php echo $rowtable["position"] ?></td>
+                                    <td class = "col-2"><?php echo $rowtable["phoneNo"] ?></td>
+                                    <td class = "col-3">
+                                        <i class="fa-solid fa-user-graduate fa-xl m-2" onclick = "OpenStaffStaff(<?php echo $rowtable["staffId"] ?>)"></i>
+                                        <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "openstaffCourseDetail(<?php echo $rowtable["staffId"] ?>)"></i>
+                                        <i class="fa-solid fa-user-pen fa-xl m-2" onclick = "EditStaff(<?php echo $rowtable["staffId"] ?>)"></i>
+                                        <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="staffDel(<?php echo $rowtable["staffId"] ?>)"></i>
 
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
 
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
-
-                    <tr>
-                        <td class="col-1">0001</td>
-                        <td class="col-3">Mohamed Aasath</td>
-                        <td class="col-2">aasadh200@gmail.com</td>
-                        <td class="col-2">Lecturer</td>
-                        <td class="col-2">0755701765</td>
-                        <td class="col-1"><button type="button" class="btn btn-info" onclick="OpenStaffStaff()">View</button></td>
-                        <td class="col-1"><button type="button" class="btn btn-secondary" onclick="EditStaff()">Edit</button></td>
-                    </tr>
+                                    </td>
 
 
 
+                                </tr>
 
 
+                                <!-- Table row -->
 
+                                <?php
+                            }
+                        } else {
+                            echo "0 results";
+                        }
 
+                    }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
 
-
-
-
-                    <!-- Table row -->
-
-                </table> 
-
-            </div>
             <br>
-            <!-- Table Head -->
-            <div class="text-end" >
-                <button type="button" class="btn btn-success">Save</button>
-            </div>
-        </div>
+            
 
         <!-- Table -->
 
 
 
 
-        <!-- Student Details Modal -->
+        <!-- Staff Details Modal -->
         <div class="modal fade" id="StaffDetail" tabindex="-1" aria-labelledby="StaffDetail" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -297,83 +263,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Department</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Computer Science And Informatics</p>
-                                </div>
-                            </div> 
-
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Name</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Mohamed Aasath</p>
-                                </div>
-                            </div> 
-
-
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Position</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Lecturer</p>
-                                </div>
-                            </div> 
-
-
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Contact</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>0755701765</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Email</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>aasadh2000@gmail.com</p>
-                                </div>
-                            </div> 
-
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Qualification</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs</p>
-                                </div>
-                            </div> 
-
-
-
-
-
-
-                        </div>
+                        
                     </div>
                     <div class="modal-footer">
 
 
-                        <button type="button" class="btn btn-primary bgcolli" onclick="openstaffCourseDetail()">Course Details</button>
+                       
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Student Details Modal -->
+        <!-- Staff Details Modal -->
 
 
 
@@ -390,78 +291,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="container">
-                            <table class="table mb-0 table-hover">
-
-
-                                <tr>
-
-                                    <th class="col-3">ID</th>
-                                    <th class="col-6">Course Name</th>
-
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-
-
-
-                                </tr>
-
-                                <tr>
-
-                                    <td class="col-3">001</td>
-                                    <td class="col-6">Web Application</td>
-
-
-
-                                </tr>
-
-
-
-
-
-                            </table>
-
-
-
-
-
-
-
-
-                        </div>
+                        
                     </div>
                     <div class="modal-footer">
 
@@ -479,6 +309,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <!-- Add Staff Details Modal -->
+               <form method="post" action="../DashboardPHP/staffAdd.php" >
         <div class="modal fade" id="AddStaffDetail" tabindex="-1" aria-labelledby="AddStaffDetail" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -487,109 +318,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="row align-items-center">
-                            <div class="col-3">
-                                <h6>Department</h6>
-                            </div>
-                            <div class="col-9 p-3">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Department</option>
-                                    <option value="1">Department1</option>
-                                    <option value="2">Department2</option>
-                                    <option value="3">Department3</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Name</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-
-
-
-
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Contact No</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Email</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Position</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Qualification</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <hr>
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>User Name</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-                        <div class="row align-items-center pb-3">
-                            <div class="col-3">
-                                <h6>Password</h6>
-                            </div>
-                            <div class="col-9">
-                                <input type="Password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            </div>
-                        </div>
-
-
-
-
-
-
-
+                      
 
                     </div>
 
                     <div class="modal-footer">
 
 
-                        <button type="button" class="btn btn-primary bgcolli" id="AddStaff" onclick="savestudent()" >Save Student</button>
+                        <button type="submit" class="btn btn-primary bgcolli">Add Staff</button>
                         <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
-
+               </form>
         <!-- Add Staff Details Modal -->
 
 
@@ -600,6 +342,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <!-- Edit Staff Details Modal -->
+         <form method="post" action="../DashboardPHP/staffEdit.php" id="editform">
         <div class="modal fade" id="EditStaffDetail" tabindex="-1" aria-labelledby="EditStaffDetail" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -608,94 +351,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <button type="button" class="btn-close" onclick="closeModals()"></button>
                     </div>
                     <div class="modal-body">
+                        
+                    </div>
 
-
-                        <div class="modal-body">
-
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Name</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" value="Aasath" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-
-
-
-
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Contact No</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" value="0755701765" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Email</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="email" value="aasadh200@gmail.com" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Position</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" value="Lecturer" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Qualification</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" value="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-
-                            <hr>
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>User Name</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="text" value="sm_aasath" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
-                            </div>
-
-                            <div class="row align-items-center pb-3">
-                                <div class="col-3">
-                                    <h6>Password</h6>
-                                </div>
-                                <div class="col-9">
-                                    <input type="Password" value="aasath" id="mypass" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    <input type="checkbox" onclick="showpassword()">Show Password
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-
-                        </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary bgcolli" id="EditStudent" onclick="savestudent()" >Save</button>
+                             <button type="submit" class="btn btn-primary bgcolli"  >Save</button>
 
 
 
@@ -705,6 +366,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 </div>
             </div>
         </div>
+         </form>
         <!-- Edit Student Details Modal -->
 
 

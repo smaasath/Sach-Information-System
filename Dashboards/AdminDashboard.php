@@ -1,7 +1,11 @@
 <?php
 session_start();
 
-$user_instituteId = $_SESSION["user_instituteId"];
+
+
+if (isset($_COOKIE['Ins_Login'])) {
+    
+
 
 ?>
 
@@ -107,7 +111,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li><a class="dropdown-item" onclick="logout('Ins_Login')">Log out</a></li>
                         </ul>
                     </div>
                     <hr class="dashboardhr">
@@ -165,7 +169,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                                <li><a class="dropdown-item" href="#">Log out</a></li>
+                                <li><a class="dropdown-item" onclick="logout('Ins_Login')">Log out</a></li>
                             </ul>
                         </div>
                     </div>
@@ -225,13 +229,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
         <?php
-        // put your code here
+ 
+   } else {
+       $ins_ID = $_SESSION["user_instituteId"];
+$expiration = time() + (30 * 24 * 60 * 60); 
+setcookie("Ins_Login", $ins_ID, $expiration, "/");
+   header("Location: " . $_SERVER['REQUEST_URI']);    
+   }
+
+
         ?>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../JS/AdminDashboard.js"></script>
-
+        <script>
+        function logout(cookieName) {
+        // Delete the cookie by setting its expiration time to a past date
+        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        
+        // Redirect to the logout script or another page
+        window.location.href = "../index.php";
+    }
+        </script>
         <script src="../JS/StudentDashboard.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>
