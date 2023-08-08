@@ -1,3 +1,37 @@
+<?php
+session_start();
+$reset_code =  $_SESSION["reset_code"];
+
+$message = null;
+
+if(isset($_GET["status"])){
+    $status = $_GET["status"];
+    if($status == 2){
+        $message = "<h6 class='text-success'>The reset code has been sent to your email. Please enter it here or click the link in the email.</h6>";
+    }
+}
+
+if($_SERVER["REQUEST_METHOD"] === "POST" ){
+    if(isset($_POST["resetcode"])){
+        if(empty($_POST["resetcode"])){
+            $message = "<h6 class='text-danger'>Please provide your reset code to proceed.</h6>";        
+        }
+        else{
+            $input_resetCode = $_POST["resetcode"];
+            if( $input_resetCode === $reset_code){
+                header("Location: ../fp3/fp3.php?status=1");
+            }else{
+                $message = "<h6 class='text-danger'>Invalid reset code. Please try again.</h6>";
+            }
+        }
+
+    }else{
+        $message = "<h6 class='text-danger'>Required values were not submitted.</h6>";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,9 +68,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="../WebinarHome.php" style="color:rgb(20, 108, 148)">Webinar</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../lOGIN\LOGIN\Login.php" style="color:rgb(20, 108, 148)">Join Now</a>
-                                </li>
+                                <form class="form-inline my-2 my-lg-0"  action="../LOGIN/Login.php" method="get">
+                                    <button class="btn btn my-2 my-sm-0" type="submit" style="color:white;background-color: rgb(20, 108, 148);">Log In</button>
+                                </form> 
 
                         </div>
                     </nav>
@@ -53,10 +87,11 @@
                 </div>                
                     <div class="col-md-5 col-xl-4 text-center text-md-start">
                         <h2 class="display-6 fw-bold mb-4">Forgot your password?</h2>
+                        <?= $message ?>
                         <p class="text-muted">Enter the code.</p>
-                        <form method="post" data-bs-theme="light">
-                            <div class="mb-3"><input class="shadow form-control" type="text" placeholder="Code"></div>
-                            <div class="mb-5"><a href="../fp3/fp3.html"><input onclick="return ValidateCode();" class="Submit-Btn" type="button" value="NEXT" id="PasswordResetBtn" ></a></div>                            
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" data-bs-theme="light">
+                            <div class="mb-3"><input name="resetcode" class="shadow form-control" type="text" placeholder="Code"></div>
+                            <div class="mb-5"><input type="submit" onclick="return ValidateCode();" class="Submit-Btn" type="button" value="NEXT" id="PasswordResetBtn" ></div>                            
                         </form>
                     </div>               
                </div>

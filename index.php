@@ -37,7 +37,7 @@
                   <li class="nav-item">
                     <a class="nav-link" href="WebinarHome.php" style="color:rgb(20, 108, 148)">Webinar</a>
                   </li>
-                  <form class="form-inline my-2 my-lg-0"  action="LOGIN\LOGIN\Login.php" method="get">
+                  <form class="form-inline my-2 my-lg-0"  action="LOGIN\Login.php" method="get">
                       <button class="btn btn my-2 my-sm-0" type="submit" style="color:white;background-color: rgb(20, 108, 148);">Log In</button>
                   </form>   
               </div>

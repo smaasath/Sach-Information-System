@@ -1,5 +1,77 @@
 <?php
+session_start();
+require_once '../classes/DBConnector.php';
+require_once '../classes/User.php';
+
+use classes\DBConnector;
+use classes\User;
+
 $message = null;
+
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+    if(isset($_POST["username"],$_POST["password"])){
+        if(empty($_POST["username"]) || empty($_POST["password"])){
+            $message = "<h6 class='text-danger'>Please provide your username and password to proceed. Both fields are required for access.</h6>";        
+            //$location = "LOGIN/LOGIN/Login.php?status=1";
+        }
+        else{
+            $username = trim($_POST["username"]);
+            $password = trim($_POST["password"]);
+    
+            $user = new User($username,$password,null);
+    
+            if($user->login(DBConnector::getConnection())){
+                $_SESSION["user_role"] = $user->getRole();
+    
+                switch($_SESSION["user_role"]){
+                    case 1:
+                        header("Location: ../../Dashboards/SuperAdminDashboard.php");
+                        //$location = "../../Dashboards/SuperAdminDashboard.php";
+                        break;
+                    case 2:
+                        $_SESSION["user_instituteId"] = $user->getInstituteId();
+                        header("Location: ../../Dashboards/AdminDashboard.php");
+                        //$location = "../../Dashboards/AdminDashboard.php";
+                        break;
+                    case 3:
+                        $_SESSION["user_staffId"] = $user->getStaffId();
+                        header("Location: ../../Dashboards/StaffDashboard.php");
+                        //$location = "../../Dashboards/StaffDashboard.php";
+                        break;
+                    case 4:
+                        $_SESSION["user_studentId"] = $user->getStudentId();
+                        header("Location: ../../Dashboards/studentDadhboard.php");
+                        //$location = "../../Dashboards/studentDadhboard.php";
+                        break;
+                    default:
+                        $message = "<h6 class='text-danger'>Oops! An unexpected error occurred. Please try again.</h6>"; 
+                        //$location = "LOGIN/LOGIN/Login.php?status=3";
+                        break;
+                }
+    
+                
+                $cookie_name = "user_login_session";
+                $cookie_value = session_id();
+                $cookie_expiry = time() + 7200; 
+                $cookie_path = "/"; 
+    
+                setcookie($cookie_name, $cookie_value, $cookie_expiry, $cookie_path);
+            }
+            else{
+                $message = "<h6 class='text-danger'>The entered username and password are incorrect. Please try again</h6>";
+                //$location = "LOGIN/LOGIN/Login.php?status=2"; 
+            }
+        }
+    }
+    else{
+        $message = "<h6 class='text-danger'>Required values were not submitted.</h6>";
+        //$location = "LOGIN/LOGIN/Login.php?status=0";
+    }
+}
+
+
+/*header("Location: ".$location);
+
 if(isset($_GET["status"])){
     $status = $_GET["status"];
     if($status == 0){
@@ -11,7 +83,7 @@ if(isset($_GET["status"])){
     }else{
         $message = "<h6 class='text-danger'>Oops! An unexpected error occurred. Please try again.</h6>"; 
     }
-}
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -50,9 +122,9 @@ if(isset($_GET["status"])){
                                 <li class="nav-item">
                                     <a class="nav-link" href="../../WebinarHome.php" style="color:rgb(20, 108, 148)">Webinar</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="Login.php" style="color:rgb(20, 108, 148)">Join Now</a>
-                                </li>
+                                <form class="form-inline my-2 my-lg-0"  action="" method="get">
+                                    <button class="btn btn my-2 my-sm-0" type="submit" style="color:white;background-color: rgb(20, 108, 148);">Log In</button>
+                                </form> 
 
                         </div>
                     </nav>
@@ -70,12 +142,12 @@ if(isset($_GET["status"])){
                     <div class="col-md-5 col-xl-4 text-center text-md-start">
                         <h2 class="display-6 fw-bold mb-4">Login</h2>   
                         <?= $message ?>                     
-                        <form action="../../loginProcess.php" method="POST" data-bs-theme="light">
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" data-bs-theme="light">
                             <div class="mb-3"><input class="shadow form-control" type="text" id="forgotPassEmail" name="username" placeholder="Username"></div>
                             <div class="mb-3"><input class="shadow form-control" type="password" name="password" placeholder="Password"></div>
                             <div class="mb-5"><input onclick="return ValidateForgotPasswordForm();" class="Submit-Btn" type="submit" value="Login" id="PasswordResetBtn" ></div>                    
                         </form>
-                        <p class="text-muted"><a href="../../fp1/fp1.html">Forgot your password?</a></p>
+                        <p class="text-muted"><a href="../../fp1/fp1.php">Forgot your password?</a></p>
                     </div>               
                </div>
             </div>  
