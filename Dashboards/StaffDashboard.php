@@ -191,7 +191,7 @@ setcookie("staff_login", $ins_ID, $expiration, "/");
         document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         
         // Redirect to the logout script or another page
-        window.location.href = "../index.php";
+      window.location.href = "../lOGIN/LOGIN/Login.php";
     }
         </script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

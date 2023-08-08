@@ -1,4 +1,12 @@
 <?php
+if (isset($_COOKIE['Ins_Login'])) {header("Location: ../../Dashboards/AdminDashboard.php");
+
+}elseif (isset($_COOKIE['std_Login'])) {header("Location: ../../Dashboards/studentDadhboard.php");
+
+} elseif (isset($_COOKIE['staff_login'])) {header("Location: ../../Dashboards/StaffDashboard.php");
+
+}
+else{ 
 $message = null;
 if(isset($_GET["status"])){
     $status = $_GET["status"];
@@ -84,7 +92,7 @@ if(isset($_GET["status"])){
 </html>
 
 
- 
+ <?php } ?>
 
 
  

@@ -1,11 +1,4 @@
-<?php if (isset($_COOKIE['Ins_Login'])) {header("Location: Dashboards/AdminDashboard.php");
 
-}elseif (isset($_COOKIE['std_Login'])) {header("Location: Dashboards/studentDadhboard.php");
-
-} elseif (isset($_COOKIE['staff_login'])) {header("Location: Dashboards/StaffDashboard.php");
-
-}
-else{ ?>
 
 <!doctype html>
 <html lang="en">
@@ -195,4 +188,3 @@ else{ ?>
     -->
   </body>
 </html>
-<?php } ?>
