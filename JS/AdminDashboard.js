@@ -51,6 +51,15 @@ function AdminCourse() {
 
 }
 
+function AdminWebinar(){
+      const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "../DashboardFiles/InstituteWebinar.php", true);
+    xhttp.send();
+
+}
 
 function openStudentDetails(value) {
 
@@ -347,6 +356,51 @@ function staffDel(value){
     });
     
 }
+
+
+function CoutseDel(value){
+        Swal.fire({
+        title: 'Are You Sure To Detele This?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({url: "../DashboardPHP/courseDelete.php",
+                method: 'post',
+                data: {courseId: value},
+                success: function (result) {
+                    console.log("send");
+                }});
+            Swal.fire('Deleted!', '', 'success')
+        } else if (result.isDenied) {
+
+            Swal.fire('Not Deleted', '', 'info')
+        }
+    });
+    
+}
+
+function Addwebinar(value) {
+     $.ajax({url: "../PopupBody/AddWebinarPopup.php",
+        method: 'post',
+        data: {Ins_ID: value},
+        success: function (result) {
+             $(".modal-body").html(result);
+        }});
+      $.ajax({url: "../DashboardPHP/AddWeninar.php",
+        method: 'post',
+        data: {Ins_ID: value},
+        success: function (result) {
+            console.log("send");
+        }});
+     
+    $('#AddWebinar').modal('show');
+}
+
+
 
 
 

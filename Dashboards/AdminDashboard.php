@@ -81,7 +81,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link navbarcolor" >
+                            <a href="#" onclick="AdminWebinar()" class="nav-link navbarcolor" >
                                 <i class="fa-solid fa-video fa-xl icondash"></i>
                                 Webinar
                             </a>
@@ -145,11 +145,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
 
                     <div style="margin-left: -9px;">
-                        <i  href="" onclick="AdminCourse()" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i  href="" onclick="AdminCourse()"  class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
 
                     <div style="margin-left: -9px;">
-                        <i href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i href="" onclick="AdminWebinar()" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
                     <div style="margin-left: -9px;">
                         <i href="" class="fa-sharp fa-solid fa-building-columns fa-xl icondash nav-link navbarcolorafter"></i>

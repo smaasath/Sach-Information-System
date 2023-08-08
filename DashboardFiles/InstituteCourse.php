@@ -221,7 +221,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <td class = "col-2"><?php echo $row["staffName"] ?></td>
                                     <td class = "col-2">
                                         <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "EditCourse(<?php echo $rowtable["courseId"] ?>)"></i>
-                                        <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="studel(<?php echo $rowtable["courseId"] ?>)"></i>
+                                        <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="CoutseDel(<?php echo $rowtable["courseId"] ?>)"></i>
 
 
                                     </td>
