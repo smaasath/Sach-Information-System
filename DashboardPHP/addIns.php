@@ -16,13 +16,16 @@ use PHPMailer\PHPMailer\Exception;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-    $Instituteid = sanitizeInput($_POST["Instituteid"]);
-    $staffName = sanitizeInput($_POST["staffName"]);
+
+    $instituteName = sanitizeInput($_POST["instituteName"]);
+    $Address = sanitizeInput($_POST["Address"]);
     $phoneNo = sanitizeInput($_POST["phoneNo"]);
-    $email = sanitizeInput($_POST["email"]);
-    $position = sanitizeInput($_POST["position"]);
+    $Logo = sanitizeInput($_POST["Logo"]);
+    $mission = sanitizeInput($_POST["mission"]);
+    $vission = sanitizeInput($_POST["vission"]);
     $userName = sanitizeInput($_POST["userName"]);
     $Password = sanitizeInput($_POST["Password"]);
+    $email = sanitizeInput($_POST["email"]);
 }
 $passwordch = htmlentities($Password);
 // Hash the password
@@ -31,27 +34,7 @@ echo $passwordch;
 
 include '../DashboardPHP/connection.php';
 
-// Construct and execute the query using a prepared statement
-$query = "SELECT instituteName FROM institute WHERE instituteId = :instituteId";
-$stmt = $conn->prepare($query);
-$stmt->bindParam(':instituteId', $Instituteid, PDO::PARAM_INT);
-$stmt->execute();
 
-if ($stmt) {
-    // Fetch the institute name
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($row) {
-        $InstituteName = $row["instituteName"];
-    } else {
-        echo "No institute found.";
-    }
-} else {
-    echo "Query failed.";
-}
-
-// Close the statement
-$stmt = null;
 
 try {
 
@@ -79,8 +62,8 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Staff Registration';
-    $message = "Dear " . $staffName . ",<br><br>";
-    $message .= "You are registered into " . $InstituteName . " via Sachini Information System As a $position<br><br>";
+    $message = "Dear " . $instituteName . ",<br><br>";
+    $message .= "You are registered into  Sachini Information System As a Institute.<br><br>";
     $message .= "Your User Name & password for the System is Given Below <br><br>";
     $message .= "Your User Name :  " . $userName . "<br><br>";
     $message .= "Your password :  " . $passwordch . "<br><br>";
@@ -94,31 +77,36 @@ try {
     include '../DashboardPHP/connection.php';
 
     // Construct and execute the query using a prepared statement
-    $query = "INSERT INTO `staff` (`staffId`, `staffName`, `position`, `phoneNo`, `institudeID`) VALUES (NULL, :staffName, :position, :phoneNo, :instituteID)";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':instituteID', $Instituteid);
-    $stmt->bindParam(':staffName', $staffName);
-    $stmt->bindParam(':position', $position);
-    $stmt->bindParam(':phoneNo', $phoneNo);
+   $query = "INSERT INTO `institute` (`instituteName`, `Address`, `phoneNo`, `Logo`, `mission`, `vission`) VALUES (:instituteName, :Address, :phoneNo, :Logo, :mission, :vission)";
+$stmt = $conn->prepare($query);
 
-    if ($stmt->execute()) {
-        $staff_id = $conn->lastInsertId();
-        echo "New record created successfully" . $staff_id;
-    } else {
-        echo "Error creating record: " . $stmt->errorInfo()[2];
-    }
+// Bind parameters
+$stmt->bindParam(':instituteName', $instituteName);
+$stmt->bindParam(':Address', $Address);
+$stmt->bindParam(':phoneNo', $phoneNo);
+$stmt->bindParam(':Logo', $Logo); // Assuming $Logo is the base64-encoded image data
+$stmt->bindParam(':mission', $mission);
+$stmt->bindParam(':vission', $vission);
+
+if ($stmt->execute()) {
+    $ins_id = $conn->lastInsertId();
+    echo "New record created successfully with ID: " . $ins_id;
+} else {
+    echo "Error creating record: " . $stmt->errorInfo()[2];
+}
+
 
 // Close the statement
     $stmt = null;
 
     // Prepare the SQL query
     $sqluser = "INSERT INTO `user` (`uderId`, `userName`, `institutetId`, `studentId`, `staffId`, `Password`, `email`, `Role`) "
-            . "VALUES (NULL, :userName, NULL, NULL,:staff_id, :hashedPassword, :email, '3')";
+            . "VALUES (NULL, :userName, :ins_id, NULL,NULL, :hashedPassword, :email, '2')";
     $stmtUser = $conn->prepare($sqluser);
 
     // Bind parameters
     $stmtUser->bindParam(':userName', $userName);
-    $stmtUser->bindParam(':staff_id', $staff_id);
+    $stmtUser->bindParam(':ins_id', $ins_id);
     $stmtUser->bindParam(':hashedPassword', $hashedPassword);
     $stmtUser->bindParam(':email', $email);
 
@@ -137,5 +125,5 @@ try {
 
 
 
-header("Location: ../Dashboards/AdminDashboard.php");
+//header("Location: ../Dashboards/AdminDashboard.php");
 

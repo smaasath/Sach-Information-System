@@ -5,6 +5,8 @@ if (isset($_COOKIE['Ins_Login'])) {header("Location: ../../Dashboards/AdminDashb
 
 } elseif (isset($_COOKIE['staff_login'])) {header("Location: ../../Dashboards/StaffDashboard.php");
 
+}elseif (isset($_COOKIE['admin'])) {header("Location: ../../Dashboards/SuperAdminDashboard.php");
+
 }
 else{ 
 $message = null;
