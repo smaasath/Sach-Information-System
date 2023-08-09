@@ -1,3 +1,56 @@
+<?php
+session_start();
+$reset_email = $_SESSION["reset_email"];
+
+require_once '../classes/DBConnector.php';
+require_once '../classes/User.php';
+
+use classes\DBConnector;
+use classes\User;
+
+
+$message = null;
+if(isset($_GET["status"])){
+    $status = $_GET["status"];
+    if($status == 1){
+        $message = "<h6 class='text-success'>Enter your new password</h6>";
+    }
+}
+if($_SERVER["REQUEST_METHOD"] === "POST" ){
+    if(isset($_POST["new_password"],$_POST["confirm_password"])){
+        
+        if(empty($_POST["new_password"]) || empty($_POST["confirm_password"])){
+            $message = "<h6 class='text-danger'>Please fill both fields to proceed.</h6>";        
+        }
+        else{
+            $new_password = trim($_POST["new_password"]);
+            $confirm_password = trim($_POST["confirm_password"]);
+           if($new_password === $confirm_password){
+                
+                $hashed_newPassword = password_hash($new_password,PASSWORD_BCRYPT);
+                
+                $user = new User(null,$hashed_newPassword,$reset_email);
+                
+                if($user->updatePassword(DBConnector::getConnection())){
+                    $message = "<h6 class='text-success'>You have successfully updated your password.</h6>";     
+                }else{
+                    $message = "<h6 class='text-danger'>Failed to update password. Please try again later.</h6>"; 
+                
+            }
+           }else{
+            $message = "<h6 class='text-danger'>Passwords do not match..</h6>";              
+           }
+        }
+           
+    }else{
+        $message = "<h6 class='text-danger'>Required values were not submitted.</h6>";
+    }
+
+}
+ 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,10 +87,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="../WebinarHome.php" style="color:rgb(20, 108, 148)">Webinar</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../lOGIN\LOGIN\Login.php" style="color:rgb(20, 108, 148)">Join Now</a>
-                                </li>
-
+                                <form class="form-inline my-2 my-lg-0"  action="../LOGIN/Login.php" method="get">
+                                    <button class="btn btn my-2 my-sm-0" type="submit" style="color:white;background-color: rgb(20, 108, 148);">Log In</button>
+                                </form> 
                         </div>
                     </nav>
                 </div>
@@ -53,9 +105,10 @@
                 </div>                
                     <div class="col-md-5 col-xl-4 text-center text-md-start">
                         <h2 class="display-6 fw-bold mb-4">Forgot your password?</h2>
-                        <form method="post" data-bs-theme="light">
-						    <div class="mb-3"><p class="text-muted">New password</p><input id="NewPassword" class="shadow form-control" type="password" placeholder="New Password"><br>
-                            <p class="text-muted">Confirm new password</p><input id="ConfirmNewPassword" class="shadow form-control" type="password" placeholder="Confirm Password"></div>    
+                        <?= $message ?>
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" data-bs-theme="light">
+						    <div class="mb-3"><p class="text-muted">New password</p><input name="new_password" id="NewPassword" class="shadow form-control" type="password" placeholder="New Password"><br>
+                            <p class="text-muted">Confirm new password</p><input name="confirm_password" id="ConfirmNewPassword" class="shadow form-control" type="password" placeholder="Confirm Password"></div>    
                             <div class="mb-5"><input onclick="return ValidateResetPasswordForm();" class="Submit-Btn" type="submit" value="FINISH" id="PasswordChangeBtn" ></div>                    
                         </form>
                     </div>               
