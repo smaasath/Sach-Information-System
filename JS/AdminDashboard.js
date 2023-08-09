@@ -1,7 +1,30 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
- */
+const searchInput = document.getElementById('searchInput');
+const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+
+searchInput.addEventListener('input', function() {
+    const filterValue = searchInput.value.toLowerCase();
+    const rows = dataTable.getElementsByTagName('tr');
+
+    for (let row of rows) {
+        const cells = row.getElementsByTagName('td');
+        let rowMatch = false;
+
+        for (let cell of cells) {
+            if (cell.textContent.toLowerCase().indexOf(filterValue) > -1) {
+                rowMatch = true;
+                break;
+            }
+        }
+
+        if (rowMatch) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    }
+});
+
+
 
 function Admindashborad() {
     const xhttp = new XMLHttpRequest();
@@ -383,6 +406,34 @@ function CoutseDel(value){
     
 }
 
+function WebDel(value){
+        Swal.fire({
+        title: 'Are You Sure To Detele This?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({url: "../DashboardPHP/WebinarDelete.php",
+                method: 'post',
+                data: {webid: value},
+                success: function (result) {
+                    console.log("send");
+                }});
+            AdminWebinar();
+            Swal.fire('Deleted!', '', 'success')
+        } else if (result.isDenied) {
+
+            Swal.fire('Not Deleted', '', 'info')
+            AdminWebinar();
+        }
+    });
+    
+    
+}
+
 function Addwebinar(value) {
      $.ajax({url: "../PopupBody/AddWebinarPopup.php",
         method: 'post',
@@ -398,7 +449,11 @@ function Addwebinar(value) {
         }});
      
     $('#AddWebinar').modal('show');
+    
 }
+
+
+
 
 
 

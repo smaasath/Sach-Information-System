@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <?php
         include '../DashboardPHP/connection.php';
 
-        $userID = $_COOKIE['Ins_Login'];
+        $userID = $_COOKIE['admin'];
         ?>
         <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex  align-items-center justify-content-end">
@@ -27,24 +27,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
 
             <h6 class="p-3" href="#">
-                <?php
-                $query = "SELECT instituteName FROM institute WHERE instituteId = :userID";
-                $stmtInsName = $conn->prepare($query);
-                $stmtInsName->bindParam(':userID', $userID, PDO::PARAM_INT);
-                $stmtInsName->execute();
-
-// Fetch the result
-                $rowName = $stmtInsName->fetch(PDO::FETCH_ASSOC);
-
-                if ($rowName) {
-                    echo $rowName["instituteName"];
-                }
-
-// Close the statement
-                $stmtInsName = null;
-
-// Close the PDO connection
-                ?>   
+           Super Admin  
             </h6>
 
 
@@ -53,27 +36,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
             <div class="col-1">
                 <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <?php
-                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId = :userID";
-                    $stmtUserImage = $conn->prepare($queryUserImage);
-                    $stmtUserImage->bindParam(':userID', $userID, PDO::PARAM_INT);
-                    $stmtUserImage->execute();
-
-// Fetch the result
-                    $rowUserImage = $stmtUserImage->fetch(PDO::FETCH_ASSOC);
-
-                    if ($rowUserImage && isset($rowUserImage["Logo"])) {
-                        $imageData = $rowUserImage["Logo"];
-                        echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" style="width:30%">';
-                    } else {
-                        echo "Image not found.";
-                    }
-
-// Close the statement
-                    $stmtUserImage = null;
-
-// Close the PDO connection
-                    ?>
+                   
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
@@ -94,22 +57,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <i  href="" class="fa-solid fa-video fa-2xl p-5 ps-1"></i>
                     </div>
                     <div class="col-8 ps-5 d-flex justify-content-center align-items-center flex-column"> 
-                        <h7>Webinars</h7>
+                        <h7>Institutes</h7>
                         <h2>
                             <?php
                             // Construct and execute the query using a prepared statement
-                            $queryWebinarCount = "SELECT COUNT(*) AS webinarCount FROM webinar WHERE instituteId = :userID";
+                            $queryWebinarCount = "SELECT COUNT(*) AS institutecount FROM institute";
                             $stmtWebinarCount = $conn->prepare($queryWebinarCount);
-                            $stmtWebinarCount->bindParam(':userID', $userID, PDO::PARAM_INT);
+                           
                             $stmtWebinarCount->execute();
 
 // Fetch the result
                             $rowWebinarCount = $stmtWebinarCount->fetch(PDO::FETCH_ASSOC);
 
-                            if ($rowWebinarCount && isset($rowWebinarCount["webinarCount"])) {
-                                echo $rowWebinarCount["webinarCount"];
+                            if ($rowWebinarCount && isset($rowWebinarCount["institutecount"])) {
+                                echo $rowWebinarCount["institutecount"];
                             } else {
-                                echo "Webinar count not found.";
+                                echo "ins not found count not found.";
                             }
 
 // Close the statement
@@ -142,7 +105,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
                     <div class="col-3 "> 
-                        <button type="button" class="btn btn-primary bgcol" onclick="Addwebinar(<?php echo $userID; ?>)">Add Webinar</button>
+                        <button type="button" class="btn btn-primary bgcol" onclick="AddInstitute()">Add Institute</button>
                     </div>
                 </div>
 
@@ -156,11 +119,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     <tr class="sticky-top">
 
                         <th class="col-1 bgcol p-2">Id</th>
-                        <th class="col-3 bgcol p-2">Title</th>
-                        <th class="col-2 bgcol p-2">Date</th>
-                        <th class="col-2 bgcol p-2">Deadline</th>
-                        <th class="col-1 bgcol p-2">Status</th>
-                        <th class="col-1 bgcol p-2">Coin Value</th>
+                        <th class="col-4 bgcol p-2">Institute Name</th>
+                        <th class="col-3 bgcol p-2">Address</th>
+                        <th class="col-2 bgcol p-2">phoneNo</th>
                         <th class="col-2 bgcol p-2"></th>
                         <th class="col-1 bgcol p-2"></th>
 
@@ -168,11 +129,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </tr>
                     <!-- Table row -->
                     <?php
-                    $queryGetTable = "SELECT * FROM webinar WHERE instituteId  = :userID";
+                    $queryGetTable = "SELECT * FROM institute;";
 
 // Prepare and execute the query using a prepared statement
                     $stmtGetTable = $conn->prepare($queryGetTable);
-                    $stmtGetTable->bindParam(':userID', $userID, PDO::PARAM_INT);
                     $stmtGetTable->execute();
 
                     if ($stmtGetTable) {
@@ -185,16 +145,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             foreach ($resultTable as $rowtable) {
                                 ?>
                                 <tr>
-                                    <td class="col-1"><?php echo $rowtable["webinarId"] ?></td>
-                                    <td class="col-3"><?php echo $rowtable["title"] ?></td>
-                                    <td class="col-2"><?php echo $rowtable["date"] ?></td>
-                                    <td class="col-2"><?php echo $rowtable["regDeadline"] ?></td>
-                                    <td class="col-1"><?php echo $rowtable["status"] ?></td>
-                                    <td class="col-1"><?php echo $rowtable["coinValue"] ?></td>
+                                    <td class="col-1"><?php echo $rowtable["instituteId"] ?></td>
+                                    <td class="col-4"><?php echo $rowtable["instituteName"] ?></td>
+                                    <td class="col-3"><?php echo $rowtable["Address"] ?></td>
+                                    <td class="col-2"><?php echo $rowtable["phoneNo"] ?></td>
+                                    
                                     <td class="col-2">
-                                        <i class="fa-solid fa-user-graduate fa-xl m-2" data-bs-toggle="modal" data-bs-target="#WebinarDetail_<?php echo $rowtable["webinarId"] ?>"></i>
-                                        <i class="fa-solid fa-user-pen fa-xl m-2" data-bs-toggle="modal" data-bs-target="#EditWebinarDetail_<?php echo $rowtable["webinarId"] ?>"></i>
-                                        <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="WebDel(<?php echo $rowtable["webinarId"]?>)"></i>
+                                        <i class="fa-solid fa-user-graduate fa-xl m-2" data-bs-toggle="modal" data-bs-target="#WebinarDetail_<?php echo $rowtable["instituteId"] ?>"></i>
+                                        <i class="fa-solid fa-user-pen fa-xl m-2" data-bs-toggle="modal" data-bs-target="#EditWebinarDetail_<?php echo $rowtable["instituteId"] ?>"></i>
+                                        <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="WebDel(<?php echo $rowtable["instituteId"]?>)"></i>
 
                                     </td>
                               

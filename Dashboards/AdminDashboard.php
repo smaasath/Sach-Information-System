@@ -179,36 +179,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 <!--  small Side bar End-->
 
-                <!--  bottom bar start-->
-
-                <nav id="navbott" class="bg-black fixed-bottom">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-2">
-                                <i onclick="Admindashborad()" href="" class="fa-solid fa-gauge fa-lg icondash nav-link navbarcolorafter"></i>   
-                            </div>
-                            <div class="col-2">
-                                <i  href="" onclick="AdminStudent()" class="fa-solid fa-users fa-lg icondash nav-link navbarcolorafter"></i> 
-                            </div>
-                            <div class="col-2">
-                                <i  href="" onclick="AdminStaff()" class="fa-solid fa-user-tie fa-lg icondash nav-link navbarcolorafter"></i> 
-                            </div>
-                            <div class="col-2">
-                                <i href="" onclick="AdminCourse()" class="fa-solid fa-graduation-cap fa-lg icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <div class="col-2">
-                                <i href="" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <div class="col-1">
-                                <i href="" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <div class="col-1">
-                                <i href="" onclick="Adminprofile()" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-                <!--  bottom bar end-->
+           
 
                 <!--  body-->
                 <div id="col10"class="col-10 col10edit bg-body-black">

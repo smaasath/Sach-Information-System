@@ -131,9 +131,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                 <div class="row align-items-center">
                     <div class="col-3">           
                         <div class="input-group rounded p-3">
-                            <input type="search" class="form-control rounded" placeholder="Search ID" aria-label="Search" aria-describedby="search-addon" >
-
-
+                           <input type="text" id="searchInput" placeholder="Search...">
 
                         </div>
                     </div>
@@ -173,7 +171,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
             <!-- Table body -->
             <div class="container bg-white mt-0" style=" max-height: 700px; overflow: scroll;">
-                <table class="table table-hover">
+                <table class="table table-hover" id="dataTable">
+                    <tbody>
                     <tr class="sticky-top">
 
                         <th class="col-1 bgcol p-2">ID</th>
@@ -380,7 +379,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-
+    <script src="AdminDashboard.js"></script>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

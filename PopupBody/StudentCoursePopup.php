@@ -26,8 +26,8 @@ $stmt->execute();
 if ($stmt) {
     // Fetch results
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    if ($result) {
+ 
+  
       $output1 = '
             <table class="table table-hover">
             <tr>
@@ -38,7 +38,7 @@ if ($stmt) {
 
 
             </tr>';
-        
+        echo $output1; 
    // Output data of each row
         foreach ($result as $row) {
             // Fetch course name using a new query
@@ -49,7 +49,7 @@ if ($stmt) {
             
             $rowCourse = $stmtCourse->fetch(PDO::FETCH_ASSOC);
 
-            if ($rowCourse) {
+           
 $output = '
             <tr>
 
@@ -58,19 +58,19 @@ $output = '
             <td class = "col-3">'.$row["courseMarks"].'</td>
 
 
-            </tr></table>';
-        }else {
-        echo "No Course found.";
-    }
+            </tr>';
+      
         
         
+         echo $output;
         
-        
-        echo $output1;
-        echo $output;
+         
         
                 // Process course data and output
             } 
+         
+            echo '</table>';
+      
     
 } else {
    echo "No Course found.";
@@ -86,4 +86,4 @@ $stmtCourse = null;
 }
     
   
-}
+

@@ -38,7 +38,7 @@ if ($stmt) {
 
 
             </tr>';
-        
+            echo $output1;
    // Output data of each row
         foreach ($result as $row) {
          
@@ -50,15 +50,16 @@ $output = '
             
 
 
-            </tr></table>';
+            </tr>';
+ echo $output;
         }
         
         
         
         
-        echo $output1;
-        echo $output;
-        
+    
+       
+        echo '</table>';
                 // Process course data and output
             }else {
    echo "No Course found.";

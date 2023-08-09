@@ -51,4 +51,4 @@ if ($stmt->execute()) {
 
 // Close the statement
 $stmt = null;
-//header("Location: ../Dashboards/AdminDashboard.php");
+header("Location: ../Dashboards/AdminDashboard.php");

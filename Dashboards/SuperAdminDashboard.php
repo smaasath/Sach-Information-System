@@ -1,5 +1,14 @@
 
+<?php
+session_start();
 
+
+
+if (isset($_COOKIE['admin'])) {
+    
+
+
+?>
 
 <!DOCTYPE html>
 <!--
@@ -38,19 +47,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <hr class="dashboardhr">
                         <ul class="nav nav-pills flex-column mb-auto">
                             <li class="nav-item">
-                                <a href="#" class="nav-link navbarcolor"  aria-current="page">
+                                <a href="#"  onclick="SuperIns()" class="nav-link navbarcolor"  aria-current="page">
                                   <i class="fa-sharp fa-solid fa-building-columns fa-xl icondash"></i>
                                     Institutes
                                 </a>
                             </li>
                             
                            
-                            <li>
-                                <a href="#" class="nav-link navbarcolor" >
-                                    <i class="fa-solid fa-user-tie fa-xl icondash"></i>
-                                    Users
-                                </a>
-                            </li>
+                           
                            
                                 
                             <li>
@@ -98,14 +102,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </div>
                             <hr class="dashboardhr">
                             <div style="margin-left: -9px;">
-                                <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
+                                <i  href="" onclick="SuperIns()" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>
                             </div>
                            
                             
 
-                            <div style="margin-left: -9px;">
-                                <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
-                            </div>
+                            
 
                             
                            
@@ -136,46 +138,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                         <!--  small Side bar End-->
 
-                        <!--  bottom bar start-->
-
-                        <nav id="navbott" class="bg-black fixed-bottom">
-                            <div class="container text-center">
-                                <div class="row">
-                                    <div class="col">
-                                        <i  href="" class="fa-solid fa-gauge fa-xl icondash nav-link navbarcolorafter"></i>   
-                                    </div>
-                                    <div class="col">
-                                        <i  href="" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i> 
-                                    </div>
-                                    
-                                    <div class="col">
-
-                                        <i href=""  onclick="SuperProfile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </nav>
-                        <!--  bottom bar end-->
+                   
 
                         <!--  body-->
                         <div id="col10"class="col-10 col10edit">
 
-                            <div class="navbardah fixed-top d-flex flex-row-reverse">
-                                <a class="p-3" href="#" style="margin-right: 30px;">
-                                    <i class="fa-solid fa-user fa-lg" style="color: #24457f;"></i>
-                                </a>
-
-                                <h6 class="p-3" href="#">
-                                    User Name
-                                </h6>
-
-                                <div id= "resimage" class="p-1 w-50">
-                                    <a href="#">
-                                        <img src="../Images/Logo.png" alt="Home" class="img-fluid" style="width: 20%">
-                                    </a>
-                                </div>
-                            </div>
+                         <?php include '../DashboardFiles/SuperAdminInstitute.php'; ?>
 
                         </div>
 
@@ -189,7 +157,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-          
+            <?php
+ 
+   } else {
+       $ins_ID = $_SESSION["admin"];
+$expiration = time() + (30 * 24 * 60 * 60); 
+setcookie("admin", $ins_ID, $expiration, "/");
+   header("Location: " . $_SERVER['REQUEST_URI']);    
+   }
+
+
+        ?>   
   
 
 

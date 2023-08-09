@@ -14,4 +14,12 @@ function SuperProfile() {
 
 }
 
-
+function SuperIns(){
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "../DashboardFiles/SuperAdminInstitute.php", true);
+    xhttp.send();
+    
+}

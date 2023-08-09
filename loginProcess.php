@@ -21,6 +21,7 @@ if(isset($_POST["username"],$_POST["password"])){
 
             switch($_SESSION["user_role"]){
                 case 1:
+                    $_SESSION["admin"] = $user->getUserId();
                     $location = "Dashboards/SuperAdminDashboard.php";
                     break;
                 case 2:

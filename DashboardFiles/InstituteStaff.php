@@ -227,24 +227,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                     </td>
 
+                                    <td>
 
-
-                                </tr>
-
-
-                                <!-- Table row -->
-
-                                <?php
-                            }
-                        } else {
-                            echo "0 results";
-                        }
-
-                    }
-                        ?>
-                        </tbody>
-                    </table>
-                </div>
+                                   
 
             <br>
             
@@ -370,7 +355,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- Edit Student Details Modal -->
 
 
+ </td>
+                                </tr>
 
+
+                                <!-- Table row -->
+
+                                <?php
+                            }
+                        } else {
+                            echo "0 results";
+                        }
+
+                    }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
 
 
         <?php
