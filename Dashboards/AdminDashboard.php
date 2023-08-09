@@ -87,9 +87,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link navbarcolor" >
+                            <a href="#" onclick="AdminDegree()" class="nav-link navbarcolor" >
                                 <i class="fa-sharp fa-solid fa-building-columns fa-xl icondash"></i>
-                                Department
+                                Degree
                             </a>
                         </li>
                         <li>
@@ -152,7 +152,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                         <i href="" onclick="AdminWebinar()" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
                     <div style="margin-left: -9px;">
-                        <i href="" class="fa-sharp fa-solid fa-building-columns fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i href="" onclick="AdminDegree()" class="fa-sharp fa-solid fa-building-columns fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
                     <div style="margin-left: -9px;">
                         <i href="" onclick="Adminprofile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>

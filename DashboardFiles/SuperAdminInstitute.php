@@ -151,8 +151,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <td class="col-2"><?php echo $rowtable["phoneNo"] ?></td>
 
                                     <td class="col-2">
-                                        <i class="fa-solid fa-user-graduate fa-xl m-2" data-bs-toggle="modal" data-bs-target="#InstituteDetail_<?php echo $rowtable["instituteId"] ?>"></i>
-                                        <i class="fa-solid fa-user-pen fa-xl m-2" data-bs-toggle="modal" data-bs-target="#InsEdit_<?php echo $rowtable["instituteId"] ?>"></i>
+                                        <i class="fa-solid fa-circle-info fa-xl m-2" data-bs-toggle="modal" data-bs-target="#InstituteDetail_<?php echo $rowtable["instituteId"] ?>"></i>
+                                        <i class="fa-solid fa-pen-to-square fa-xl m-2" data-bs-toggle="modal" data-bs-target="#InsEdit_<?php echo $rowtable["instituteId"] ?>"></i>
                                         <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="InsDel(<?php echo $rowtable["instituteId"] ?>)"></i>
 
                                     </td>

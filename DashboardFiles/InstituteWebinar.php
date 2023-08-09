@@ -192,8 +192,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <td class="col-1"><?php echo $rowtable["status"] ?></td>
                                     <td class="col-1"><?php echo $rowtable["coinValue"] ?></td>
                                     <td class="col-2">
-                                        <i class="fa-solid fa-user-graduate fa-xl m-2" data-bs-toggle="modal" data-bs-target="#WebinarDetail_<?php echo $rowtable["webinarId"] ?>"></i>
-                                        <i class="fa-solid fa-user-pen fa-xl m-2" data-bs-toggle="modal" data-bs-target="#EditWebinarDetail_<?php echo $rowtable["webinarId"] ?>"></i>
+                                        <i class="fa-solid fa-circle-info fa-xl m-2" data-bs-toggle="modal" data-bs-target="#WebinarDetail_<?php echo $rowtable["webinarId"] ?>"></i>
+                                        <i class="fa-solid fa-pen-to-square fa-xl m-2" data-bs-toggle="modal" data-bs-target="#EditWebinarDetail_<?php echo $rowtable["webinarId"] ?>"></i>
                                         <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="WebDel(<?php echo $rowtable["webinarId"]?>)"></i>
 
                                     </td>

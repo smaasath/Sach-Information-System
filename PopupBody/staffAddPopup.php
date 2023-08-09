@@ -6,7 +6,7 @@
  */
 
 if (isset($_POST["Ins_ID"])) {
-    include '../DashboardPHP/connection.php';
+ 
 
     $output = '  
         <div class="row align-items-center">';                
