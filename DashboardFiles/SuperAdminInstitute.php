@@ -151,9 +151,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <td class="col-2"><?php echo $rowtable["phoneNo"] ?></td>
 
                                     <td class="col-2">
-                                        <i class="fa-solid fa-user-graduate fa-xl m-2" data-bs-toggle="modal" data-bs-target="#WebinarDetail_<?php echo $rowtable["instituteId"] ?>"></i>
-                                        <i class="fa-solid fa-user-pen fa-xl m-2" data-bs-toggle="modal" data-bs-target="#EditWebinarDetail_<?php echo $rowtable["instituteId"] ?>"></i>
-                                        <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="WebDel(<?php echo $rowtable["instituteId"] ?>)"></i>
+                                        <i class="fa-solid fa-user-graduate fa-xl m-2" data-bs-toggle="modal" data-bs-target="#InstituteDetail_<?php echo $rowtable["instituteId"] ?>"></i>
+                                        <i class="fa-solid fa-user-pen fa-xl m-2" data-bs-toggle="modal" data-bs-target="#InsEdit_<?php echo $rowtable["instituteId"] ?>"></i>
+                                        <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="InsDel(<?php echo $rowtable["instituteId"] ?>)"></i>
 
                                     </td>
 
@@ -164,114 +164,81 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                                     <td>
 
-                                        <!-- Webinar Details Modal -->
-                                        <div class="modal fade" id="WebinarDetail_<?php echo $rowtable["webinarId"] ?>" tabindex="-1" aria-labelledby="WebinarDetailLabel_<?php echo $rowtable["webinarId"] ?>" aria-hidden="true">
+                                        <!-- Institute Details Modal -->
+                                        <div class="modal fade" id="InstituteDetail_<?php echo $rowtable["instituteId"] ?>" tabindex="-1" aria-labelledby="InstituteDetail_<?php echo $rowtable["instituteId"] ?>" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="WebinarDetailLabel_<?php echo $rowtable["webinarId"] ?>">Webinar Details</h1>
+                                                        <h1 class="modal-title fs-5" id="InstituteDetail_<?php echo $rowtable["instituteId"] ?>">Instotute Details</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <div class="row align-items-center pb-3">
                                                             <div class="col-3">
-                                                                <h6>Title</h6>
+                                                                <h6>Institute Name</h6>
                                                             </div>
                                                             <div class="col-9">
-                                                                <?php echo $rowtable["title"] ?>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="row align-items-center pb-3">
-                                                            <div class="col-3">
-                                                                <h6>Status</h6>
-                                                            </div>
-                                                            <div class="col-9">                 
-                                                                <?php echo $rowtable["status"] ?>
+                                                                <?php echo $rowtable["instituteName"] ?>
                                                             </div>
                                                         </div>
 
                                                         <div class="row align-items-center pb-3">
                                                             <div class="col-3">
-                                                                <h6>Description</h6>
+                                                                <h6>Address</h6>
                                                             </div>
                                                             <div class="col-9">
-                                                                <?php echo $rowtable["description"] ?>
+                                                                <?php echo $rowtable["Address"] ?>
                                                             </div>
                                                         </div>
 
                                                         <div class="row align-items-center pb-3">
                                                             <div class="col-3">
-                                                                <h6>Date</h6>
+                                                                <h6>Phone No</h6>
                                                             </div>
                                                             <div class="col-9">
-                                                                <?php echo $rowtable["date"] ?>
+                                                                <?php echo $rowtable["phoneNo"] ?>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="row align-items-center pb-3">
+                                                            <div class="col-3">
+                                                                <h6>Mission</h6>
+                                                            </div>
+                                                            <div class="col-9">
+                                                                <?php echo $rowtable["mission"] ?>
+
                                                             </div>
                                                         </div>
 
                                                         <div class="row align-items-center pb-3">
                                                             <div class="col-3">
-                                                                <h6>Time</h6>
+                                                                <h6>Vision</h6>
                                                             </div>
                                                             <div class="col-9">
-                                                                <?php echo $rowtable["time"] ?>
+                                                                <?php echo $rowtable["vission"] ?>
                                                             </div>
                                                         </div>
-
+                                                        <hr>
                                                         <div class="row align-items-center pb-3">
                                                             <div class="col-3">
-                                                                <h6>Registration Deadline</h6>
-                                                            </div>
-                                                            <div class="col-9">
-                                                                <?php echo $rowtable["regDeadline"] ?>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row align-items-center pb-3">
-                                                            <div class="col-3">
-                                                                <h6>Webinar Link</h6>
-                                                            </div>
-                                                            <div class="col-9">
-                                                                <?php echo $rowtable["webinarLink"] ?>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="row align-items-center pb-3">
-                                                            <div class="col-3">
-                                                                <h6>Coin Value</h6>
-                                                            </div>
-                                                            <div class="col-9">
-                                                                <?php echo $rowtable["coinValue"] ?>
-                                                            </div>
-                                                        </div> 
-
-                                                        <div class="row align-items-center pb-3">
-                                                            <div class="col-3">
-                                                                <h6>Student Count</h6>
+                                                                <h6>Email</h6>
                                                             </div>
                                                             <div class="col-9">
                                                                 <?php
-                                                                $queryWebinarCount = "SELECT COUNT(*) AS webinarCount FROM webinarstudent WHERE webinarId = :userID";
-                                                                $stmtWebinarCount = $conn->prepare($queryWebinarCount);
-                                                                $stmtWebinarCount->bindParam(':userID', $rowtable["webinarId"], PDO::PARAM_INT);
-                                                                $stmtWebinarCount->execute();
+                                                                $queryUser = "SELECT email FROM user WHERE institutetId = :institutetId";
+                                                                $stmtUser = $conn->prepare($queryUser);
+                                                                $stmtUser->bindParam(':institutetId', $rowtable["instituteId"], PDO::PARAM_INT);
+                                                                $stmtUser->execute();
 
-// Fetch the result
-                                                                $rowWebinarCount = $stmtWebinarCount->fetch(PDO::FETCH_ASSOC);
-
-                                                                if ($rowWebinarCount && isset($rowWebinarCount["webinarCount"])) {
-                                                                    echo $rowWebinarCount["webinarCount"];
-                                                                } else {
-                                                                    echo "Webinar count not found.";
-                                                                }
-
-// Close the statement
-                                                                $stmtWebinarCount = null;
-                                                                ?>
+                                                                $rowUser = $stmtUser->fetch(PDO::FETCH_ASSOC);
+                                                                 echo  $rowUser['email']  ?>
                                                             </div>
-                                                        </div>   
+                                                        </div>
+
+
+
 
                                                     </div>
                                                     <div class="modal-footer">
@@ -280,7 +247,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Webinar Details Modal -->
+                                        <!-- End Institute Details Modal -->
 
 
 
@@ -295,99 +262,92 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-                                        <!-- Edit Staff Details Modal -->
-                                        <form method="POST" action="../DashboardPHP/webinarEdit.php" id="editForm_<?php echo $rowtable["webinarId"] ?>">
-                                            <div class="modal fade" id="EditWebinarDetail_<?php echo $rowtable["webinarId"] ?>" tabindex="-1" aria-labelledby="EditWebinarDetail_<?php echo $rowtable["webinarId"] ?>" aria-hidden="true">
+                                        <!-- Edit Institute Details Modal -->
+                                        <form method="POST" action="../DashboardPHP/EditIns.php" id="InsEditform_<?php echo $rowtable["instituteId"] ?>">
+                                            <div class="modal fade" id="InsEdit_<?php echo $rowtable["instituteId"] ?>" tabindex="-1" aria-labelledby="InsEdit_<?php echo $rowtable["instituteId"] ?>" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="EditWebinarDetail_<?php echo $rowtable["webinarId"] ?>">Edit Staff Details</h1>
+                                                            <h1 class="modal-title fs-5" id="InsEdit_<?php echo $rowtable["instituteId"] ?>">Edit Institute Details</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
 
                                                         <div class="modal-body">
 
-                                                            <div class="row align-items-center pb-3">
-                                                                <div class="col-3">
-                                                                    <h6>Title</h6>
-                                                                </div>
-                                                                <div class="col-9">
-                                                                    <input type="text" value="<?php echo $rowtable["title"] ?>"  name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                                                </div>
-                                                            </div>
+                                                             <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Institute Name</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" value="<?php echo $rowtable["instituteName"] ?>" name="instituteName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
 
-                                                            <div class="row align-items-center">
-                                                                <div class="row align-items-center pb-3">
-                                                                    <div class="col-3">
-                                                                        <h6>Status</h6>
-                                                                    </div>
-                                                                    <div class="col-9">                 
-                                                                        <select class="form-select"  name="Status" aria-label="Default select example">
-                                                                            <option value="Active">Active</option>
-                                                                            <option value="Inactive">Inactive</option>
-                                                                            <option value="Inactive">Completed</option>
-                                                                        </select></div></div></div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Address</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" value="<?php echo $rowtable["Address"] ?>"  name="Address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
 
-                                                            <div class="row align-items-center pb-3">
-                                                                <div class="col-3">
-                                                                    <h6>Description</h6>
-                                                                </div>
-                                                                <div class="col-9">
-                                                                    <textarea class="form-control"  name="description" rows="4" required><?php echo $rowtable["description"] ?></textarea>
-                                                                </div>
-                                                            </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Phone No</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" value="<?php echo $rowtable["phoneNo"] ?>" name="phoneNo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
 
-                                                            <div class="row align-items-center pb-3">
-                                                                <div class="col-3">
-                                                                    <h6>Date</h6>
-                                                                </div>
-                                                                <div class="col-9">
-                                                                    <input type="date" value="<?php echo $rowtable["date"] ?>"   name="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                                                </div>
-                                                            </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Logo</h6>
+                                    </div>
+                                    <div class="col-9">
 
-                                                            <div class="row align-items-center pb-3">
-                                                                <div class="col-3">
-                                                                    <h6>Time</h6>
-                                                                </div>
-                                                                <div class="col-9">
-                                                                    <input type="time" value="<?php echo $rowtable["time"] ?>" name="time" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                                                </div>
-                                                            </div>
+                                        <input type="file" accept="image/jpeg"  name="Logo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <p>only .jpg</p>
 
-                                                            <div class="row align-items-center pb-3">
-                                                                <div class="col-3">
-                                                                    <h6>Registration Deadline</h6>
-                                                                </div>
-                                                                <div class="col-9">
-                                                                    <input type="date" value="<?php echo $rowtable["regDeadline"] ?>" name="regDeadline" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                                                </div>
-                                                            </div>
+                                    </div>
+                                </div>
 
-                                                            <div class="row align-items-center pb-3">
-                                                                <div class="col-3">
-                                                                    <h6>Webinar Link</h6>
-                                                                </div>
-                                                                <div class="col-9">
-                                                                    <input type="text" value="<?php echo $rowtable["webinarLink"] ?>"  name="webinarLink" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                                                </div>
-                                                            </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Mission</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <textarea class="form-control"  name="mission"  rows="4" required><?php echo $rowtable["mission"] ?></textarea>
 
+                                    </div>
+                                </div>
 
-                                                            <div class="row align-items-center pb-3">
-                                                                <div class="col-3">
-                                                                    <h6>Coin Value</h6>
-                                                                </div>
-                                                                <div class="col-9">
-                                                                    <input type="number" value="<?php echo $rowtable["coinValue"] ?>"  name="coinValue" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                                                                </div>
-                                                            </div>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Vision</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" value="<?php echo $rowtable["vission"] ?>"  name="vission" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row align-items-center pb-3">
+                                    <div class="col-3">
+                                        <h6>Email</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="email" value="<?php echo $rowUser["email"] ?>" name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                    </div>
+                                </div>
 
-                                                            <input type="hidden" name="webinarId" value="<?php echo $rowtable["webinarId"] ?>"> 
+                                
+
+                                                            <input type="hidden" name="instituteId" value="<?php echo $rowtable["instituteId"] ?>"> 
 
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" form="editForm_<?php echo $rowtable["webinarId"] ?>" class="btn btn-primary bgcolli">Save</button>
+                                                            <button type="submit" form="InsEditform_<?php echo $rowtable["instituteId"] ?>" class="btn btn-primary bgcolli">Save</button>
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>
@@ -399,7 +359,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-                                <!-- Edit Webinar Details Modal -->
+                                <!-- Edit Institute Details Modal -->
 
 
 
@@ -417,11 +377,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             <!-- Add Institute Details Modal -->
 
             <div class="modal fade" id="AddIns" tabindex="-1" aria-labelledby="AddIns" aria-hidden="true">
-                <form method="post" action="../DashboardPHP/addIns.php" >
+                <form method="post" action="../DashboardPHP/addIns.php" enctype="multipart/form-data" >
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="AddIns">Add Webinar</h1>
+                                <h1 class="modal-title fs-5" id="AddIns">Add Institute</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                             </div>
@@ -435,8 +395,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <input type="text"  name="instituteName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
-                                
-                                  <div class="row align-items-center pb-3">
+
+                                <div class="row align-items-center pb-3">
                                     <div class="col-3">
                                         <h6>Address</h6>
                                     </div>
@@ -444,8 +404,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <input type="text"  name="Address" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
-                                
-                                  <div class="row align-items-center pb-3">
+
+                                <div class="row align-items-center pb-3">
                                     <div class="col-3">
                                         <h6>Phone No</h6>
                                     </div>
@@ -453,27 +413,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <input type="text" name="phoneNo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
-                                
-                                  <div class="row align-items-center pb-3">
+
+                                <div class="row align-items-center pb-3">
                                     <div class="col-3">
                                         <h6>Logo</h6>
                                     </div>
                                     <div class="col-9">
+
                                         <input type="file" accept="image/jpeg"  name="Logo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                                        <p>only .jpg</p>
+
                                     </div>
                                 </div>
-                                
-                                  <div class="row align-items-center pb-3">
+
+                                <div class="row align-items-center pb-3">
                                     <div class="col-3">
                                         <h6>Mission</h6>
                                     </div>
                                     <div class="col-9">
-                                         <textarea class="form-control"  name="mission"  rows="4" required></textarea>
-                                       
+                                        <textarea class="form-control"  name="mission"  rows="4" required></textarea>
+
                                     </div>
                                 </div>
-                                
-                                  <div class="row align-items-center pb-3">
+
+                                <div class="row align-items-center pb-3">
                                     <div class="col-3">
                                         <h6>Vision</h6>
                                     </div>
@@ -490,7 +453,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <input type="email"  name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
-                            
+
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
                                         <h6>User Name</h6>
@@ -499,7 +462,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                         <input type="text"  name="userName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row align-items-center pb-3">
                                     <div class="col-3">
                                         <h6>Password</h6>

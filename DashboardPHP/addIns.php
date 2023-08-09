@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $instituteName = sanitizeInput($_POST["instituteName"]);
     $Address = sanitizeInput($_POST["Address"]);
     $phoneNo = sanitizeInput($_POST["phoneNo"]);
-    $Logo = sanitizeInput($_POST["Logo"]);
+    $Logo = file_get_contents($_FILES['Logo']['tmp_name']); 
     $mission = sanitizeInput($_POST["mission"]);
     $vission = sanitizeInput($_POST["vission"]);
     $userName = sanitizeInput($_POST["userName"]);
@@ -57,11 +57,11 @@ try {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     //Recipients
-    $mail->setFrom('aststore39@gmail.com');
+    $mail->setFrom('sachinformationsystem@gmail.com');
     $mail->addAddress($email);     //Add a recipient             //Name is optional
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Staff Registration';
+    $mail->Subject = 'Institute Registration';
     $message = "Dear " . $instituteName . ",<br><br>";
     $message .= "You are registered into  Sachini Information System As a Institute.<br><br>";
     $message .= "Your User Name & password for the System is Given Below <br><br>";
@@ -84,7 +84,7 @@ $stmt = $conn->prepare($query);
 $stmt->bindParam(':instituteName', $instituteName);
 $stmt->bindParam(':Address', $Address);
 $stmt->bindParam(':phoneNo', $phoneNo);
-$stmt->bindParam(':Logo', $Logo); // Assuming $Logo is the base64-encoded image data
+$stmt->bindParam(':Logo', $Logo, PDO::PARAM_LOB);
 $stmt->bindParam(':mission', $mission);
 $stmt->bindParam(':vission', $vission);
 
@@ -125,5 +125,5 @@ if ($stmt->execute()) {
 
 
 
-//header("Location: ../Dashboards/AdminDashboard.php");
+header("Location: ../Dashboards/SuperAdminDashboard.php");
 
