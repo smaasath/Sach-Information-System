@@ -3,6 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+
+            <file>file:/C:/xampp/htdocs/Sach-Information-System/Profile/Admin/validation.js</file>
+            <file>file:/C:/xampp/htdocs/Sach-Information-System/classes/DBConnector.php</file>
+            <file>file:/C:/xampp/htdocs/Sach-Information-System/classes/User.php</file>
+            <file>file:/C:/xampp/htdocs/Sach-Information-System/sign_out.php</file>
+
             <file>file:/C:/xampp/htdocs/Sach-Information-System/DashboardFiles/InstituteCourse.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/DashboardPHP/StudentAdd.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/DashboardFiles/InstituteAdminProfileEdit.php</file>
@@ -23,6 +29,7 @@
             <file>file:/C:/xampp/htdocs/Sach-Information-System/DashboardFiles/InstituteStaff.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/Dashboards/AdminDashboard.php</file>
             <file>file:/C:/xampp/htdocs/Sach-Information-System/DashboardPHP/staffAdd.php</file>
+
         </group>
     </open-files>
 </project-private>
