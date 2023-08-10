@@ -471,7 +471,7 @@
         </div>
 
         <!-- Webinar Details edit Modal -->
-
+       
 
 
         <?php

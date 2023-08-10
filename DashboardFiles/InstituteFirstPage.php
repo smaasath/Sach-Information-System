@@ -296,7 +296,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             <div class=" backcolor m-2 p-2 mb-4 rounded-4 admincount ">
                                 <div class="row">
                                     <div class="col-1 text-center">   
-                                        <i  href="" class="fa-solid fa-graduation-cap fa-2xl p-5 ps-1"></i>
+                                        <i  href="" class="a-sharp fa-solid fa-building-columns fa-2xl p-5 ps-1"></i>
                                     </div>
                                     <div class="col-8 ps-5 d-flex justify-content-center align-items-center flex-column"> 
                                         <h7>Degree</h7>

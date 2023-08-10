@@ -232,7 +232,7 @@ setcookie("std_Login", $ins_ID, $expiration, "/");
         document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         
         // Redirect to the logout script or another page
-        window.location.href = "../index.php";
+        window.location.href = "../lOGIN/Login.php";
     }
         </script>
        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

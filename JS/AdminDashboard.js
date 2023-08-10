@@ -1,7 +1,6 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
- */
+
+
+
 
 function Admindashborad() {
     const xhttp = new XMLHttpRequest();
@@ -51,6 +50,25 @@ function AdminCourse() {
 
 }
 
+function AdminWebinar(){
+      const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "../DashboardFiles/InstituteWebinar.php", true);
+    xhttp.send();
+
+}
+
+function AdminDegree(){
+      const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById("col10").innerHTML = this.responseText;
+    };
+    xhttp.open("GET", "../DashboardFiles/InstituteDegree.php", true);
+    xhttp.send();
+
+}
 
 function openStudentDetails(value) {
 
@@ -222,11 +240,12 @@ function openstaffCourseDetail(value) {
 }
 
 function  AddStaff(value) {
-     $.ajax({url: "../PopupBody/StaffAddPopup.php",
+     $.ajax({url: "../PopupBody/staffAddPopup.php",
         method: 'post',
         data: {Ins_ID: value},
         success: function (result) {
              $(".modal-body").html(result);
+             console.log("kkkk");
         }});
       $.ajax({url: "../DashboardPHP/staffAdd.php",
         method: 'post',
@@ -277,7 +296,20 @@ function CourseDetail() {
     $('#CourseDetail').modal('show');
 }
 
-function EditCourse() {
+function EditCourse(value) {
+        console.log(value);
+    $.ajax({url: "../PopupBody/CourseEditPopup.php",
+        method: 'post',
+        data: {course_id: value},
+        success: function (result) {
+            $(".modal-body").html(result);
+        }});
+    $.ajax({url: "../DashboardPHP/courseEdit.php",
+        method: 'post',
+        data: {course_id: value},
+        success: function (result) {
+            console.log("send");
+        }});
     $('#EditCourseDetail').modal('show');
 }
 
@@ -334,6 +366,112 @@ function staffDel(value){
     });
     
 }
+
+
+function CoutseDel(value){
+        Swal.fire({
+        title: 'Are You Sure To Detele This?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({url: "../DashboardPHP/courseDelete.php",
+                method: 'post',
+                data: {courseId: value},
+                success: function (result) {
+                    console.log("send");
+                }});
+            Swal.fire('Deleted!', '', 'success')
+        } else if (result.isDenied) {
+
+            Swal.fire('Not Deleted', '', 'info')
+        }
+    });
+    
+}
+
+function WebDel(value){
+        Swal.fire({
+        title: 'Are You Sure To Detele This?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({url: "../DashboardPHP/WebinarDelete.php",
+                method: 'post',
+                data: {webid: value},
+                success: function (result) {
+                    console.log("send");
+                }});
+            AdminWebinar();
+            Swal.fire('Deleted!', '', 'success')
+        } else if (result.isDenied) {
+
+            Swal.fire('Not Deleted', '', 'info')
+            AdminWebinar();
+        }
+    });
+    
+    
+}
+
+
+function DegDel(value){
+        Swal.fire({
+        title: 'Are You Sure To Detele This?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({url: "../DashboardPHP/DeleteDegree.php",
+                method: 'post',
+                data: {degreeId: value},
+                success: function (result) {
+                    console.log(send);
+                }});
+            AdminDegree();
+            Swal.fire('Deleted!', '', 'success')
+        } else if (result.isDenied) {
+
+            Swal.fire('Not Deleted', '', 'info')
+            AdminDegree();
+        }
+    });
+    
+    
+}
+
+function Addwebinar(value) {
+     $.ajax({url: "../PopupBody/AddWebinarPopup.php",
+        method: 'post',
+        data: {Ins_ID: value},
+        success: function (result) {
+             $(".modal-body").html(result);
+        }});
+      $.ajax({url: "../DashboardPHP/AddWeninar.php",
+        method: 'post',
+        data: {Ins_ID: value},
+        success: function (result) {
+            console.log("send");
+        }});
+     
+    $('#AddWebinar').modal('show');
+    
+}
+
+
+
+
+
 
 
 

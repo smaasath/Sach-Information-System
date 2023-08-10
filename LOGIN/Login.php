@@ -25,22 +25,31 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     
                 switch($_SESSION["user_role"]){
                     case 1:
-                        header("Location: ../../Dashboards/SuperAdminDashboard.php");
+
+                        $_SESSION["admin"] = $user->getUserId();
+                        header("Location: ../Dashboards/SuperAdminDashboard.php");
+
                         //$location = "../../Dashboards/SuperAdminDashboard.php";
                         break;
                     case 2:
                         $_SESSION["user_instituteId"] = $user->getInstituteId();
-                        header("Location: ../../Dashboards/AdminDashboard.php");
+
+                        header("Location: ../Dashboards/AdminDashboard.php");
+
                         //$location = "../../Dashboards/AdminDashboard.php";
                         break;
                     case 3:
                         $_SESSION["user_staffId"] = $user->getStaffId();
-                        header("Location: ../../Dashboards/StaffDashboard.php");
+
+                        header("Location: ../Dashboards/StaffDashboard.php");
+
                         //$location = "../../Dashboards/StaffDashboard.php";
                         break;
                     case 4:
                         $_SESSION["user_studentId"] = $user->getStudentId();
-                        header("Location: ../../Dashboards/studentDadhboard.php");
+
+                        header("Location: ../Dashboards/studentDadhboard.php");
+
                         //$location = "../../Dashboards/studentDadhboard.php";
                         break;
                     default:

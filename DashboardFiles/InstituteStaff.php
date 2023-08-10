@@ -219,32 +219,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     <td class = "col-3"><?php echo $rowtable["position"] ?></td>
                                     <td class = "col-2"><?php echo $rowtable["phoneNo"] ?></td>
                                     <td class = "col-3">
-                                        <i class="fa-solid fa-user-graduate fa-xl m-2" onclick = "OpenStaffStaff(<?php echo $rowtable["staffId"] ?>)"></i>
+                                        <i class="fa-solid fa-circle-info fa-xl m-2" onclick = "OpenStaffStaff(<?php echo $rowtable["staffId"] ?>)"></i>
                                         <i class="fa-sharp fa-solid fa-graduation-cap fa-xl m-2" onclick = "openstaffCourseDetail(<?php echo $rowtable["staffId"] ?>)"></i>
-                                        <i class="fa-solid fa-user-pen fa-xl m-2" onclick = "EditStaff(<?php echo $rowtable["staffId"] ?>)"></i>
+                                        <i class="fa-solid fa-pen-to-square fa-xl m-2" onclick = "EditStaff(<?php echo $rowtable["staffId"] ?>)"></i>
                                         <i class="fa-solid fa-trash fa-xl m-2" style="color: #c41212;" onclick ="staffDel(<?php echo $rowtable["staffId"] ?>)"></i>
 
 
                                     </td>
 
+                                    <td>
 
-
-                                </tr>
-
-
-                                <!-- Table row -->
-
-                                <?php
-                            }
-                        } else {
-                            echo "0 results";
-                        }
-
-                    }
-                        ?>
-                        </tbody>
-                    </table>
-                </div>
+                                   
 
             <br>
             
@@ -308,31 +293,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
 
 
-        <!-- Add Staff Details Modal -->
-               <form method="post" action="../DashboardPHP/staffAdd.php" >
-        <div class="modal fade" id="AddStaffDetail" tabindex="-1" aria-labelledby="AddStaffDetail" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="AddStaffDetail">Add Staff Details</h1>
-                        <button type="button" class="btn-close" onclick="closeModals()"></button>
-                    </div>
-                    <div class="modal-body">
-                      
-
-                    </div>
-
-                    <div class="modal-footer">
-
-
-                        <button type="submit" class="btn btn-primary bgcolli">Add Staff</button>
-                        <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-               </form>
-        <!-- Add Staff Details Modal -->
+      
 
 
 
@@ -370,8 +331,48 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <!-- Edit Student Details Modal -->
 
 
+ </td>
+                                </tr>
 
 
+                                <!-- Table row -->
+
+                                <?php
+                            }
+                        } else {
+                            echo "0 results";
+                        }
+
+                    }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+  <!-- Add Staff Details Modal -->
+               <form method="post" action="../DashboardPHP/staffAdd.php" >
+        <div class="modal fade" id="AddStaffDetail" tabindex="-1" aria-labelledby="AddStaffDetail" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="AddStaffDetail">Add Staff Details</h1>
+                        <button type="button" class="btn-close" onclick="closeModals()"></button>
+                    </div>
+                    <div class="modal-body">
+                      
+
+                    </div>
+
+                    <div class="modal-footer">
+
+
+                        <button type="submit" class="btn btn-primary bgcolli">Add Staff</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+               </form>
+        <!-- Add Staff Details Modal -->
 
         <?php
         // put your code here

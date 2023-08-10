@@ -81,15 +81,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link navbarcolor" >
+                            <a href="#" onclick="AdminWebinar()" class="nav-link navbarcolor" >
                                 <i class="fa-solid fa-video fa-xl icondash"></i>
                                 Webinar
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link navbarcolor" >
+                            <a href="#" onclick="AdminDegree()" class="nav-link navbarcolor" >
                                 <i class="fa-sharp fa-solid fa-building-columns fa-xl icondash"></i>
-                                Department
+                                Degree
                             </a>
                         </li>
                         <li>
@@ -145,14 +145,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                     </div>
 
                     <div style="margin-left: -9px;">
-                        <i  href="" onclick="AdminCourse()" class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i  href="" onclick="AdminCourse()"  class="fa-solid fa-graduation-cap fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
 
                     <div style="margin-left: -9px;">
-                        <i href="" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i href="" onclick="AdminWebinar()" class="fa-solid fa-video fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
                     <div style="margin-left: -9px;">
-                        <i href="" class="fa-sharp fa-solid fa-building-columns fa-xl icondash nav-link navbarcolorafter"></i>
+                        <i href="" onclick="AdminDegree()" class="fa-sharp fa-solid fa-building-columns fa-xl icondash nav-link navbarcolorafter"></i>
                     </div>
                     <div style="margin-left: -9px;">
                         <i href="" onclick="Adminprofile()" class="fa-solid fa-user fa-xl icondash nav-link navbarcolorafter"></i>
@@ -179,36 +179,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 
                 <!--  small Side bar End-->
 
-                <!--  bottom bar start-->
-
-                <nav id="navbott" class="bg-black fixed-bottom">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-2">
-                                <i onclick="Admindashborad()" href="" class="fa-solid fa-gauge fa-lg icondash nav-link navbarcolorafter"></i>   
-                            </div>
-                            <div class="col-2">
-                                <i  href="" onclick="AdminStudent()" class="fa-solid fa-users fa-lg icondash nav-link navbarcolorafter"></i> 
-                            </div>
-                            <div class="col-2">
-                                <i  href="" onclick="AdminStaff()" class="fa-solid fa-user-tie fa-lg icondash nav-link navbarcolorafter"></i> 
-                            </div>
-                            <div class="col-2">
-                                <i href="" onclick="AdminCourse()" class="fa-solid fa-graduation-cap fa-lg icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <div class="col-2">
-                                <i href="" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <div class="col-1">
-                                <i href="" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
-                            </div>
-                            <div class="col-1">
-                                <i href="" onclick="Adminprofile()" class="fa-solid fa-user fa-lg icondash nav-link navbarcolorafter"></i>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-                <!--  bottom bar end-->
+           
 
                 <!--  body-->
                 <div id="col10"class="col-10 col10edit bg-body-black">
@@ -249,7 +220,7 @@ setcookie("Ins_Login", $ins_ID, $expiration, "/");
         document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         
         // Redirect to the logout script or another page
-        window.location.href = "../index.php";
+        window.location.href = "../lOGIN/Login.php";
     }
         </script>
         <script src="../JS/StudentDashboard.js"></script>
