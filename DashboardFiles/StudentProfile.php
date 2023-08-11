@@ -1,3 +1,10 @@
+<?php
+require '../classes/DBConnector.php';
+
+use classes\DBConnector;
+
+$dbcon = new DBConnector();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,7 +16,9 @@
         <link rel="stylesheet" href="../Profile/Student/style.css">
     </head>
     <body>
-        
+        <?php
+        $studentID = $_COOKIE['std_Login'];
+        ?>
         <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex flex-row-reverse">
             <a class="p-3" href="#" style="margin-right: 30px;">
@@ -28,89 +37,120 @@
         </div>
 
         <!--  nav bar end-->
-        
-            <div class="container py-md-5">
-                <div class="row d-flex align-items-top">       
+
+        <div class="container py-md-5">
+            <div class="row d-flex align-items-top">       
                 <div class="col-sm-3 p-3 bg-white text-center">
                     <div class="card mb-3">
                         <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4 img-fluid d-none d-sm-block" src="../Profile/Student/student.jpg"></div>
                     </div>
                 </div>                
-                    <div class="col-sm-9 text-center text-md-start">
-                        <div class="card shadow mb-3">
-                            <div class="card-header py-3 text-center">
-                                <p class="m-0 fw-bold">STUDENT PROFILE</p>
-                            </div>
-                            <form>
-                            <div class="card-body">                                
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Department"><strong>Department</strong></label><input class="form-control" type="text" id="Department" placeholder="Computer science and infomatics" name="Department" readonly></div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Degree"><strong>Degree</strong></label><input class="form-control" type="text" id="Degree" placeholder="Computer science and technology" name="Degree" readonly></div>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3"></div>                                
-                            </div>
-                            <div class="card-body">                                
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="first_name-4" placeholder="Gimhani" name="first_name" readonly></div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name-4" placeholder="Pathulpana" name="last_name" readonly></div>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3"></div>                                
-                            </div>
-                            <div class="card-body">                                
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="DOB"><strong>DOB</strong></label><input class="form-control" type="text" id="DOB-4" placeholder="10/01/2000" name="DOB" readonly></div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Gender"><strong>Gender</strong></label><input class="form-control" type="text" id="Gender" placeholder="Female" name="Gender" readonly></div>
-                                        </div>
-                                    </div>                                
-                            </div>
-                            <div class="card-body">                                
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="tel"><strong>Contact</strong></label></div><input class="form-control" type="tel" placeholder="0777267345" readonly>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label></div><input class="form-control" type="email" id="email-1" placeholder="gim@gmail.com" name="email" readonly>
-                                        </div>
-                                    </div>                                
-                            </div>
-                            <div class="card-body">                                
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Address"><strong>Address</strong></label></div><input class="form-control" type="text" placeholder="Induruwa, Kuruvita, Ratnapura." readonly>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="User"><strong>User Name</strong></label></div><input class="form-control" type="text" placeholder="CST20043" readonly>
-                                        </div>                                        
-                                    </div>
-                                    <br>
-                                <a href="../DashboardFiles/StudentProfileEdit.php">
-                                    <button class="Submit-Btn" type="button" >EDIT</button>
-                                </a>
-                            </div>
-                        </form>
+                <div class="col-sm-9 text-center text-md-start">
+                    <div class="card shadow mb-3">
+                        <div class="card-header py-3 text-center">
+                            <p class="m-0 fw-bold">STUDENT PROFILE</p>
                         </div>
-                    </div>               
-               </div>
-            </div>  
-        <script src="../Profile/Student/validation.js" type="text/javascript"></script>     
+                        <?php
+                        
+                        try {
+                            $con = $dbcon->getConnection();
+                            $query = "SELECT * FROM student WHERE studentID=?";
+                            $pstmt1 = $con->prepare($query);
+                            $pstmt1->bindValue(1, $studentID);
+                            $pstmt1->execute();
+                            $rs1 = $pstmt1->fetch(PDO::FETCH_OBJ);
+                            $instituteId = $rs1->instituteId;
+                            $degreeId = $rs1->degreeId;
+
+                            $query = "SELECT instituteName FROM institute WHERE instituteId=?";
+                            $pstmt2 = $con->prepare($query);
+                            $pstmt2->bindValue(1, $instituteId);
+                            $pstmt2->execute();
+                            $rs2 = $pstmt2->fetch(PDO::FETCH_OBJ);
+
+                            $query = "SELECT degreeName FROM degree WHERE degreeId=?";
+                            $pstmt3 = $con->prepare($query);
+                            $pstmt3->bindValue(1, $degreeId);
+                            $pstmt3->execute();
+                            $rs3 = $pstmt3->fetch(PDO::FETCH_OBJ);
+
+                            $query = "SELECT email FROM user WHERE studentId=?";
+                            $pstmt4 = $con->prepare($query);
+                            $pstmt4->bindValue(1, $studentID);
+                            $pstmt4->execute();
+                            $rs4 = $pstmt4->fetch(PDO::FETCH_OBJ);
+                        } catch (PDOException $exc) {
+                            echo $exc->getMessage();
+                        }
+                        ?>                            
+                        <div class="card-body">                                
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="Department"><strong>Institute Name</strong></label><textarea class="form-control" type="text" placeholder="<?php echo $rs2->instituteName; ?>" readonly></textarea></div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="Degree"><strong>Degree</strong></label><textarea class="form-control" type="text" placeholder="<?php echo $rs3->degreeName; ?>" readonly></textarea></div>
+                                </div>
+                            </div>
+                            <div class="mb-3"></div>                                
+                        </div>
+                        <div class="card-body">                                
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" ><strong>Name</strong></label><textarea class="form-control" type="text" placeholder="<?php echo $rs1->studentName; ?>" readonly></textarea></div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Entrollment Number</strong></label><textarea class="form-control" type="text" placeholder="<?php echo $rs1->entrollmentNumber; ?>" readonly></textarea></div>
+                                </div>
+                            </div>
+                            <div class="mb-3"></div>                                
+                        </div>
+                        <div class="card-body">                                
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="DOB"><strong>DOB</strong></label><textarea class="form-control" type="text" placeholder="<?php echo $rs1->studentDOB; ?>" readonly></textarea></div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="Gender"><strong>Gender</strong></label><textarea class="form-control" type="text" placeholder="<?php echo $rs1->gender; ?>" readonly></textarea></div>
+                                </div>
+                            </div>                                
+                        </div>
+                        <div class="card-body">                                
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="tel"><strong>Address</strong></label></div><textarea class="form-control" type="text" placeholder="<?php echo $rs1->address; ?>" readonly></textarea>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="email"><strong>Contact Number</strong></label></div><textarea class="form-control" type="text" placeholder="<?php echo $rs1->phoneNo; ?>" readonly></textarea>
+                                </div>
+                            </div>                                
+                        </div>
+                        <div class="card-body">                                
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="Address"><strong>Coin Value</strong></label></div><textarea class="form-control" type="text" placeholder="<?php echo $rs1->coinValue; ?>" readonly></textarea>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="User"><strong>Email Address</strong></label></div><textarea class="form-control" type="text" placeholder="<?php echo $rs4->email; ?>" readonly></textarea>
+                                </div>                                        
+                            </div>
+                            <br>
+                            <a href="../DashboardFiles/StudentProfileEdit.php?id=<?php echo $studentID; ?>">
+                                <button class="Submit-Btn" type="button" >EDIT</button>
+                            </a>
+                        </div>                        
+                    </div>
+                </div>               
+            </div>
+        </div>  
+             
     </body>
 </html>
 
 
- 
 
 
- 
+
+
 
 
