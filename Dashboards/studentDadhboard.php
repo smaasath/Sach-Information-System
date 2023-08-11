@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+
+
+if (isset($_COOKIE['std_Login'])) {
+    
+
+
+?>
+
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -99,7 +110,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                               <li><a class="dropdown-item" onclick="logout('std_Login')">Log out</a></li>
                             </ul>
                         </div>
                         <hr class="dashboardhr">
@@ -150,7 +161,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
 
-                                        <li><a class="dropdown-item" href="#">Log out</a></li>
+                                       <li><a class="dropdown-item" onclick="logout('std_Login')">Log out</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -200,13 +211,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
             </div>
 
         </div>
+       
         <?php
-        // put your code here
+ 
+   } else {
+       $ins_ID = $_SESSION["user_studentId"];
+$expiration = time() + (30 * 24 * 60 * 60); 
+setcookie("std_Login", $ins_ID, $expiration, "/");
+   header("Location: " . $_SERVER['REQUEST_URI']);    
+   }
+
+
         ?>
 
 
 
-       
+       <script>
+        function logout(cookieName) {
+        // Delete the cookie by setting its expiration time to a past date
+        document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        
+        // Redirect to the logout script or another page
+        window.location.href = "../lOGIN/Login.php";
+    }
+        </script>
        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../JS/AdminDashboard.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

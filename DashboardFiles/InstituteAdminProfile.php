@@ -43,7 +43,7 @@
 
 
             <div class="col-1">
-                <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle rounded-circle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                     <?php
                     $imageId = 1; // Replace with the actual ID of the image you want to retrieve
 
