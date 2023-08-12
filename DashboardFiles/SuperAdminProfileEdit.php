@@ -34,12 +34,12 @@ $dbcon = new DBConnector();
                 $pstmt->execute();
             
                 if ($pstmt->rowCount() > 0){
-                    header("Location: ../DashboardFiles/SuperAdminProfile.php");
+                    header("Location: ../Dashboards/SuperAdminDashboard.php");
                     exit;
                 }
                 //If user didn't do any changes but clicked update button.
                 else {
-                    header("Location: ../DashboardFiles/SuperAdminProfile.php");
+                    header("Location: ../Dashboards/SuperAdminDashboard.php");
                     exit;
                 }
             } catch (PDOException $exc) {
@@ -97,7 +97,7 @@ $dbcon = new DBConnector();
                                     <button class="Submit-Btn" type="submit">Update</button>
                                 </div>
                                 <div class="col">
-                                    <a href="../DashboardFiles/SuperAdminProfile.php">
+                                    <a href="../Dashboards/SuperAdminDashboard.php">
                                         <button class="Submit-Btn" type="button" >Cancel</button>
                                     </a>
                                 </div>
