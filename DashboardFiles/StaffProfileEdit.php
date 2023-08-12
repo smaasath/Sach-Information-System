@@ -42,12 +42,12 @@ $dbcon = new DBConnector();
                 $pstmt2->bindValue(2, $staffId);
                 $pstmt2->execute();
                 if (($pstmt1->rowCount() > 0) || ($pstmt2->rowCount() > 0)) {
-                    header("Location: ../DashboardFiles/StaffProfile.php");
+                    header("Location: ../Dashboards/StaffDashboard.php");
                     exit;
                 }
                 //If user didn't do any changes but clicked update button.
                 else {
-                    header("Location: ../DashboardFiles/StaffProfile.php");
+                    header("Location: ../Dashboards/StaffDashboard.php");
                     exit;
                 }
             } catch (PDOException $exc) {
@@ -136,7 +136,7 @@ $dbcon = new DBConnector();
                                     <button class="Submit-Btn" type="submit">Update</button>
                                 </div>
                                 <div class="col">
-                                    <a href="../DashboardFiles/StaffProfile.php">
+                                    <a href="../Dashboards/StaffDashboard.php">
                                         <button class="Submit-Btn" type="button" >Cancel</button>
                                     </a>
                                 </div>
