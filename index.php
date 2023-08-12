@@ -122,9 +122,9 @@
         <div class="col-md-2 pl-2 pb-4">
           <p class="last-para"><b>Quick Links</b></p>
           <a class=" last-para" href="#" >Home</a><br>
-          <a class=" last-para" href="#" >About</a><br>
-          <a class=" last-para" href="#" >Webinar</a><br>
-          <a class=" last-para" href="#">Sign in</a>
+          <a class=" last-para" href="about us page\about us.html" >About</a><br>
+          <a class=" last-para" href="WebinarHome.php" >Webinar</a><br>
+          <a class=" last-para" href="LOGIN\Login.php">Log in</a>
           
         </div>
         <div class="col-md-6 pl-2">
