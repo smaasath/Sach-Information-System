@@ -100,7 +100,7 @@
                 <br>vision in mind, our student information system aims to empower students by providing a 
                 comprehensive platform for managing and accessing essential academic information.
                </small></p><br>
-               <form class="form-inline my-2 my-lg-0"  action="LOGIN\LOGIN\Login.php" method="get">
+               <form class="form-inline my-2 my-lg-0"  action="LOGIN\Login.php" method="get">
                   <button type="submit" class="btn btn-primary mb-2 custom-try-button" style="color:white;background-color: rgb(20, 108, 148);">Sign In Now</button>
                </form>
           </div>
