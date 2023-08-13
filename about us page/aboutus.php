@@ -9,9 +9,9 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="../CSS/index.css">
     </head>
-    <body>    
+<body>
 
-        <div class="container">
+	        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white m-0">
@@ -57,50 +57,84 @@
                     </div>
                 </div>
             </div>
-        </div>               
-    </div>
-</div>  
-<div class="container py-md-5">        
-    <div class="card shadow mb-3">
-        <div class="card-header py-3 text-center">
-            <p class="m-0 fw-bold">CONTACT US</p>
-        </div>
-        <form>
-            <div class="card-body">                        
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-3"><label class="form-label" for="Name"><strong>Name</strong></label><input class="form-control" type="text" id="Name-4" name="Name">
-                        </div>
-                        <div class="col">
-                            <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label></div><input class="form-control" type="email" id="email-1" name="email">
-                        </div>                                
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3"><label class="form-label" for="Message"><strong>Message</strong></label></div><input class="form-control" type="text"><br>
-                        </div>
-                    </div>                                              
+        </div>              
+  
+ <div class="container py-md-5">        
+            <div class="card shadow mb-3">
+                <div class="card-header py-3 text-center">
+                    <p class="m-0 fw-bold">CONTACT US</p>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col text-center">                                
-                            <button class="Submit-Btn" type="submit">EDIT</button>
+                
+                <form id="myForm">
+                    <div class="card-body">                        
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="Name"><strong>Name</strong></label><input class="form-control" type="text" id="name" placeholder="Enter Name" required="">
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label></div><input class="form-control" type="email"  id="email" placeholder="Enter Email" required="">
+                                </div>                                
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="Message"><strong>Subject</strong></label></div><input class="form-control" id="subject" type="text" placeholder=" Enter Subject" required="">
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="Message"><strong>Message</strong></label></div><textarea class="form-control" id="body" rows="5" placeholder="Type Message" required=""></textarea><br>
+                                </div>
+                            </div>                                              
                         </div>
-                    </div>  
-                </div>   
-        </form>
-    </div>
-</div>               
-</div>
-</div>  
-<script src="validation.js" type="text/javascript"></script>     
+                        <div class="card-body">
+                            <div class="row">
+                                <h4 class="sent-notification"></h4><br><br>
+                                <div class="col text-center">                                
+                                    <button class="Submit-Btn" type="button" onclick="sendEmail()" value="Send An Email">Submit</button>
+                                </div>
+                            </div>  
+                        </div>   
+
+                    </div>
+                </form>
+            </div>               
+        </div>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+        function sendEmail() {
+            var name = $("#name");
+            var email = $("#email");
+            var subject = $("#subject");
+            var body = $("#body");
+
+            if (isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(subject) && isNotEmpty(body)) {
+                $.ajax({
+                   url: 'sendEmail.php',
+                   method: 'POST',
+                   dataType: 'json',
+                   data: {
+                       name: name.val(),
+                       email: email.val(),
+                       subject: subject.val(),
+                       body: body.val()
+                   }, success: function (response) {
+                        $('#myForm')[0].reset();
+                        $('.sent-notification').text("Message Sent Successfully.");
+                   }
+                });
+            }
+        }
+
+        function isNotEmpty(caller) {
+            if (caller.val() == "") {
+                caller.css('border', '1px solid red');
+                return false;
+            } else
+                caller.css('border', '');
+
+            return true;
+        }
+    </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
