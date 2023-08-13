@@ -31,6 +31,10 @@ function opencoursedetailss(){
     };
     xhttp.open("GET", "../DashboardFiles/StaffEditCourse.php", true);
     xhttp.send();
+    
+    
+    
+    
 }
 
 

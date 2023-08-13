@@ -21,6 +21,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
     </head>
     <body>
 
+        <?php
+        include '../DashboardPHP/connection.php';
+        
+        $userID = $_COOKIE['std_Login'];
+        ?>
         <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex flex-row-reverse align-items-center">
             <a class="p-3" href="#" style="margin-right: 30px;">

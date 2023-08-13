@@ -5,7 +5,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
 -->
 <html>
     <head>
-           <!-- Required meta tags -->
+        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,10 +25,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         <title>Student Course</title>
     </head>
     <body>
-        
-        
-        
-          <!--  nav bar start-->
+        <?php
+        include '../DashboardPHP/connection.php';
+
+        $userID = $_COOKIE['std_Login'];
+        ?>
+
+
+        <!--  nav bar start-->
         <div class="navbardah fixed-top d-flex flex-row-reverse">
             <a class="p-3" href="#" style="margin-right: 30px;">
                 <i class="fa-solid fa-user fa-lg" style="color: #24457f;"></i>
@@ -46,11 +50,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         </div>
 
         <!--  nav bar end-->
-        
-        
-        
-        
-           <div class="container rounded-5 mt-5 shadow-sm p-3 mb-5 bgwebcour ">
+
+
+
+
+        <div class="container rounded-5 mt-5 shadow-sm p-3 mb-5 bgwebcour ">
             <div class="row">
                 <div class="col-lg-9">
                     <h2><b>Lorem Ipsum is simply dummy text</b></h2>
@@ -66,132 +70,94 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to 
         
         
         
-        <div class="container mt-4 mb-5">
-            <div class="row">
-                <div class="col-lg-4 mt-2 mb-4 ">
-                    <div class="card rounded-4 web backcolor" style="width: 22rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"><b>Web Application</b></h5>
+        
+         <div class="container mt-4 mb-5">
+                    <div class="row">
+        <?php
+        $query = "SELECT courseId, courseMarks FROM coursestudent WHERE studentId = :stdID";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':stdID', $userID, PDO::PARAM_INT);
+        $stmt->execute();
 
-                            <p class="card-text">Join our comprehensive web development program,functional websites.</p>
-                            <div class="row">
-                               
-                                <div class="col-4">
-                                    <div class="row p-2">
-                                        <a href="#" class="btn card-link course-btn bgcol" onclick="opencoursedetails()">View</a>
-                                    </div>
-                                    
-                                </div>
+        if ($stmt) {
+            // Fetch results
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            foreach ($result as $row) {
+                // Fetch course name using a new query
+                $queryCourse = "SELECT * FROM course WHERE courseId = :courseID";
+                $stmtCourse = $conn->prepare($queryCourse);
+                $stmtCourse->bindParam(':courseID', $row["courseId"], PDO::PARAM_INT);
+                $stmtCourse->execute();
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                 
-                
-                
-                
-                 </div>
-             </div>
+                $rowCourse = $stmtCourse->fetch(PDO::FETCH_ASSOC);
+                ?>
+
                
-        
-        
-        
-        
-        <!-- Course Details Modal -->
-        <div class="modal fade" id="courseDetails" tabindex="-1" role="dialog" aria-labelledby="courseDetails" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="courseDetails">Course Detail</h1>
-                        <button type="button" class="btn-close" onclick="closeModalsss()"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row justify-content-center align-items-center p-2">
-                                <div class="col-4">
-                                    <div class="progressbar">
-                                <div class="progtext">75%</div>
+                        <div class="col-lg-4 mt-2 mb-4 ">
+                            <div class="card rounded-4 web backcolor" style="width: 22rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title"><b><?php echo $rowCourse["courseName"]; ?></b></h5>
+                                    
+                                    <div class="row">
+
+                                        <div class="col-5">
+                                           Academic Year 
+                                        </div>
+                                        <div class="col-6">
+                                            <?php echo $rowCourse["academicYear"]; ?>
+                                        </div>
+                                        
+                                        <div class="col-5">
+                                           Credit 
+                                        </div>
+                                        <div class="col-6">
+                                            <?php echo $rowCourse["credits"]; ?>
+                                        </div>
+                                        
+                                        <div class="col-5">
+                                           Academic Year 
+                                        </div>
+                                        <div class="col-6">
+                                            <?php echo $row["courseMarks"]; ?>
+                                        </div>
+
+
+                                    </div>
+                                </div>
                             </div>
-                                </div>
-                                <div class="col-8">
-                                   <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar bg-info text-dark" style="width: 50%;background-color: #146c94 !important;color: white !important;">50%</div>
-                            </div>
-                            </div>
-                                </div>
-                            </div> 
-
-                            <div class="row justify-content-center align-items-center p-1">
-                                <div class="col-4">
-                                    <h6>Course Name</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Web Applicatio</p>
-                                </div>
-                            </div> 
-                            <div class="row justify-content-center align-items-center p-1">
-                                <div class="col-4">
-                                    <h6>Credit</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>3</p>
-                                </div>
-                            </div> 
-                            <div class="row justify-content-center align-items-center p-1">
-                                <div class="col-4">
-                                    <h6>Lecturer</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>SM.Aasath</p>
-                                </div>
-                            </div> 
-
-                            <div class="row justify-content-center align-items-center p-1">
-                                <div class="col-4">
-                                    <h6>Description</h6>
-                                </div>
-                                <div class="col-8">
-                                    <p>Join our comprehensive web development program,functional websites.</p>
-                                </div>
-                            </div> 
-
-                            
-
-
-
-
-
-
-
                         </div>
-                    
-                    <div class="modal-footer">
 
-                        
-                        <button type="button" class="btn btn-secondary" onclick="closeModalsss()" >Close</button>
-                    </div>
-                </div>
-            </div>
-        
-            </div>
-      
-        <!-- Course Details Modal -->
+
+
+
+
+
+                 
+
+
+
+
+
+                
 
         <?php
-        // put your code here
-        ?>
-        
-        
-        
-        
-        
-          <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    }
+
+  
+} else {
+    echo "No Course found.";
+}
+?>
+
+   </div>
+                </div>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
-       
+
     </body>
 </html>
