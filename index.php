@@ -100,7 +100,7 @@
                 <br>vision in mind, our student information system aims to empower students by providing a 
                 comprehensive platform for managing and accessing essential academic information.
                </small></p><br>
-               <form class="form-inline my-2 my-lg-0"  action="LOGIN\LOGIN\Login.php" method="get">
+               <form class="form-inline my-2 my-lg-0"  action="LOGIN\Login.php" method="get">
                   <button type="submit" class="btn btn-primary mb-2 custom-try-button" style="color:white;background-color: rgb(20, 108, 148);">Sign In Now</button>
                </form>
           </div>
@@ -122,9 +122,9 @@
         <div class="col-md-2 pl-2 pb-4">
           <p class="last-para"><b>Quick Links</b></p>
           <a class=" last-para" href="#" >Home</a><br>
-          <a class=" last-para" href="#" >About</a><br>
-          <a class=" last-para" href="#" >Webinar</a><br>
-          <a class=" last-para" href="#">Sign in</a>
+          <a class=" last-para" href="about us page\about us.html" >About</a><br>
+          <a class=" last-para" href="WebinarHome.php" >Webinar</a><br>
+          <a class=" last-para" href="LOGIN\Login.php">Log in</a>
           
         </div>
         <div class="col-md-6 pl-2">

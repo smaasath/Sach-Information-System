@@ -25,9 +25,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     
                 switch($_SESSION["user_role"]){
                     case 1:
-
                         $_SESSION["admin"] = $user->getUserId();
-                        header("Location: ../Dashboards/SuperAdminDashboard.php");
+                        $location = "Dashboards/SuperAdminDashboard.php";
 
                         //$location = "../../Dashboards/SuperAdminDashboard.php";
                         break;
