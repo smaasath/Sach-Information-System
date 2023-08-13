@@ -85,7 +85,7 @@ $dbcon = new DBConnector();
             <div class="container py-md-5">
                 <div class="card shadow mb-3">
                     <div class="card-header py-3 text-center">
-                        <p class="m-0 fw-bold ">STUDENT PROFILE</p>
+                        <p class="m-0 fw-bold ">INSTITUTE PROFILE</p>
                     </div>            
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
                         <div class="card-body">
