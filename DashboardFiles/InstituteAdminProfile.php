@@ -1,162 +1,185 @@
+<?php
+require '../classes/DBConnector.php';
+
+use classes\DBConnector;
+
+$dbcon = new DBConnector();
+?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
 
-        <title>Institute profile</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <link rel="stylesheet" href="../Profile/Institute/style.css">
-    </head>
-    <body>
-        
-        <?php
-        include '../DashboardPHP/connection.php';
-        ?>
-        <!--  nav bar start-->
-        <div class="navbardah fixed-top d-flex  align-items-center justify-content-end">
+<head>
 
-            <div id= "resimage" class="p-1 w-50 d-block d-sm-none">
-                <a href="#">
-                    <img src="../Images/Logo.png" alt="Home" class="img-fluid" style="width: 20%">
-                </a>
-            </div>
+    <title>Institute profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../Profile/Institute/style.css">
+</head>
 
-            <h6 class="p-3" href="#">
-                <?php
-                $query = "SELECT instituteName FROM institute WHERE instituteId=1";
-                $result = $conn->query($query);
-                if (!$result) {
-                    die("Query failed: " . $conn->error);
-                }
+<body>
+    <?php
+    $instituteId = $_COOKIE['Ins_Login'];
+    ?>
 
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    echo $row["instituteName"];
-                }
-                ?>   
-            </h6>
+    <?php
+    include '../DashboardPHP/connection.php';
+    ?>
+    <!--  nav bar start-->
+    <div class="navbardah fixed-top d-flex  align-items-center justify-content-end">
 
-
-
-
-
-            <div class="col-1">
-                <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle rounded-circle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <?php
-                    $imageId = 1; // Replace with the actual ID of the image you want to retrieve
-
-                    $queryUserImage = "SELECT Logo FROM institute WHERE instituteId=1";
-                    $resultUserImage = $conn->query($queryUserImage);
-
-                    if ($resultUserImage->num_rows > 0) {
-                        $row = $resultUserImage->fetch_assoc();
-                        $imageData = $row["Logo"];
-                        echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" style="width:30%">';
-                    } else {
-                        echo "Image not found.";
-                    }
-                    ?>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
-
-                    <li><a class="dropdown-item" href="../index.php">Sign out</a></li>
-                </ul>
-            </div>
-
+        <div id="resimage" class="p-1 w-50 d-block d-sm-none">
+            <a href="#">
+                <img src="../Images/Logo.png" alt="Home" class="img-fluid" style="width: 20%">
+            </a>
         </div>
 
-        <!--  nav bar end-->
+        <h6 class="p-3" href="#">
+            <?php
+            $query = "SELECT instituteName FROM institute WHERE instituteId = :userID";
+            $stmtInsName = $conn->prepare($query);
+            $stmtInsName->bindParam(':userID', $userID, PDO::PARAM_INT);
+            $stmtInsName->execute();
 
-        
-            <div class="container py-md-5">
-                <div class="row d-flex align-items-top">       
-                <div class="col-sm-3 p-3 bg-white text-center">
-                    <div class="card mb-3">
-                        <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4 img-fluid d-none d-sm-block" src="../Profile/Institute/institute.jpg"></div>
+            // Fetch the result
+            $rowName = $stmtInsName->fetch(PDO::FETCH_ASSOC);
+
+            if ($rowName) {
+                echo $rowName["instituteName"];
+            }
+
+            // Close the statement
+            $stmtInsName = null;
+
+            // Close the PDO connection
+            ?>
+        </h6>
+
+
+
+
+
+        <div class="col-1">
+            <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <?php
+                // Construct and execute the query using a prepared statement
+                $queryUserImage = "SELECT Logo FROM institute WHERE instituteId = :userID";
+                $stmtUserImage = $conn->prepare($queryUserImage);
+                $stmtUserImage->bindParam(':userID', $userID, PDO::PARAM_INT);
+                $stmtUserImage->execute();
+
+                // Fetch the result
+                $rowUserImage = $stmtUserImage->fetch(PDO::FETCH_ASSOC);
+
+                if ($rowUserImage && isset($rowUserImage["Logo"])) {
+                    $imageData = $rowUserImage["Logo"];
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode($imageData) . '" style="width:30%">';
+                } else {
+                    echo "Image not found.";
+                }
+
+                // Close the statement
+                $stmtUserImage = null;
+
+                // Close the PDO connection
+                ?>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+
+                <li><a class="dropdown-item" onclick="logout('Ins_Login')">Sign out</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!--  nav bar end-->
+
+    <div class="container py-md-5">
+        <div class="row d-flex align-items-top">
+            <div class="col-sm-3 p-3 bg-white text-center">
+                <div class="card mb-3">
+                    <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4 img-fluid d-none d-sm-block" src="../Profile/Institute/institute.jpg"></div>
+                </div>
+            </div>
+            <div class="col-sm-9 text-center text-md-start">
+                <div class="card shadow mb-3">
+                    <div class="card-header py-3 text-center">
+                        <p class="m-0 fw-bold">INSTITUTE PROFILE</p>
                     </div>
-                </div>                
-                    <div class="col-sm-9 text-center text-md-start">
-                        <div class="card shadow mb-3">
-                            <div class="card-header py-3 text-center">
-                                <p class="m-0 fw-bold">INSTITUTE PROFILE</p>
-                            </div>
-                            <form>
-                            <div class="card-body">                                
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Name"><strong>Name</strong></label><input class="form-control" type="text" id="Name-4" placeholder="Uwa Wellassa University" name="Name" readonly></div>
-                                        </div>
-                                    </div>                                
-                            </div>
-                            <div class="card-body">                                
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="LOGO"><strong>LOGO URL</strong></label><input class="form-control" type="text" id="LOGO" placeholder="https://upload.wikimedia.org/wikipedia/en/3/37/Uva_Wellassa_University_Logo.jpg" name="LOGO" readonly></div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Ins_ID"><strong>Institute ID</strong></label></div><input class="form-control" type="text" placeholder="INS043" readonly>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Ins_Code"><strong>Institute Code</strong></label></div><input class="form-control" type="text" placeholder="UWUINS01" readonly>
-                                        </div>
-                                    </div>                                
-                            </div>
-                            <div class="card-body">                                
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="tel"><strong>Contact</strong></label></div><input class="form-control" type="tel" placeholder="0777267345" readonly>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Address"><strong>Address</strong></label></div><input class="form-control" type="text" id="Address" placeholder="Uva Wellassa University, Passara Road, Badulla." name="Address" readonly>
-                                        </div>
-                                    </div>                                
-                            </div>
-                            <div class="card-body">                                
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Year"><strong>Year Estabilish</strong></label></div><input class="form-control" type="text" placeholder="01/07/2005" readonly>
-                                        </div>                               
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Mission"><strong>Mission</strong></label></div><input class="form-control" type="text" placeholder="To produce well-rounded, employable, technocratic and entrepreneurial graduates equipped with knowledge, skills, values and attitudes to make outstanding contributions to the national development." readonly>
-                                        </div>                               
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="Vission"><strong>Vision</strong></label></div><input class="form-control" type="text" placeholder="Be the centre of excellence for value addition to the national resource base" readonly>
-                                        </div>                               
-                                    </div>
-                                   <br>
+                    <?php
+                    try {
+                        $con = $dbcon->getConnection();
+                        $query = "SELECT * FROM institute WHERE instituteId=?";
+                        $pstmt1 = $con->prepare($query);
+                        $pstmt1->bindValue(1, $instituteId);
+                        $pstmt1->execute();
+                        $rs1 = $pstmt1->fetch(PDO::FETCH_OBJ);
 
-                                <a href="../DashboardFiles/InstituteAdminProfileEdit.php">
-                                    <button class="Submit-Btn" type="button" >EDIT</button>
-                                </a> 
+                        $query = "SELECT email FROM user WHERE institutetId=?";
+                        $pstmt2 = $con->prepare($query);
+                        $pstmt2->bindValue(1, $instituteId);
+                        $pstmt2->execute();
+                        $rs2 = $pstmt2->fetch(PDO::FETCH_OBJ);
+                    } catch (PDOException $exc) {
+                        echo $exc->getMessage();
+                    }
+                    ?>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="Department"><strong>Institute Name</strong></label><textarea class="form-control" type="text" placeholder="<?php echo $rs1->instituteName; ?>" readonly></textarea></div>
                             </div>
-                        </form>
-
                         </div>
-                    </div>               
-               </div>
-            </div>  
-        <script src="../Profile/Institute/validation.js" type="text/javascript"></script>     
+                        <div class="mb-3"></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="tel"><strong>Address</strong></label></div><textarea class="form-control" type="text" placeholder="<?php echo $rs1->Address; ?>" readonly></textarea>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="email"><strong>Contact Number</strong></label></div><textarea class="form-control" type="text" placeholder="<?php echo $rs1->phoneNo; ?>" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="Department"><strong>Vission</strong></label><textarea class="form-control" type="text" placeholder="<?php echo $rs1->vission; ?>" readonly></textarea></div>
+                            </div>
+                        </div>
+                        <div class="mb-3"></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="Department"><strong>Mission</strong></label><textarea class="form-control" type="text" placeholder="<?php echo $rs1->mission; ?>" readonly></textarea></div>
+                            </div>
+                        </div>
+                        <div class="mb-3"></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="Address"><strong>Logo</strong></label></div><textarea class="form-control" type="text" placeholder="<?php echo $rs1->Logo; ?>" readonly></textarea>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="User"><strong>Email Address</strong></label></div><textarea class="form-control" type="text" placeholder="<?php echo $rs2->email; ?>" readonly></textarea>
+                            </div>
+                        </div>
+                        <br>
 
-    </body>
+                        <a href="../DashboardFiles/InstituteAdminProfileEdit.php?id=<?php echo $instituteId; ?>">
+                            <button class="Submit-Btn" type="button">EDIT</button>
+                        </a>
+                    </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
